@@ -10,7 +10,8 @@ import java.util.Properties;
 
 public class test {
 
-    private static final String ZK_CONNECT = "0.0.0.0:2181,0.0.0.0:2182,0.0.0.0:2183";
+    //private static final String ZK_CONNECT = "0.0.0.0:2181,0.0.0.0:2182,0.0.0.0:2183";
+    private static final String ZK_CONNECT = "test_1.thinking.com:2181,test_2.thinking.com:2181,test_3.thinking.com:2181";
     private static final int SESSION_TIMEOUT = 30000;
     private static final int CONNECT_TIMEOUT = 30000;
 
@@ -34,7 +35,7 @@ public class test {
 
     private static Callback sendCallBack = new Callback() {
         public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-            System.out.println("send error");
+            System.out.println("send" + (e == null ? " success" : " error"));
             e.printStackTrace();
         }
     };
@@ -44,10 +45,9 @@ public class test {
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(configs);
         for (int i = 0; i < 100; i++) {
             long time_now = Time.currentWallTime();
-            ProducerRecord record = new ProducerRecord<String, String>(TOPIC, null, time_now, "fuck-->" + (i % 2), "value-->" + i);
+            ProducerRecord record = new ProducerRecord<String, String>(TOPIC, null, time_now, "fuck-->" + (i % 2), "value-->" + time_now);
             //异步发送
             producer.send(record, sendCallBack);
-            System.out.println("success send " + i);
             try {
                 Thread.sleep(1000);
             } catch (Exception e) {
@@ -63,7 +63,8 @@ public class test {
         producer.close();
     }
 
-    private static final String BROKER_LIST = "0.0.0.0:9092,0.0.0.0:9093,0.0.0.0:9094";
+    //private static final String BROKER_LIST = "0.0.0.0:9092,0.0.0.0:9093,0.0.0.0:9094";
+    private static final String BROKER_LIST = "kafka_1.thinking.com:9092,kafka_2.thinking.com:9092,kafka_3.thinking.com:9092";
 
     private static Properties initProducerProperties() {
         Properties properties = new Properties();
@@ -99,5 +100,8 @@ public class test {
     ./kafka-topics.sh --zookeeper test_1.thinking.com:2181 --describe --topic test-fuck
     ./kafka-console-consumer.sh --bootstrap-server kafka_1.thinking.com:9092 --topic test-fuck --from-beginning
     ./kafka-run-class.sh kafka.tools.DumpLogSegments --files /tmp/kafka-logs/test-fuck-0/00000000000000000000.log --print-data-log
+
+    cd /java-test/artifacts/kafka_api_create_topic_jar
+    java -jar kafka-api-create-topic.jar
     */
 }

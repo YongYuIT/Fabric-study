@@ -19,6 +19,7 @@ services:
     - $PWD/kafka-grp-cmd:/cmd
     - /home/yong/Desktop/kafka_2.11-1.1.1:/usr/local/kafka
     - $PWD/kafka-grp-cmd/log-1:/usr/local/kafka/logs
+    - $PWD/../out:/java-test
     environment:
     - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
     - PATH=${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
