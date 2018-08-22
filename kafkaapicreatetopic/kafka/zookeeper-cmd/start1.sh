@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 mkdir -p /tmp/zookeeper
 cd /tmp/zookeeper
 echo 1 > myid
