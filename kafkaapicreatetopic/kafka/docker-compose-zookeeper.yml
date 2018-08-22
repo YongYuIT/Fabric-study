@@ -1,0 +1,60 @@
+version: '2'
+
+networks:
+  thinking:
+
+services:
+  test_1.thinking.com:
+    image: ubuntu
+    container_name: test_1.thinking.com
+    command: sh /cmd/start1.sh
+    tty: true
+    networks:
+    - thinking
+    ports:
+    - "2181:2181"
+    volumes:
+    - /etc/java-8-openjdk:/etc/java-8-openjdk
+    - /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64
+    - /home/yong/Desktop/zookeeper-3.4.12:/home/zookeeper-3.4.12
+    - $PWD/zookeeper-cmd:/cmd
+    environment:
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+    - PATH=${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
+
+
+  test_2.thinking.com:
+    image: ubuntu
+    container_name: test_2.thinking.com
+    command: sh /cmd/start2.sh
+    tty: true
+    networks:
+    - thinking
+    ports:
+    - "2182:2181"
+    volumes:
+    - /etc/java-8-openjdk:/etc/java-8-openjdk
+    - /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64
+    - /home/yong/Desktop/zookeeper-3.4.12:/home/zookeeper-3.4.12
+    - $PWD/zookeeper-cmd:/cmd
+    environment:
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+    - PATH=${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
+
+  test_3.thinking.com:
+    image: ubuntu
+    container_name: test_3.thinking.com
+    command: sh /cmd/start3.sh
+    tty: true
+    networks:
+    - thinking
+    ports:
+    - "2183:2181"
+    volumes:
+    - /etc/java-8-openjdk:/etc/java-8-openjdk
+    - /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64
+    - /home/yong/Desktop/zookeeper-3.4.12:/home/zookeeper-3.4.12
+    - $PWD/zookeeper-cmd:/cmd
+    environment:
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+    - PATH=${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin

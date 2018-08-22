@@ -1,0 +1,62 @@
+version: '2'
+
+networks:
+  thinking:
+
+services:
+  kafka_1.thinking.com:
+    image: ubuntu
+    container_name: kafka_1.thinking.com
+    command: sh /cmd/kafka_1.sh
+    tty: true
+    networks:
+    - thinking
+    ports:
+    - "9092:9092"
+    volumes:
+    - /etc/java-8-openjdk:/etc/java-8-openjdk
+    - /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64
+    - $PWD/kafka-grp-cmd:/cmd
+    - /home/yong/Desktop/kafka_2.11-1.1.1:/usr/local/kafka
+    - $PWD/kafka-grp-cmd/log-1:/usr/local/kafka/logs
+    environment:
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+    - PATH=${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
+
+  kafka_2.thinking.com:
+    image: ubuntu
+    container_name: kafka_2.thinking.com
+    command: sh /cmd/kafka_2.sh
+    tty: true
+    networks:
+    - thinking
+    ports:
+    - "9093:9092"
+    volumes:
+    - /etc/java-8-openjdk:/etc/java-8-openjdk
+    - /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64
+    - $PWD/kafka-grp-cmd:/cmd
+    - /home/yong/Desktop/kafka_2.11-1.1.1:/usr/local/kafka
+    - $PWD/kafka-grp-cmd/log-2:/usr/local/kafka/logs
+    environment:
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+    - PATH=${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
+
+  kafka_3.thinking.com:
+    image: ubuntu
+    container_name: kafka_3.thinking.com
+    command: sh /cmd/kafka_3.sh
+    tty: true
+    networks:
+    - thinking
+    ports:
+    - "9094:9092"
+    volumes:
+    - /etc/java-8-openjdk:/etc/java-8-openjdk
+    - /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64
+    - $PWD/kafka-grp-cmd:/cmd
+    - /home/yong/Desktop/kafka_2.11-1.1.1:/usr/local/kafka
+    - $PWD/kafka-grp-cmd/log-3:/usr/local/kafka/logs
+    environment:
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+    - PATH=${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
