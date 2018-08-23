@@ -1,0 +1,5 @@
+OrdererOrgs:
+  - Name: thinking_orderer_node
+    Domain: thinking.com
+    Specs:
+      - Hostname: thinking_orderer_host

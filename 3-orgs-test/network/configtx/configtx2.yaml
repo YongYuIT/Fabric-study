@@ -1,0 +1,41 @@
+Organizations:
+    - &YongPeerOrg
+        Name: YongPeerOrg
+        ID: YongPeerMSP
+        MSPDir: crypto-config/peerOrganizations/yong.thinking.com/msp
+        AnchorPeers:
+            - Host: peer0.yong.thinking.com
+              Port: 7051
+    - &GuoPeerOrg
+        Name: GuoPeerOrg
+        ID: GuoPeerMSP
+        MSPDir: crypto-config/peerOrganizations/guo.thinking.com/msp
+        AnchorPeers:
+            - Host: peer0.guo.thinking.com
+              Port: 7051
+    - &BenPeerOrg
+        Name: BenPeerOrg
+        ID: BenPeerMSP
+        MSPDir: crypto-config/peerOrganizations/ben.thinking.com/msp
+        AnchorPeers:
+            - Host: peer0.ben.thinking.com
+              Port: 7051
+
+Application: &ApplicationDefaults
+    Organizations:
+
+Capabilities:
+    Application: &ApplicationCapabilities
+        V1_1: true
+
+Profiles:
+    ThinkingChannel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *YongPeerOrg
+                - *GuoPeerOrg
+                - *BenPeerOrg
+            Capabilities:
+                <<: *ApplicationCapabilities

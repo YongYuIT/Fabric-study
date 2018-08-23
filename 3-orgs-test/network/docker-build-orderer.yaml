@@ -1,0 +1,37 @@
+version: '2'
+
+volumes:
+  thinking_orderer_host.thinking.com:
+
+networks:
+  thinking:
+
+services:
+  thinking_orderer_host.thinking.com:
+    container_name: thinking_orderer_host.thinking.com
+    image: ubuntu
+    image: hyperledger/fabric-orderer
+    environment:
+      - ORDERER_GENERAL_LOGLEVEL=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_GENESISMETHOD=file
+      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      - ORDERER_GENERAL_LOCALMSPID=MyOrdererOrgMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+    command: sh /cmd/orderer-start.sh
+    volumes:
+      - $PWD/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - $PWD/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer_host.thinking.com/msp:/var/hyperledger/orderer/msp
+      - $PWD/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer_host.thinking.com/tls/:/var/hyperledger/orderer/tls
+      - $PWD/node-start-cmd:/cmd
+      - thinking_orderer_host.thinking.com:/var/hyperledger/production/orderer
+    ports:
+      - 7050:7050
+    networks:
+      - thinking
+    tty: true

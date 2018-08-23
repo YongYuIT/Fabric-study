@@ -1,0 +1,54 @@
+ref to《区块链三十二 fabric-sdk-go》
+
+docker stop cli \
+            peer0.yong.thinking.com \
+            peer1.yong.thinking.com \
+            peer0.guo.thinking.com \
+            peer1.guo.thinking.com \
+            peer0.ben.thinking.com \
+            peer1.ben.thinking.com \
+            thinking_orderer_host.thinking.com
+
+docker rm cli \
+            peer0.yong.thinking.com \
+            peer1.yong.thinking.com \
+            peer0.guo.thinking.com \
+            peer1.guo.thinking.com \
+            peer0.ben.thinking.com \
+            peer1.ben.thinking.com \
+            thinking_orderer_host.thinking.com
+
+docker network rm network_thinking
+
+#####################################################################################################################################################
+
+cryptogen generate --config crypto-config-order.yaml
+cryptogen generate --config crypto-config-peer.yaml
+
+#####################################################################################################################################################
+
+rm -rf configtx.yaml
+ln -s ./configtx/configtx1.yaml configtx.yaml
+mkdir channel-artifacts
+configtxgen -profile ThinkingGene -outputBlock ./channel-artifacts/genesis.block
+
+rm -rf configtx.yaml
+ln -s ./configtx/configtx2.yaml configtx.yaml
+export CHANNEL_NAME=mythnkingchannel
+configtxgen -profile ThinkingChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID $CHANNEL_NAME
+
+configtxgen -profile ThinkingChannel -outputAnchorPeersUpdate ./channel-artifacts/YongPeerOrganchors.tx -channelID $CHANNEL_NAME -asOrg YongPeerOrg
+configtxgen -profile ThinkingChannel -outputAnchorPeersUpdate ./channel-artifacts/GuoPeerOrganchors.tx -channelID $CHANNEL_NAME -asOrg GuoPeerOrg
+configtxgen -profile ThinkingChannel -outputAnchorPeersUpdate ./channel-artifacts/BenPeerOrganchors.tx -channelID $CHANNEL_NAME -asOrg BenPeerOrg
+
+#####################################################################################################################################################
+
+
+docker-compose -f docker-build-orderer.yaml up -d &
+docker-compose -f docker-build-peer.yaml up -d &
+
+#####################################################################################################################################################
+
+docker-compose -f docker-build-cli.yaml up -d
+docker exec -it cli /bin/bash
+peer channel list

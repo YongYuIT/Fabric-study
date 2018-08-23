@@ -1,0 +1,237 @@
+version: '2'
+
+volumes:
+  peer0.yong.thinking.com:
+  peer1.yong.thinking.com:
+  peer0.guo.thinking.com:
+  peer1.guo.thinking.com:
+  peer0.ben.thinking.com:
+  peer1.ben.thinking.com:
+
+networks:
+  thinking:
+
+services:
+  peer0.yong.thinking.com:
+    image: hyperledger/fabric-peer
+    container_name: peer0.yong.thinking.com
+    environment:
+      - CORE_PEER_ID=peer0.yong.thinking.com
+      - CORE_PEER_ADDRESS=peer0.yong.thinking.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.yong.thinking.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.yong.thinking.com:7051
+      - CORE_PEER_LOCALMSPID=YongPeerMSP
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=network_thinking
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/crypto-config/peerOrganizations/yong.thinking.com/peers/peer0.yong.thinking.com/msp:/etc/hyperledger/fabric/msp
+        - $PWD/crypto-config/peerOrganizations/yong.thinking.com/peers/peer0.yong.thinking.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.yong.thinking.com:/var/hyperledger/production
+        - $PWD/node-start-cmd:/cmd
+    command: sh /cmd/peer-start.sh
+    ports:
+      - 7051:7051
+      - 7053:7053
+    networks:
+      - thinking
+    tty: true
+
+
+
+
+
+  peer1.yong.thinking.com:
+    image: hyperledger/fabric-peer
+    container_name: peer1.yong.thinking.com
+    environment:
+      - CORE_PEER_ID=peer1.yong.thinking.com
+      - CORE_PEER_ADDRESS=peer1.yong.thinking.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.yong.thinking.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.yong.thinking.com:7051
+      - CORE_PEER_LOCALMSPID=YongPeerMSP
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=network_thinking
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/crypto-config/peerOrganizations/yong.thinking.com/peers/peer1.yong.thinking.com/msp:/etc/hyperledger/fabric/msp
+        - $PWD/crypto-config/peerOrganizations/yong.thinking.com/peers/peer1.yong.thinking.com/tls:/etc/hyperledger/fabric/tls
+        - peer1.yong.thinking.com:/var/hyperledger/production
+        - $PWD/node-start-cmd:/cmd
+    command: sh /cmd/peer-start.sh
+    ports:
+      - 7151:7051
+      - 7153:7053
+    networks:
+      - thinking
+    tty: true
+
+
+
+
+
+  peer0.guo.thinking.com:
+    image: hyperledger/fabric-peer
+    container_name: peer0.guo.thinking.com
+    environment:
+      - CORE_PEER_ID=peer0.guo.thinking.com
+      - CORE_PEER_ADDRESS=peer0.guo.thinking.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.guo.thinking.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.guo.thinking.com:7051
+      - CORE_PEER_LOCALMSPID=GuoPeerMSP
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=network_thinking
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/crypto-config/peerOrganizations/guo.thinking.com/peers/peer0.guo.thinking.com/msp:/etc/hyperledger/fabric/msp
+        - $PWD/crypto-config/peerOrganizations/guo.thinking.com/peers/peer0.guo.thinking.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.guo.thinking.com:/var/hyperledger/production
+        - $PWD/node-start-cmd:/cmd
+    command: sh /cmd/peer-start.sh
+    ports:
+      - 7251:7051
+      - 7253:7053
+    networks:
+      - thinking
+    tty: true
+
+
+
+
+
+  peer1.guo.thinking.com:
+    image: hyperledger/fabric-peer
+    container_name: peer1.guo.thinking.com
+    environment:
+      - CORE_PEER_ID=peer1.guo.thinking.com
+      - CORE_PEER_ADDRESS=peer1.guo.thinking.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.guo.thinking.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.guo.thinking.com:7051
+      - CORE_PEER_LOCALMSPID=GuoPeerMSP
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=network_thinking
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/crypto-config/peerOrganizations/guo.thinking.com/peers/peer1.guo.thinking.com/msp:/etc/hyperledger/fabric/msp
+        - $PWD/crypto-config/peerOrganizations/guo.thinking.com/peers/peer1.guo.thinking.com/tls:/etc/hyperledger/fabric/tls
+        - peer1.guo.thinking.com:/var/hyperledger/production
+        - $PWD/node-start-cmd:/cmd
+    command: sh /cmd/peer-start.sh
+    ports:
+      - 7351:7051
+      - 7353:7053
+    networks:
+      - thinking
+    tty: true
+
+
+
+
+
+  peer0.ben.thinking.com:
+    image: hyperledger/fabric-peer
+    image: hyperledger/fabric-peer
+    container_name: peer0.ben.thinking.com
+    environment:
+      - CORE_PEER_ID=peer0.ben.thinking.com
+      - CORE_PEER_ADDRESS=peer0.ben.thinking.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.ben.thinking.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.ben.thinking.com:7051
+      - CORE_PEER_LOCALMSPID=BenPeerMSP
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=network_thinking
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/crypto-config/peerOrganizations/ben.thinking.com/peers/peer0.ben.thinking.com/msp:/etc/hyperledger/fabric/msp
+        - $PWD/crypto-config/peerOrganizations/ben.thinking.com/peers/peer0.ben.thinking.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.ben.thinking.com:/var/hyperledger/production
+        - $PWD/node-start-cmd:/cmd
+    command: sh /cmd/peer-start.sh
+    ports:
+      - 7451:7051
+      - 7453:7053
+    networks:
+      - thinking
+    tty: true
+
+
+
+
+  peer1.ben.thinking.com:
+    image: hyperledger/fabric-peer
+    container_name: peer1.ben.thinking.com
+    environment:
+      - CORE_PEER_ID=peer1.ben.thinking.com
+      - CORE_PEER_ADDRESS=peer1.ben.thinking.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.ben.thinking.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.ben.thinking.com:7051
+      - CORE_PEER_LOCALMSPID=BenPeerMSP
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=network_thinking
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/crypto-config/peerOrganizations/ben.thinking.com/peers/peer1.ben.thinking.com/msp:/etc/hyperledger/fabric/msp
+        - $PWD/crypto-config/peerOrganizations/ben.thinking.com/peers/peer1.ben.thinking.com/tls:/etc/hyperledger/fabric/tls
+        - peer1.ben.thinking.com:/var/hyperledger/production
+        - $PWD/node-start-cmd:/cmd
+    command: sh /cmd/peer-start.sh
+    ports:
+      - 7551:7051
+      - 7553:7053
+    networks:
+      - thinking
+    tty: true
