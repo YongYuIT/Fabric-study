@@ -52,3 +52,52 @@ docker-compose -f docker-build-peer.yaml up -d &
 docker-compose -f docker-build-cli.yaml up -d
 docker exec -it cli /bin/bash
 peer channel list
+
+export CHANNEL_NAME=mythnkingchannel
+peer channel create -o thinking_orderer_host.thinking.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/thinking.com/orderers/thinking_orderer_host.thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem
+peer channel join -b ${CHANNEL_NAME}.block
+peer channel list
+
+export CORE_PEER_ADDRESS=peer1.yong.thinking.com:7051
+export CORE_PEER_LOCALMSPID=YongPeerMSP
+export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/yong.thinking.com/peers/peer1.yong.thinking.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/msp
+peer channel list
+peer channel join -b ${CHANNEL_NAME}.block
+peer channel list
+
+export CORE_PEER_ADDRESS=peer0.guo.thinking.com:7051
+export CORE_PEER_LOCALMSPID=GuoPeerMSP
+export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/guo.thinking.com/peers/peer0.guo.thinking.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/guo.thinking.com/users/Admin@guo.thinking.com/msp
+peer channel list
+peer channel join -b ${CHANNEL_NAME}.block
+peer channel list
+
+export CORE_PEER_ADDRESS=peer1.guo.thinking.com:7051
+export CORE_PEER_LOCALMSPID=GuoPeerMSP
+export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/guo.thinking.com/peers/peer1.guo.thinking.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/guo.thinking.com/users/Admin@guo.thinking.com/msp
+peer channel list
+peer channel join -b ${CHANNEL_NAME}.block
+peer channel list
+
+export CORE_PEER_ADDRESS=peer0.ben.thinking.com:7051
+export CORE_PEER_LOCALMSPID=BenPeerMSP
+export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/ben.thinking.com/peers/peer0.ben.thinking.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/ben.thinking.com/users/Admin@ben.thinking.com/msp
+peer channel list
+peer channel join -b ${CHANNEL_NAME}.block
+peer channel list
+
+export CORE_PEER_ADDRESS=peer1.ben.thinking.com:7051
+export CORE_PEER_LOCALMSPID=BenPeerMSP
+export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/ben.thinking.com/peers/peer1.ben.thinking.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/ben.thinking.com/users/Admin@ben.thinking.com/msp
+peer channel list
+peer channel join -b ${CHANNEL_NAME}.block
+peer channel list
+
+#####################################################################################################################################################
+
+待续。。。（安装链码并执行）
