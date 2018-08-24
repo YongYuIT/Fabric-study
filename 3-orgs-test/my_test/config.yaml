@@ -7,7 +7,7 @@ client:
   logging:
     level: info
   cryptoconfig:
-    path: /mnt/hgfs/3-orgs-my_test/network/crypto-config
+    path: /mnt/hgfs/3-orgs-test/network/crypto-config
   credentialStore:
     path: /tmp/
     cryptoStore:
@@ -24,9 +24,9 @@ client:
     systemCertPool: true
     client:
       key:
-        path: /mnt/hgfs/3-orgs-my_test/network/crypto-config/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/tls/client.key
+        path: /mnt/hgfs/3-orgs-test/network/crypto-config/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/tls/client.key
       cert:
-        path: /mnt/hgfs/3-orgs-my_test/network/crypto-config/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/tls/client.crt
+        path: /mnt/hgfs/3-orgs-test/network/crypto-config/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/tls/client.crt
         
 channels:
   mythnkingchannel:
@@ -49,7 +49,7 @@ channels:
 organizations:
   yong.thinking.com:
     mspid: YongPeerMSP
-    cryptoPath: /mnt/hgfs/3-orgs-my_test/network/crypto-config/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/msp
+    cryptoPath: /mnt/hgfs/3-orgs-test/network/crypto-config/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/msp
     peers:
       - peer0.yong.thinking.com
       
@@ -65,7 +65,7 @@ orderers:
       fail-fast: false
       allow-insecure: false
     tlsCACerts:
-      path: /mnt/hgfs/3-orgs-my_test/network/crypto-config/ordererOrganizations/thinking.com/tlsca/tlsca.thinking.com-cert.pem
+      path: /mnt/hgfs/3-orgs-test/network/crypto-config/ordererOrganizations/thinking.com/tlsca/tlsca.thinking.com-cert.pem
  
 peers:
   peer0.yong.thinking.com:
@@ -81,7 +81,7 @@ peers:
       fail-fast: false
       allow-insecure: false
     tlsCACerts:
-      path: /mnt/hgfs/3-orgs-my_test/network/crypto-config/peerOrganizations/yong.thinking.com/peers/peer0.yong.thinking.com/tls/ca.crt
+      path: /mnt/hgfs/3-orgs-test/network/crypto-config/peerOrganizations/yong.thinking.com/peers/peer0.yong.thinking.com/tls/ca.crt
  
 entityMatchers:
   orderer:
