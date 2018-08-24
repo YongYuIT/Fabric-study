@@ -2,7 +2,7 @@ PeerOrgs:
   - Name: Yong
     Domain: yong.thinking.com
     EnableNodeOUs: true
-    #这个组织有两个节点，每个节点有两个用户和一个Admin用户
+    #这个组织有两个peer节点，这个组织有两个用户和一个Admin用户
     Template:
       Count: 2
     Users:

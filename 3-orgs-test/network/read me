@@ -163,7 +163,7 @@ peer chaincode invoke -o thinking_orderer_host.thinking.com:7050 \
                       --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/thinking.com/orderers/thinking_orderer_host.thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem \
                       -C ${CHANNEL_NAME} \
                       -n ${CODE_NAME} \
-                      -c '{"Args":["set_hello","fuck you gan 20180824002"]}'
+                      -c '{"Args":["set_hello","fuck you gan 20180824004"]}'
 peer chaincode query -C ${CHANNEL_NAME} -n ${CODE_NAME} -c '{"Args":["get_hello"]}'
 source /cmd/change_to_peer0.yong.sh
 echo $CORE_PEER_ADDRESS
@@ -176,7 +176,7 @@ peer chaincode invoke -o thinking_orderer_host.thinking.com:7050 \
                       --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/thinking.com/orderers/thinking_orderer_host.thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem \
                       -C ${CHANNEL_NAME} \
                       -n ${CODE_NAME} \
-                      -c '{"Args":["set_hello","fuck you gan 20180824002"]}'
+                      -c '{"Args":["set_hello","fuck you gan 20180824004"]}'
 peer chaincode query -C ${CHANNEL_NAME} -n ${CODE_NAME} -c '{"Args":["get_hello"]}'
 source /cmd/change_to_peer0.yong.sh
 echo $CORE_PEER_ADDRESS
