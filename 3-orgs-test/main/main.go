@@ -16,5 +16,13 @@ func main() {
 			fmt.Println(path)
 		}
 	}
+	my_test.Other_test()
+
+	/*
 	my_test.Call_with_yong()
+	fmt.Println("\n\n")
+	my_test.Call_with_guo()
+	fmt.Println("\n\n")
+	my_test.Call_with_ben()
+	*/
 }

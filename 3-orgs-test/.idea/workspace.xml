@@ -10,36 +10,54 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            <state relative-caret-position="405">
+              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
               <folding>
-                <element signature="e#14#65#0" expanded="true" />
+                <element signature="e#14#79#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="call_with_yong_org.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/my_test/call_with_yong_org.go">
+      <file leaf-file-name="test_other_sdk_fucs.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_test/test_other_sdk_fucs.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="56" lean-forward="true" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+            <state relative-caret-position="225">
+              <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding>
-                <element signature="e#14#269#0" expanded="true" />
+                <element signature="e#17#134#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_test/config.yaml">
+      <file leaf-file-name="fabsdk.go" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Desktop/go-path/src/github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/fabsdk.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1320">
-              <caret line="88" column="66" lean-forward="true" selection-start-line="88" selection-start-column="66" selection-end-line="88" selection-end-column="66" />
+            <state relative-caret-position="195">
+              <caret line="301" column="42" selection-start-line="301" selection-start-column="42" selection-end-line="301" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="provider.go" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Desktop/go-path/src/github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core/provider.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config-yong.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_test/config-yong.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -61,13 +79,21 @@
       <find>CORE_PEER_ADDRESS</find>
       <find>CORE_PEER_LOCALMSPID</find>
       <find>CORE_PEER_TLS_ROOTCERT_FILE</find>
-      <find>yong</find>
       <find>peer1</find>
       <find>$USER_HOME$/Desktop/test/network</find>
       <find>thinking_orderer_host.thinking.com</find>
+      <find>$PROJECT_DIR$/../3-orgs-my_test</find>
+      <find>yong.thinking.com</find>
+      <find>yong</find>
+      <find>call_with_yong</find>
+      <find>ben</find>
+      <find>fabsdk.WithOrg</find>
     </findStrings>
     <replaceStrings>
       <replace>$PROJECT_DIR$/network</replace>
+      <replace>$PROJECT_DIR$</replace>
+      <replace>ben.thinking.com</replace>
+      <replace>guo</replace>
     </replaceStrings>
   </component>
   <component name="GOROOT" path="$USER_HOME$/Desktop/go" />
@@ -94,8 +120,14 @@
         <option value="$PROJECT_DIR$/main/config.yaml" />
         <option value="$PROJECT_DIR$/main/call_with_yong_org.go" />
         <option value="$PROJECT_DIR$/test/call_with_yong_org.go" />
-        <option value="$PROJECT_DIR$/main/main.go" />
+        <option value="$PROJECT_DIR$/my_test/config.yaml" />
+        <option value="$PROJECT_DIR$/my_test/config-ben.yaml" />
+        <option value="$PROJECT_DIR$/my_test/config-guo.yaml" />
+        <option value="$PROJECT_DIR$/my_test/call_with_guo_org.go" />
+        <option value="$PROJECT_DIR$/my_test/call_with_ben_org.go" />
         <option value="$PROJECT_DIR$/my_test/call_with_yong_org.go" />
+        <option value="$PROJECT_DIR$/main/main.go" />
+        <option value="$PROJECT_DIR$/my_test/test_other_sdk_fucs.go" />
       </list>
     </option>
   </component>
@@ -119,7 +151,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,14 +158,26 @@
               <item name="3-orgs-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="3-orgs-test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="3-orgs-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3-orgs-test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3-orgs-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3-orgs-test" type="462c0819:PsiDirectoryNode" />
+              <item name="my_test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="SearchEverywhereHistoryKey" value="yong&#9;FILE&#9;file:///mnt/hgfs/3-orgs-test/my_test/call_with_yong_org.go" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
@@ -145,11 +188,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/network/node-start-cmd" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/network/sh" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/my_test" />
+      <recent name="$PROJECT_DIR$/network/node-start-cmd" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -180,26 +224,27 @@
     </recent_temporary>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2824765" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28579324" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.19071311" side_tool="true" visible="true" weight="0.32984293" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.4538419" side_tool="true" visible="true" weight="0.4722513" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997236" weight="0.32984293" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8092869" visible="true" weight="0.32984293" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.88501936" weight="0.32984293" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.9076838" weight="0.32879582" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.907131" weight="0.32879582" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5472637" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5461581" weight="0.4722513" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997236" weight="0.32984293" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +253,43 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/my_test/test_other_sdk_fucs.go</url>
+          <line>14</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding>
+            <element signature="e#14#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_test/config.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="88" column="66" lean-forward="true" selection-start-line="88" selection-start-column="66" selection-end-line="88" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_test/call_with_yong_org.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="16" column="56" lean-forward="true" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/network/read me">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1500">
@@ -269,13 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" selection-start-line="5" selection-end-line="25" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/network/docker-build-peer.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="70" column="35" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -356,59 +430,123 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="29" column="18" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="18" />
-          <folding>
-            <element signature="e#14#143#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network/read me">
+    <entry file="file://$PROJECT_DIR$/main/call_with_yong_org.go" />
+    <entry file="file://$PROJECT_DIR$/my_test/config.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1195">
-          <caret line="168" column="23" selection-start-line="168" selection-start-column="23" selection-end-line="168" selection-end-column="23" />
+        <state relative-caret-position="655">
+          <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/go-path/src/github.com/hyperledger/fabric-sdk-go/pkg/client/channel/chclient.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
+        <state relative-caret-position="195">
+          <caret line="106" column="75" selection-start-line="106" selection-start-column="75" selection-end-line="106" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_test/config.yaml">
+    <entry file="file://$USER_HOME$/Desktop/go-path/src/github.com/hyperledger/fabric-sdk-go/pkg/client/channel/api.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="88" column="66" lean-forward="true" selection-start-line="88" selection-start-column="66" selection-end-line="88" selection-end-column="66" />
+        <state relative-caret-position="645">
+          <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/call_with_yong_org.go">
+    <entry file="file://$PROJECT_DIR$/network/docker-build-peer.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="70" column="1" lean-forward="true" selection-start-line="2" selection-end-line="70" selection-end-column="1" />
+        <state relative-caret-position="-255">
+          <caret line="70" column="35" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_test/config-guo.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/network/read me">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1099">
+          <caret line="55" column="36" lean-forward="true" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_test/config-ben.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_test/call_with_guo_org.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="13" column="65" lean-forward="true" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
           <folding>
-            <element signature="e#14#197#0" expanded="true" />
+            <element signature="e#17#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/main.go">
+    <entry file="file://$PROJECT_DIR$/my_test/call_with_ben_org.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        <state relative-caret-position="130">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="17" selection-end-column="5" />
           <folding>
-            <element signature="e#14#65#0" expanded="true" />
+            <element signature="e#17#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_test/call_with_yong_org.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="56" lean-forward="true" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+        <state relative-caret-position="175">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/go-path/src/github.com/hyperledger/fabric-sdk-go/pkg/fabsdk/fabsdk.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="301" column="42" selection-start-line="301" selection-start-column="42" selection-end-line="301" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/go-path/src/github.com/hyperledger/fabric-sdk-go/pkg/common/providers/core/provider.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_test/config-yong.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
           <folding>
-            <element signature="e#14#269#0" expanded="true" />
+            <element signature="e#14#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_test/test_other_sdk_fucs.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding>
+            <element signature="e#17#134#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -11,7 +11,7 @@ import (
 
 func Call_with_yong() {
 	//读取配置文件，创建SDK
-	configProvider := config.FromFile("/mnt/hgfs/3-orgs-test/my_test/config.yaml")
+	configProvider := config.FromFile("/mnt/hgfs/3-orgs-test/my_test/config-yong.yaml")
 	sdk, err := fabsdk.New(configProvider)
 	if err != nil {
 		log.Fatalf("create sdk fail: %s\n", err.Error())
@@ -43,7 +43,7 @@ func Call_with_yong() {
 
 	//调用链码
 	var args [][]byte
-	args = append(args, []byte("this is the fuck my_test for 3 orgs"))
+	args = append(args, []byte("this is the fuck my_test for 3 orgs 20180824002"))
 	request := channel.Request{
 		ChaincodeID: "test_fuck_20180824004",
 		Fcn:         "set_hello",
