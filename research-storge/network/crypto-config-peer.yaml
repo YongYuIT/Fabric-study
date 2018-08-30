@@ -1,0 +1,9 @@
+PeerOrgs:
+  - Name: Yong
+    Domain: yong.thinking.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 1
+

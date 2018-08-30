@@ -1,0 +1,37 @@
+version: '2'
+ 
+volumes:
+  thinking_orderer_host.thinking.com:
+  peer0.yong.thinking.com:
+ 
+networks:
+  thinking:
+ 
+services:
+  cli:
+    container_name: cli
+    image: hyperledger/fabric-tools
+    tty: true
+    environment:
+      - GOPATH=/opt/gopath
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      #- CORE_LOGGING_LEVEL=DEBUG
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_ID=cli
+      - CORE_PEER_ADDRESS=peer0.yong.thinking.com:7051
+      - CORE_PEER_LOCALMSPID=MyPeerMSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/yong.thinking.com/peers/peer0.yong.thinking.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/yong.thinking.com/peers/peer0.yong.thinking.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/yong.thinking.com/peers/peer0.yong.thinking.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/yong.thinking.com/users/Admin@yong.thinking.com/msp
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: /bin/bash
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - $PWD/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+        - $PWD/hello-word:/opt/gopath/src/github.com/hello-word/
+    networks:
+      - thinking
+

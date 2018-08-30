@@ -1,0 +1,49 @@
+Organizations:
+    - &MyOrdererOrg
+        Name: MyOrdererOrg
+        ID: MyOrdererOrgMSP
+        MSPDir: crypto-config/ordererOrganizations/thinking.com/msp
+    - &MyPeerOrg
+        Name: MyPeerOrg
+        ID: MyPeerMSP
+        MSPDir: crypto-config/peerOrganizations/yong.thinking.com/msp
+        AnchorPeers:
+            - Host: peer0.yong.thinking.com
+              Port: 7051
+ 
+ 
+Orderer: &OrdererDefaults
+    OrdererType: solo
+    Addresses:
+        - thinking_orderer_host.thinking.com:7050
+    BatchTimeout: 2s
+    BatchSize:
+        MaxMessageCount: 10
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 512 KB
+    Kafka:
+        Brokers:
+            - 127.0.0.1:9092
+    Organizations:
+ 
+Capabilities:
+    Global: &ChannelCapabilities
+        V1_1: true
+    Orderer: &OrdererCapabilities
+        V1_1: true
+
+Profiles:
+    ThinkingGene:
+        Capabilities:
+            <<: *ChannelCapabilities
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *MyOrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *MyPeerOrg
+

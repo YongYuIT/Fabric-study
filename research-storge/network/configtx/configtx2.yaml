@@ -1,0 +1,25 @@
+Organizations:
+    - &MyPeerOrg
+        Name: MyPeerOrg
+        ID: MyPeerMSP
+        MSPDir: crypto-config/peerOrganizations/yong.thinking.com/msp
+        AnchorPeers:
+            - Host: peer0.yong.thinking.com
+              Port: 7051
+ 
+Application: &ApplicationDefaults
+    Organizations:
+
+Capabilities:
+    Application: &ApplicationCapabilities
+        V1_1: true
+
+Profiles:
+    ThinkingChannel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *MyPeerOrg
+            Capabilities:
+                <<: *ApplicationCapabilities
