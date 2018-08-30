@@ -17,14 +17,8 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.yong.thinking.com:7051
       - CORE_PEER_LOCALMSPID=MyPeerMSP
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      # the following setting starts chaincode containers on the same
-      # bridge network as the peers
-      # https://docs.docker.com/compose/networking/
-      #- COMPOSE_PROJECT_NAME=test-fabric
-      #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_thinking
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=network_thinking
       - CORE_LOGGING_LEVEL=INFO
-      #- CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_GOSSIP_USELEADERELECTION=true
       - CORE_PEER_GOSSIP_ORGLEADER=false
@@ -37,8 +31,8 @@ services:
         - /var/run/:/host/var/run/
         - $PWD/crypto-config/peerOrganizations/yong.thinking.com/peers/peer1.yong.thinking.com/msp:/etc/hyperledger/fabric/msp
         - $PWD/crypto-config/peerOrganizations/yong.thinking.com/peers/peer1.yong.thinking.com/tls:/etc/hyperledger/fabric/tls
+        - $GOPATH/bin:/cmd
         - peer1.yong.thinking.com:/var/hyperledger/production
-    #command: peer node start
     command: /bin/bash
     ports:
       - 8051:7051
