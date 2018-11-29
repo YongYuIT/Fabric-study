@@ -1,0 +1,9 @@
+1. network ref to:
+
+https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html
+
+2. if get error when run "npm install", try
+
+npm install --save @google-cloud/vision
+
+or may cause by node version, maybe need to change to older version

@@ -1,0 +1,3 @@
+cd $GOPATH/src/github.com/hyperledger/fabric/examples/e2e_cli/
+./network_setup.sh down
+./network_setup.sh up

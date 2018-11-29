@@ -1,0 +1,39 @@
+version: '2'
+
+networks:
+  byfn:
+
+services:
+  dev:
+    container_name: dev
+    image: ubuntu
+    tty: true
+    command: /bin/bash
+    volumes:
+      #Go env
+      - /home/yong/go-path:/home/yong/go-path
+      - /home/yong/go:/home/yong/go
+      #Java env
+      - /usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-8-openjdk-amd64
+      #Fabric env
+      - /home/yong/fabric-samples/first-network:/home/yong/fabric-samples/first-network
+      #Code env
+      - /home/yong/Fabric-study/fabric-sdk-test:/home/yong/Fabric-study/fabric-sdk-test
+    environment:
+      #Java setting
+      - JAVA_HOME = /usr/lib/jvm/java-8-openjdk-amd64
+      - CLASSPATH = $CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+      #Go env
+      - GOPATH=/home/yong/go-path
+      - GOROOT=/home/yong/go
+      - PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:/home/yong/go:/home/yong/go-path
+    networks:
+      - byfn
+
+# cd /home/yong/fabric-samples/first-network
+# ./byfn.sh up
+# cd /home/yong/Fabric-study/fabric-sdk-test/net
+# docker-compose -f docker-compose-dev.yaml up -d
+# docker exec -it dev /bin/bash
+
+# main source code from: https://github.com/blockchain-technical-practice/fabric_sdk_java_study
