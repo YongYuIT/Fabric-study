@@ -7,3 +7,7 @@ https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html
 npm install --save @google-cloud/vision
 
 or may cause by node version, maybe need to change to older version
+
+3. before launch fabric network by startFabric.sh, add volumes clean
+
+docker volume rm $(docker volume list)
