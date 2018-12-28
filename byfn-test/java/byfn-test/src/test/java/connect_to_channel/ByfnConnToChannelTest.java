@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public class ByfnConnToChannel {
+public class ByfnConnToChannelTest {
 
     @Test
     public void Test() throws Exception {
@@ -65,7 +65,6 @@ public class ByfnConnToChannel {
                 System.out.println("Query a success : " + payload);
             }
         }
-
     }
 
 }
