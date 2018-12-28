@@ -31,6 +31,9 @@ public class ByfnTransactionTest {
         Peer peer0_org1 = hfclient.newPeer("peer0_org1", "grpc://localhost:7051");
         channel.addPeer(peer0_org1);
         //if need to send transaction, need peer0_org1 and peer0_org2 endorsed
+        /*
+        peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n mycc -l golang -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P 'AND ('\''Org1MSP.peer'\'','\''Org2MSP.peer'\'')'
+         */
         Peer peer0_org2 = hfclient.newPeer("peer0_org2", "grpc://localhost:9051");
         channel.addPeer(peer0_org2);
         //if need to send transaction, must add orderer
