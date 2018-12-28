@@ -1,3 +1,5 @@
+package connect_to_channel;
+
 import org.hyperledger.fabric.sdk.Enrollment;
 import org.hyperledger.fabric.sdk.User;
 
