@@ -18,21 +18,17 @@ public class ByfnConnToChannel {
         CryptoSuite cryptoSuite = CryptoSuite.Factory.getCryptoSuite();
         hfclient.setCryptoSuite(cryptoSuite);
         //========================================================
-        String name = "peerOrg1Admin";
-        String org = "peerOrg1";
         File privateKeyFile = new File("/home/yong/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/10d163966ccda9f4ffdc6605bd8faef8689e3fba2c69b154da75448b16449e4f_sk");
         File certificateFile = new File("/home/yong/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem");
         //--------------------------------------------------------
         ByfnEnrollment byfnEnrollment = new ByfnEnrollment(privateKeyFile, certificateFile);
         ByfnUser user = new ByfnUser();
-        user.setName(name);
+        user.setName("peerOrg1Admin");
         user.setMspId("Org1MSP");
         user.setEnrollment(byfnEnrollment);
         hfclient.setUserContext(user);
         //========================================================
         Channel channel = hfclient.newChannel("mychannel");
-        Orderer orderer = hfclient.newOrderer("orderer", "grpc://localhost:7050");
-        channel.addOrderer(orderer);
         Peer peer = hfclient.newPeer("peer0", "grpc://localhost:7051");
         channel.addPeer(peer);
         try {
