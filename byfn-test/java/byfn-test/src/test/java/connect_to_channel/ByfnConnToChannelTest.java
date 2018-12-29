@@ -18,7 +18,7 @@ public class ByfnConnToChannelTest {
         CryptoSuite cryptoSuite = CryptoSuite.Factory.getCryptoSuite();
         hfclient.setCryptoSuite(cryptoSuite);
         //========================================================
-        File privateKeyFile = new File("/home/yong/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/10d163966ccda9f4ffdc6605bd8faef8689e3fba2c69b154da75448b16449e4f_sk");
+        File privateKeyFile = new File("/home/yong/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/368b321139e659dbe994a2fe6849afd6f1ca7500936ca4139c4d4dee46dd27f1_sk");
         File certificateFile = new File("/home/yong/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem");
         //--------------------------------------------------------
         ByfnEnrollment byfnEnrollment = new ByfnEnrollment(privateKeyFile, certificateFile);
@@ -30,6 +30,8 @@ public class ByfnConnToChannelTest {
         //========================================================
         Channel channel = hfclient.newChannel("mychannel");
         Peer peer = hfclient.newPeer("peer0", "grpc://localhost:7051");
+        //since user 'peerOrg1Admin' register on peer0 instead of peer0_org2, user 'peerOrg1Admin' cannot query data from peer0_org2
+        //peer = hfclient.newPeer("peer0_org2", "grpc://localhost:9051");
         channel.addPeer(peer);
         try {
             channel.initialize();
