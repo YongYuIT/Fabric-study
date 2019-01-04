@@ -1,0 +1,24 @@
+$ cd ~/fabric-samples/first-network
+$ ./byfn.sh down
+$ ./byfn.sh up -c mychannel -s couchdb
+$ docker exec -it cli bash
+
+# peer chaincode install -n marbles -v 1.0 -p github.com/chaincode/marbles02/go
+# export CHANNEL_NAME=mychannel
+# peer chaincode instantiate -o orderer.example.com:7050 -C $CHANNEL_NAME -n marbles -v 1.0 -c '{"Args":["init"]}' -P "OR ('Org0MSP.peer','Org1MSP.peer')"
+
+$ docker logs peer0.org1.example.com 2>&1 | grep "CouchDB index"
+2019-01-03 07:54:50.377 UTC [couchdb] CreateIndex -> INFO 06e Created CouchDB index [indexOwner] in state database [mychannel_marbles] using design document [_design/indexOwnerDoc]
+
+# peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n marbles -c '{"Args":["initMarble","marble1","blue","35","tom"]}'
+# peer chaincode query -C $CHANNEL_NAME -n marbles -c '{"Args":["queryMarbles", "{\"selector\":{\"docType\":\"marble\",\"owner\":\"tom\"}, \"use_index\":[\"_design/indexOwnerDoc\", \"indexOwner\"]}"]}'
+
+# peer chaincode install -n rich_query -v v0 -p github.com/chaincode/rich_query/go/
+# peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n rich_query -v v0 -c '{"Args":[]}' -P "AND('Org1MSP.member')"
+# peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n rich_query --peerAddresses peer0.org1.example.com:7051 -c '{"Args":["put_kv","test_key","test-001"]}'
+# peer chaincode query -C mychannel -n rich_query -c '{"Args":["get_value","test_key"]}'
+
+# peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n rich_query --peerAddresses peer0.org1.example.com:7051 -c '{"Args":["put_kv","10000001","{\"address\":\"ShenZhen city,GD,China\",\"age\":20,\"country\":\"CN\",\"gender\":\"M\",\"name\":\"yong\",\"phone_num\":\"110\",\"stu_no\":\"10000001\"}"]}'
+# peer chaincode query -C mychannel -n rich_query -c '{"Args":["get_value","10000001"]}'
+# peer chaincode query -C mychannel -n rich_query -c '{"Args":["rich_query","{\"selector\":{\"age\":{\"$lt\":19}}}"]}'
+# peer chaincode query -C mychannel -n rich_query -c '{"Args":["rich_query","{\"selector\":{\"age\":{\"$gt\":19}}}"]}'
