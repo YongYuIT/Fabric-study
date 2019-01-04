@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="byfn-test" target="8" />
+      <module name="byfn-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
