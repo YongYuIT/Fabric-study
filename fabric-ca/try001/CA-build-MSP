@@ -1,0 +1,201 @@
+#!#!#!#!#!#!#ref to https://www.lijiaocn.com/%E9%A1%B9%E7%9B%AE/2018/05/04/fabric-ca-example.html
+
+####install server/client tool
+
+$ cd /home/yong/Downloads/go1.11.linux-amd64/go_path/src/github.com/hyperledger/fabric-ca/
+$ cd cmd/fabric-ca-server/
+$ go build
+$ go install
+$ cd ../fabric-ca-client/
+$ go build
+$ go install
+
+####init server tool
+$ mkdir server-yong
+$ cd server-yong
+$ fabric-ca-server init -b yong:1991
+
+####start server progress
+$ fabric-ca-server start -b yong:1991
+2019/01/30 00:11:47 [INFO] Listening on http://0.0.0.0:7054
+
+$ mkdir server-guo
+$ cd server-guo
+$ fabric-ca-server start -b guo:1992 --cfg.affiliations.allowremove  --cfg.identities.allowremove &
+2019/01/30 00:45:12 [INFO] Listening on http://0.0.0.0:7054
+$ cd ..
+
+####try to use client with server
+$ mkdir client-yong
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-yong
+$ fabric-ca-client enroll -u http://yong:1991@localhost:7054
+$ fabric-ca-client register --id.name benben
+Password: rLfBMobdJpVZ
+
+$ mkdir client-guo
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo
+$ fabric-ca-client enroll -u http://guo:1992@localhost:7054
+$ fabric-ca-client affiliation list
+affiliation: .
+   affiliation: org2
+      affiliation: org2.department1
+   affiliation: org1
+      affiliation: org1.department2
+      affiliation: org1.department1
+####create orgs
+$ fabric-ca-client affiliation add com
+$ fabric-ca-client affiliation add com.example
+$ fabric-ca-client affiliation add com.example.org1
+$ fabric-ca-client affiliation add com.example.org2
+$ fabric-ca-client affiliation list
+affiliation: .
+   affiliation: org2
+      affiliation: org2.department1
+   affiliation: org1
+      affiliation: org1.department1
+      affiliation: org1.department2
+   affiliation: com
+      affiliation: com.example
+         affiliation: com.example.org1
+         affiliation: com.example.org2
+####gen msp for each org and copy cacert to each msp
+$ mkdir client-guo-msps
+$ cd client-guo-msps
+$ mkdir -p ./example.com/msp
+$ fabric-ca-client getcacert -M /home/yong/Desktop/fabric-ca-log/client-guo-msps/example.com/msp
+$ mkdir -p ./org1.example.com/msp
+$ fabric-ca-client getcacert -M /home/yong/Desktop/fabric-ca-log/client-guo-msps/org1.example.com/msp
+$ mkdir -p ./org2.example.com/msp
+$ fabric-ca-client getcacert -M /home/yong/Desktop/fabric-ca-log/client-guo-msps/org2.example.com/msp
+
+####register admin for example.com
+$ fabric-ca-client register --id.name Admin@example.com \
+                            --id.type client \
+                            --id.affiliation "com.example" \
+                            --id.attrs '"hf.Registrar.Roles=client,orderer,peer,user","hf.Registrar.DelegateRoles=client,orderer,peer,user",hf.Registrar.Attributes=*,hf.GenCRL=true,hf.Revoker=true,hf.AffiliationMgr=true,hf.IntermediateCA=true,role=admin:ecert'
+Password: sWaZVrgEXAUV
+####gen configs for admin
+$ mkdir -p ./example.com/admin
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/example.com/admin
+$ fabric-ca-client enroll -u http://Admin@example.com:sWaZVrgEXAUV@localhost:7054
+$ fabric-ca-client affiliation list
+affiliation: com
+   affiliation: com.example
+      affiliation: com.example.org1
+      affiliation: com.example.org2
+####copy node cert as node-admin cert
+$ mkdir -p ./example.com/msp/admincerts/
+$ cp ./example.com/admin/msp/signcerts/cert.pem ./example.com/msp/admincerts/
+
+####register admin for org1.example.com
+$ fabric-ca-client register --id.name Admin@org1.example.com \
+                            --id.type client \
+                            --id.affiliation "com.example.org1" \
+                            --id.maxenrollments 0 \
+                            --id.attrs '"hf.Registrar.Roles=client,orderer,peer,user","hf.Registrar.DelegateRoles=client,orderer,peer,user",hf.Registrar.Attributes=*,hf.GenCRL=true,hf.Revoker=true,hf.AffiliationMgr=true,hf.IntermediateCA=true,role=admin:ecert'
+Password: rpzsApwuOmkt
+$ mkdir -p ./org1.example.com/admin
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org1.example.com/admin
+$ ls ./org1.example.com/admin
+$ fabric-ca-client enroll -u http://Admin@org1.example.com:rpzsApwuOmkt@localhost:7054
+$ ls ./org1.example.com/admin
+$ mkdir -p ./org1.example.com/msp/admincerts/
+$ cp ./org1.example.com/admin/msp/signcerts/cert.pem ./org1.example.com/msp/admincerts/
+
+####register admin for org2.example.com
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/example.com/admin
+$ fabric-ca-client enroll -u http://Admin@example.com:iUPsJYJrOxLh@localhost:7054
+$ fabric-ca-client register --id.name Admin@org2.example.com \
+                            --id.type client \
+                            --id.affiliation "com.example.org2" \
+                            --id.maxenrollments 0 \
+                            --id.attrs '"hf.Registrar.Roles=client,orderer,peer,user","hf.Registrar.DelegateRoles=client,orderer,peer,user",hf.Registrar.Attributes=*,hf.GenCRL=true,hf.Revoker=true,hf.AffiliationMgr=true,hf.IntermediateCA=true,role=admin:ecert'
+Password: eOvDhWZKizBO
+$ mkdir -p ./org2.example.com/admin
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org2.example.com/admin
+$ ls ./org2.example.com/admin
+$ fabric-ca-client enroll -u http://Admin@org2.example.com:eOvDhWZKizBO@localhost:7054
+$ ls ./org2.example.com/admin
+$ mkdir -p ./org2.example.com/msp/admincerts/
+$ cp ./org2.example.com/admin/msp/signcerts/cert.pem ./org2.example.com/msp/admincerts/
+
+####create orderer.example.com using Admin@example.com
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/example.com/admin
+$ fabric-ca-client enroll -u http://Admin@example.com:iUPsJYJrOxLh@localhost:7054
+$ fabric-ca-client register --id.name orderer.example.com \
+                            --id.type orderer \
+                            --id.affiliation "com.example" \
+                            --id.maxenrollments 0 \
+                            --id.attrs 'role=orderer:ecert'
+Password: zhmjECFEdKLH
+$ mkdir -p /home/yong/Desktop/fabric-ca-log/client-guo-msps/example.com/orderer
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/example.com/orderer
+$ fabric-ca-client enroll -u http://orderer.example.com:zhmjECFEdKLH@localhost:7054
+$ mkdir /home/yong/Desktop/fabric-ca-log/client-guo-msps/example.com/orderer/msp/admincerts
+$ cp ./example.com/admin/msp/signcerts/cert.pem ./example.com/orderer/msp/admincerts/
+
+####create peer0.org1.example.com using Admin@org1.example.com
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org1.example.com/admin
+$ fabric-ca-client enroll -u http://Admin@org1.example.com:fEKiHbpCdCYy@localhost:7054
+$ fabric-ca-client register --id.name peer0.org1.example.com \
+                            --id.type peer \
+                            --id.affiliation "com.example.org1" \
+                            --id.maxenrollments 0 \
+                            --id.attrs 'role=peer:ecert'
+Password: ivrCNKYRknbm
+$ mkdir ./org1.example.com/peer0
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org1.example.com/peer0
+$ fabric-ca-client enroll -u http://peer0.org1.example.com:ivrCNKYRknbm@localhost:7054
+$ mkdir ./org1.example.com/peer0/msp/admincerts
+$ cp ./org1.example.com/admin/msp/signcerts/cert.pem ./org1.example.com/peer0/msp/admincerts/
+
+####create peer1.org1.example.com using Admin@org1.example.com
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org1.example.com/admin
+$ fabric-ca-client enroll -u http://Admin@org1.example.com:fEKiHbpCdCYy@localhost:7054
+$ fabric-ca-client register --id.name peer1.org1.example.com \
+                            --id.type peer \
+                            --id.affiliation "com.example.org1" \
+                            --id.maxenrollments 0 \
+                            --id.attrs 'role=peer:ecert'
+Password: BoJRPpOcFwyg
+$ mkdir -p ./org1.example.com/peer1
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org1.example.com/peer1
+$ fabric-ca-client enroll -u http://peer1.org1.example.com:BoJRPpOcFwyg@localhost:7054
+$ mkdir ./org1.example.com/peer1/msp/admincerts
+$ cp ./org1.example.com/admin/msp/signcerts/cert.pem ./org1.example.com/peer1/msp/admincerts/
+
+####create peer0.org2.example.com using Admin@org2.example.com
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org2.example.com/admin
+$ fabric-ca-client enroll -u http://Admin@org2.example.com:JWKWegUABTss@localhost:7054
+$ fabric-ca-client register --id.name peer0.org2.example.com \
+                            --id.type peer \
+                            --id.affiliation "com.example.org2" \
+                            --id.maxenrollments 0 \
+                            --id.attrs 'role=peer:ecert'
+Password: TRimCMGSutub
+$ mkdir ./org2.example.com/peer0
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org2.example.com/peer0
+$ fabric-ca-client enroll -u http://peer0.org2.example.com:TRimCMGSutub@localhost:7054
+$ mkdir ./org2.example.com/peer0/msp/admincerts
+$ cp ./org2.example.com/admin/msp/signcerts/cert.pem ./org2.example.com/peer0/msp/admincerts/
+
+####create peer1.org2.example.com using Admin@org2.example.com
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org2.example.com/admin
+$ fabric-ca-client enroll -u http://Admin@org2.example.com:JWKWegUABTss@localhost:7054
+$ fabric-ca-client register --id.name peer1.org2.example.com \
+                            --id.type peer \
+                            --id.affiliation "com.example.org2" \
+                            --id.maxenrollments 0 \
+                            --id.attrs 'role=peer:ecert'
+Password: OaDtJtaBBQjL
+$ mkdir -p ./org2.example.com/peer1
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/Desktop/fabric-ca-log/client-guo-msps/org2.example.com/peer1
+$ fabric-ca-client enroll -u http://peer1.org2.example.com:OaDtJtaBBQjL@localhost:7054
+$ mkdir ./org2.example.com/peer1/msp/admincerts
+$ cp ./org2.example.com/admin/msp/signcerts/cert.pem ./org2.example.com/peer1/msp/admincerts/
+
+
+
+
+
+
