@@ -1,0 +1,34 @@
+version: '2'
+
+volumes:
+  orderer.example.com:
+
+networks:
+  thinking:
+  
+services:
+  orderer.example.com:
+    container_name: orderer.example.com
+    image: ubuntu
+    image: hyperledger/fabric-orderer
+    environment:
+      - ORDERER_GENERAL_LOGLEVEL=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_GENESISMETHOD=file
+      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      # enabled TLS
+      - ORDERER_GENERAL_TLS_ENABLED=false
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+    #command: orderer
+    command: /bin/bash
+    volumes:
+      - $PWD/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - $PWD/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
+      - orderer.example.com:/var/hyperledger/production/orderer
+    ports:
+      - 7050:7050
+    networks:
+      - thinking
+    tty: true
