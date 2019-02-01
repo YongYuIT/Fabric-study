@@ -1,3 +1,8 @@
+####clean env
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+$ docker network prune
+$ docker volume rm $(docker volume list)
 $ rm -rf channel-artifacts/ crypto-config
 
 ####cp crypto-config.yaml from byfn
@@ -30,6 +35,9 @@ $ docker-compose -f docker-build-org1.peer0.yaml up -d
 $ docker-compose -f docker-build-org1.peer1.yaml up -d
 $ docker-compose -f docker-build-org2.peer0.yaml up -d
 $ docker-compose -f docker-build-org2.peer1.yaml up -d
+
+$ docker exec -it peer0.org1.example.com /bin/bash
+# peer channel list
 
 ####join channel
 $ docker-compose -f docker-build-cli.yaml up -d
