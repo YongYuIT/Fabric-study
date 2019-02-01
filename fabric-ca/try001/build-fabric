@@ -18,6 +18,13 @@ $ cp -r ./client-guo-msps/org2.example.com/peer1/msp ./crypto-config/peerOrganiz
 $ rm -rf ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
 $ cp -r ./client-guo-msps/example.com/orderer/msp ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com
 
+$ rm -rf ./crypto-config/ordererOrganizations/example.com/msp
+$ cp -r ./client-guo-msps/example.com/msp ./crypto-config/ordererOrganizations/example.com
+$ rm -rf ./crypto-config/peerOrganizations/org1.example.com/msp
+$ cp -r ./client-guo-msps/org1.example.com/msp ./crypto-config/peerOrganizations/org1.example.com
+$ rm -rf ./crypto-config/peerOrganizations/org2.example.com/msp
+$ cp -r ./client-guo-msps/org2.example.com/msp ./crypto-config/peerOrganizations/org2.example.com
+
 ####cp configtx.yaml from byfn
 $ mkdir ./channel-artifacts
 $ configtxgen -profile TwoOrgsOrdererGenesis -channelID byfn-sys-channel -outputBlock ./channel-artifacts/genesis.block
