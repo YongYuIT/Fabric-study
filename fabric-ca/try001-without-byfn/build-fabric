@@ -1,0 +1,39 @@
+####clean env
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+$ docker network prune
+$ docker volume rm $(docker volume list)
+$ rm -rf channel-artifacts/ crypto-config
+
+####start fabric
+$ docker-compose -f docker-build-orderer.yaml up -d
+$ docker exec -it orderer.example.com /bin/bash
+# orderer start
+
+$ docker-compose -f docker-build-org1.peer0.yaml up -d
+$ docker-compose -f docker-build-org1.peer1.yaml up -d
+$ docker-compose -f docker-build-org2.peer0.yaml up -d
+$ docker-compose -f docker-build-org2.peer1.yaml up -d
+
+$ docker exec -it peer0.org1.example.com /bin/bash
+# peer channel list
+
+####join channel
+$ docker-compose -f docker-build-cli.yaml up -d
+$ docker exec -it cli /bin/bash
+# peer channel list
+# export CHANNEL_NAME=mychannel
+# peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
+
+# export CORE_PEER_ADDRESS=peer0.org2.example.com:7051
+# export CORE_PEER_LOCALMSPID="Org2MSP"
+# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/org2.example.com/admin/msp
+# peer channel list
+# export CHANNEL_NAME=mychannel
+####recreate channel should got an error
+# peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
+

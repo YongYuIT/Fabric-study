@@ -1,0 +1,44 @@
+version: '2'
+
+volumes:
+  peer1.org1.example.com:
+
+networks:
+  thinking:
+
+services:
+  peer1.org1.example.com:
+    image: hyperledger/fabric-peer
+    container_name: peer1.org1.example.com
+    environment:
+      - CORE_PEER_ID=peer1.org1.example.com
+      - CORE_PEER_ADDRESS=peer1.org1.example.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.example.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org1.example.com:7051
+      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # the following setting starts chaincode containers on the same
+      # bridge network as the peers
+      # https://docs.docker.com/compose/networking/
+      #- COMPOSE_PROJECT_NAME=try001-without-tls
+      #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_thinking
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=try001-without-tls_thinking
+      - CORE_LOGGING_LEVEL=INFO
+      #- CORE_LOGGING_LEVEL=DEBUG
+      - CORE_PEER_TLS_ENABLED=false
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - $PWD/client-guo-msps/org1.example.com/peer1/msp:/etc/hyperledger/fabric/msp
+        - peer1.org1.example.com:/var/hyperledger/production
+    command: peer node start
+    #command: /bin/bash
+    ports:
+      - 6051:7051
+      - 6053:7053
+    networks:
+      - thinking
+    tty: true
