@@ -6,11 +6,11 @@ rm -rf channel-artifacts/ crypto-config
 
 cryptogen generate --config crypto-config.yaml
 rm -rf ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp
-cp -r ./client-guo-msps/org1.example.com/peer1/msp ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com
+cp -r ./client-guo-msps/org1.example.com/peer0/msp ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com
 rm -rf ./crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp
 cp -r ./client-guo-msps/org1.example.com/peer1/msp ./crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com
 rm -rf ./crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp
-cp -r ./client-guo-msps/org2.example.com/peer1/msp ./crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com
+cp -r ./client-guo-msps/org2.example.com/peer0/msp ./crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com
 rm -rf ./crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp
 cp -r ./client-guo-msps/org2.example.com/peer1/msp ./crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com
 rm -rf ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
