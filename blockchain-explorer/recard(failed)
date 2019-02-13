@@ -1,0 +1,100 @@
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash
+$ nvm ls-remote
+$ nvm install v11.9.0
+$ git clone https://github.com/hyperledger/blockchain-explorer.git blockchain-explorer20190212001
+
+########mysql(don't need anymore)
+$ sudo apt-get install mysql-server
+$ sudo apt-get install mysql-client
+$ sudo apt-get install libmysqlclient-dev
+
+$ cd /etc/mysql
+$ sudo gedit debian.cnf
+$ mysql -u debian-sys-maint -p
+####soiqbwPDVgSFlObL
+> use mysql;
+> show fields from user;
+> select user,authentication_string,plugin,Host from mysql.user;
+> update mysql.user set authentication_string=password('Yong!9911214') where user='root';
+> update mysql.user set plugin='mysql_native_password' where user='root';
+> flush privileges;
+> exit
+
+$ sudo gedit /etc/mysql/my.cnf
+####add
+[mysqld]
+skip-grant-tables
+
+$ sudo service mysql restart
+$ mysql -u root -p
+
+########pg
+####ref to https://www.postgresql.org/download/linux/ubuntu/
+$ sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main"
+$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install postgresql-10
+$ sudo service postgresql restart
+$ ps aux | grep postgresql
+$ sudo netstat -lanp|grep 30912
+$ sudo -u postgres psql -p 5433
+####or change port in /etc/postgresql/10/main/postgresql.conf
+####then restart postgresql and $ sudo -u postgres psql
+# ALTER USER postgres WITH PASSWORD 'Yong!9911214';
+# \q
+
+########jq
+$ sudo apt-get install jq
+
+########blockchain-explorer
+####ref to https://github.com/hyperledger/blockchain-explorer
+$ cd blockchain-explorer20190212001/app
+$ gedit explorerconfig.json
+$ cd blockchain-explorer20190212001/app/persistence/fabric/postgreSQL/db
+$ ./createdb.sh
+
+####if cannot find role yong
+$ sudo -u postgres psql
+# CREATE USER yong;
+# ALTER USER yong WITH PASSWORD 'Yong!9911214';
+# SELECT * FROM pg_roles where rolname='yong' or rolname='postgres';
+# ALTER ROLE yong WITH createdb;
+# \q
+$ ./createdb.sh
+
+####if cannot find database yong
+$ sudo -u postgres psql
+# create database yong;
+# create database fabricexplorer;
+# \q
+$ ./createdb.sh
+You are now connected to database "fabricexplorer" as user "yong".
+
+$ cd fabric-samples/first-network/
+$ ./byfn.sh down
+$ ./byfn.sh up
+
+$ cd blockchain-explorer20190212001/app/platform/fabric
+$ gedit config.json
+####only need to change "path": "/home/yong/fabric-samples/first-network
+
+$ cd blockchain-explorer20190212001
+$ npm install
+$ nvm install v8.11.4
+$ nvm use v8.11.4
+####retry
+$ npm install
+$ cd blockchain-explorer20190212001/app/test
+$ npm install
+$ npm run test
+$ cd blockchain-explorer20190212001/client
+$ npm install
+$ npm test -- -u --coverage
+$ npm run build
+
+$ cd blockchain-explorer20190212001/
+$ ./start.sh
+http://localhost:8080/
+
+
+

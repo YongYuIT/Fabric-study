@@ -1,0 +1,32 @@
+########ref to https://github.com/hyperledger/blockchain-explorer#run-hyperledger-explorer-using-docker-compose
+$ git clone https://github.com/hyperledger/blockchain-explorer.git blockchain-explorer20190213001
+$ git clone https://github.com/hyperledger/fabric-samples.git fabric-samples20190213001
+
+########clean env
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+$ docker network prune
+$ docker volume rm $(docker volume list)
+
+########start fabric
+$ cd fabric-samples20190213001/first-network/
+$ ./byfn.sh up
+
+########cp crypto
+$ rm -rf blockchain-explorer20190213001/examples/net1/crypto
+$ ln -s $PWD/fabric-samples20190213001/first-network/crypto-config $PWD/blockchain-explorer20190213001/examples/net1/crypto
+$ ll blockchain-explorer20190213001/examples/net1/crypto/
+
+########modify docker-compose.yaml
+replace "mynetwork.com" with "net_byfn"
+replace "artifacts_default" with "net_byfn"
+
+########write config.json follow https://github.com/hyperledger/blockchain-explorer/tree/master/examples/net1#example-of-running-be-with-fabric-network
+
+########start blockchain-explorer
+$ cd blockchain-explorer20190213001
+$ docker-compose up -d
+$ docker exec -it explorer.net_byfn sh
+# ping peer0.org1.example.com
+
+########open http://localhost:8090
