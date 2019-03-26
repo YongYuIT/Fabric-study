@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController ####type of RC
+metadata:
+  name: orderer ####name of RC, unique
+spec:
+  replicas: 1 ####Num of copy for Pod
+  selector:
+    app: orderer ####expected label for Pod
+  template: ####Pod instance
+    metadata:
+      labels:
+         app: orderer ####label for Pod copy
+    spec:
+      containers: ####def of container in Pod
+      - name: orderer ####container name
+        image: hyperledger/fabric-orderer ####container img
+        imagePullPolicy: IfNotPresent
+        command: ["orderer"]
+        ports:
+        - containerPort: 7050

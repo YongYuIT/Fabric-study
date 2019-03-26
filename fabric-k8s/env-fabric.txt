@@ -1,0 +1,83 @@
+########install docker, ref to https://kubernetes.io/docs/setup/cri/#docker
+$ sudo apt-get update
+$ sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository \
+  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+  stable"
+$ sudo apt-get install docker-ce=18.06.2~ce~3-0~ubuntu
+
+########install docker-compose
+$ sudo apt-get install python-pip
+$ sudo pip install docker-compose
+
+########clean env
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+$ docker network prune
+$ docker volume rm $(docker volume list)
+
+########config go env
+########download docker imgs
+$ go get github.com/hyperledger/fabric
+####if failed
+$ cd $GOPATH/src/github.com/hyperledger/
+$ rm -rf fabric
+$ git clone https://github.com/hyperledger/fabric.git
+$ cd $GOPATH/
+$ cd src/github.com/hyperledger/fabric/scripts
+$ ./bootstrap.sh
+
+
+########build tools
+$ cd $GOPATH/src/github.com/hyperledger/fabric/common/tools/cryptogen/
+$ sudo apt-get install gcc
+$ go build
+$ go install
+$ cd $GOPATH/src/github.com/hyperledger/fabric/common/tools/configtxgen/
+$ go build
+$ go install
+
+########
+$ git clone https://github.com/hyperledger/fabric-samples.git
+$ cd fabric-samples20190326001/first-network/
+$ ./byfn.sh generate
+$ ./byfn.sh up
+####success
+
+########ubild nfs server
+$ sudo apt-get install nfs-kernel-server
+$ mkdir nfs-test
+$ sudo chown nobody:nogroup nfs-test
+$ sudo chmod 777 nfs-test
+$ ll
+... ...
+drwxrwxrwx  2 nobody nogroup      4096 Mar 26 01:51 nfs-test/
+... ...
+$ sudo gedit  /etc/exports
+/home/yong/nfs-test    192.168.186.0/24(rw,async)
+$ sudo exportfs -a
+$ sudo systemctl restart nfs-kernel-server
+$ sudo ufw status #查看当前防火墙状态，如果正在启用，需要配置允许nfs
+$ showmount -e localhost
+Export list for localhost:
+/home/yong/nfs-test 192.168.186.0/24
+####在另一台机器上测试nfs（在centos上）
+$ sudo yum -y install nfs-utils
+$ showmount -e 192.168.186.151 #192.168.186.151是nfs服务器地址
+Export list for 192.168.186.151:
+/home/yong/nfs-test 192.168.186.0/24
+####回到fabric环境
+$ cp -r fabric-samples20190326001 /home/yong/nfs-test
+$ sudo chown -R nobody:nogroup nfs-test
+$ sudo chmod -R 777 nfs-test
+
+########在k8s上挂载nfs
+# kubectl create -f pv.yaml
+# kubectl get persistentvolume
+# kubectl create -f pvc.yaml
+# kubectl get persistentvolumeclaim
+
+########k8s部署orderer服务，orderer应当部署为k8s的一个无状态服务svc，但是为了降低难度，先用一个pod（一个容器）支持svc，后期再试多个pod支持svc
+
