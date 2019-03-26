@@ -6,7 +6,7 @@ spec:
   capacity:
     storage: 5Gi
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteMany
   nfs:
     path: /home/yong/nfs-test
     server: 192.168.186.151
