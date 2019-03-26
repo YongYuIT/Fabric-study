@@ -4,7 +4,7 @@ metadata:
   name: pvc-fabric
 spec:
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteMany
   resources:
     requests:
       storage: 5Gi
