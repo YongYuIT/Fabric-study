@@ -36,7 +36,7 @@ spec:
             - name: ORDERER_GENERAL_TLS_ROOTCAS
               value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt
             - name: ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR
-              value: 1
+              value: '1'
             - name: ORDERER_KAFKA_VERBOSE
               value: 'true'
             - name: ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE
