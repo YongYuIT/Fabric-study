@@ -12,9 +12,48 @@ spec:
          app: orderer ####label for Pod copy
     spec:
       containers: ####def of container in Pod
-      - name: orderer ####container name
-        image: hyperledger/fabric-orderer ####container img
-        imagePullPolicy: IfNotPresent
-        command: ["orderer"]
-        ports:
-        - containerPort: 7050
+        - name: orderer ####container name
+          image: hyperledger/fabric-orderer ####container img
+          env:
+            - name: FABRIC_LOGGING_SPEC
+              value: INFO
+            - name: ORDERER_GENERAL_LISTENADDRESS
+              value: 0.0.0.0
+            - name: ORDERER_GENERAL_GENESISMETHOD
+              value: file
+            - name: ORDERER_GENERAL_GENESISFILE
+              value: /fabric-config/first-network/channel-artifacts/genesis.block
+            - name: ORDERER_GENERAL_LOCALMSPID
+              value: OrdererMSP
+            - name: ORDERER_GENERAL_LOCALMSPDIR
+              value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
+            - name: ORDERER_GENERAL_TLS_ENABLED
+              value: true
+            - name: ORDERER_GENERAL_TLS_PRIVATEKEY
+              value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
+            - name: ORDERER_GENERAL_TLS_CERTIFICATE
+              value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+            - name: ORDERER_GENERAL_TLS_ROOTCAS
+              value: [/fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]
+            - name: ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR
+              value: 1
+            - name: ORDERER_KAFKA_VERBOSE
+              value: true
+            - name: ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE
+              value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+            - name: ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY
+              value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
+            - name: ORDERER_GENERAL_CLUSTER_ROOTCAS
+              value: [/fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]
+          workingDir: /opt/gopath/src/github.com/hyperledger/fabric
+          imagePullPolicy: IfNotPresent
+          command: ["orderer"]
+          ports:
+            - containerPort: 7050
+          volumeMounts:
+            - mountPath: "/fabric-config/"
+              name: fabric-config
+      volumes:
+        - name: fabric-config
+          persistentVolumeClaim:
+            claimName: pvc-fabric
