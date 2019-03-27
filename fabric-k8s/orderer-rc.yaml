@@ -47,8 +47,7 @@ spec:
               value: '[/fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]'
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
           imagePullPolicy: IfNotPresent
-          tty: true ####To keep the container active, you must exec at least one continuously running task or set tty=true
-          #command: ["orderer"]
+          command: ["orderer"]
           ports:
             - containerPort: 7050
           volumeMounts:
