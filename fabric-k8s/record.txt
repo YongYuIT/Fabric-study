@@ -177,3 +177,5 @@ orderer-6qmj6   1/1     Running   0          11s
  OS/Arch: linux/amd64
 2019-03-27 06:53:55.377 UTC [orderer.common.server] Start -> INFO 007 Beginning to serve requests
 # kubectl create -f orderer-svc.yaml
+
+# kubectl create -f peer0-org1-rc.yaml
