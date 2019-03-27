@@ -81,3 +81,7 @@ $ sudo chmod -R 777 nfs-test
 
 ########k8s部署orderer服务，orderer应当部署为k8s的一个无状态服务svc，但是为了降低难度，先用一个pod（一个容器）支持svc，后期再试多个pod支持svc
 # kubectl create -f orderer-rc.yaml
+# kubectl get pods
+NAME            READY   STATUS    RESTARTS   AGE
+orderer-cf445   1/1     Running   0          11s
+# kubectl exec -it orderer-cf445 -- /bin/bash
