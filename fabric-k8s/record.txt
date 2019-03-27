@@ -83,6 +83,7 @@ $ sudo chmod -R 777 nfs-test
 # kubectl create -f orderer-rc.yaml
 # kubectl get pods
 NAME            READY   STATUS    RESTARTS   AGE
-orderer-5l58k   1/1     Running   0          11s
-# kubectl describe pod orderer-5l58k
-# kubectl exec -it orderer-5l58k -- /bin/bash
+orderer-n76s2   1/1     Running   0          11s
+# kubectl describe pod orderer-vhntt
+# kubectl logs orderer-vhntt
+# kubectl exec -it orderer-vhntt -- /bin/bash
