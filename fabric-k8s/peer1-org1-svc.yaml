@@ -6,6 +6,6 @@ spec:
   type: NodePort ####can be accessed from outside
   ports:
   - port: 8051 ####port of service, open to pub
-    nodePort: 30051 ####get access to Service vir port 30001 from outside, mapping to 8080 internal
+    nodePort: 30052 ####get access to Service vir port 30001 from outside, mapping to 8080 internal
   selector:
     app: peer1-org1 ####label for Pod
