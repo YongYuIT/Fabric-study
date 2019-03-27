@@ -34,8 +34,7 @@ spec:
             - name: ORDERER_GENERAL_TLS_CERTIFICATE
               value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
             - name: ORDERER_GENERAL_TLS_ROOTCAS
-              value: 
-                - /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt
+              value: '[/fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]'
             - name: ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR
               value: '1'
             - name: ORDERER_KAFKA_VERBOSE
@@ -45,8 +44,7 @@ spec:
             - name: ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY
               value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
             - name: ORDERER_GENERAL_CLUSTER_ROOTCAS
-              value: 
-                - /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt
+              value: '[/fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]'
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
           imagePullPolicy: IfNotPresent
           command: ["orderer"]
