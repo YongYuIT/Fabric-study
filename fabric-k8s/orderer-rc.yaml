@@ -34,7 +34,7 @@ spec:
             - name: ORDERER_GENERAL_TLS_CERTIFICATE
               value: /fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
             - name: ORDERER_GENERAL_TLS_ROOTCAS
-              value: [/fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]'
+              value: '[/fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]'
             - name: ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR
               value: '1'
             - name: ORDERER_KAFKA_VERBOSE
@@ -44,7 +44,7 @@ spec:
             - name: ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY
               value: /fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
             - name: ORDERER_GENERAL_CLUSTER_ROOTCAS
-              value: [/fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]'
+              value: '[/fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt]'
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
           imagePullPolicy: IfNotPresent
           tty: true ####To keep the container active, you must exec at least one continuously running task or set tty=true
