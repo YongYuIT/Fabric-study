@@ -28,7 +28,7 @@ spec:
             - name: ORDERER_GENERAL_LOCALMSPDIR
               value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
             - name: ORDERER_GENERAL_TLS_ENABLED
-              value: true
+              value: 'true'
             - name: ORDERER_GENERAL_TLS_PRIVATEKEY
               value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
             - name: ORDERER_GENERAL_TLS_CERTIFICATE
@@ -38,7 +38,7 @@ spec:
             - name: ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR
               value: 1
             - name: ORDERER_KAFKA_VERBOSE
-              value: true
+              value: 'true'
             - name: ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE
               value: /fabric-config/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
             - name: ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY
