@@ -179,3 +179,4 @@ orderer-6qmj6   1/1     Running   0          11s
 # kubectl create -f orderer-svc.yaml
 
 # kubectl create -f peer0-org1-rc.yaml
+# kubectl exec -it peer0-org1-x8f5h -- /bin/bash
