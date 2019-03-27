@@ -36,7 +36,7 @@ spec:
             - name: FABRIC_LOGGING_SPEC
               value: INFO
             - name: CORE_PEER_TLS_ENABLED
-              value: 'true'
+              value: 'false'
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
               value: 'true'
             - name: CORE_PEER_GOSSIP_ORGLEADER

@@ -28,7 +28,7 @@ spec:
             - name: ORDERER_GENERAL_LOCALMSPDIR
               value: /fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
             - name: ORDERER_GENERAL_TLS_ENABLED
-              value: 'true'
+              value: 'false'
             - name: ORDERER_GENERAL_TLS_PRIVATEKEY
               value: /fabric-config/fabric-samples20190326001/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
             - name: ORDERER_GENERAL_TLS_CERTIFICATE
