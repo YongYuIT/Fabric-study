@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort ####can be accessed from outside
   ports:
-  - port: 7050 ####port of service, open to pub
+  - port: 30050 ####port of service, open to pub
     nodePort: 7050 ####get access to Service vir port 30001 from outside, mapping to 8080 internal
   selector:
     app: orderer ####label for Pod
