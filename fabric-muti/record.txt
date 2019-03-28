@@ -1,0 +1,33 @@
+########fabric1.4多机部署，改自fabric-sample项目
+########参考https://www.cnblogs.com/llongst/p/9571363.html
+
+ip分布:
+orderer:   192.168.186.185
+peer0-org1:192.168.186.186
+peer1-org1:192.168.186.187
+
+Go环境配置:
+export GOROOT=/mnt/hgfs/env-path/go
+export GOPATH=/mnt/hgfs/env-path/go-path
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+
+Fabri环境配置
+git clone https://github.com/hyperledger/fabric-samples.git
+go get github.com/hyperledger/fabric
+########build tools
+$ cd $GOPATH/src/github.com/hyperledger/fabric/common/tools/cryptogen/
+$ sudo apt-get install gcc
+$ go build
+$ go install
+$ cd $GOPATH/src/github.com/hyperledger/fabric/common/tools/configtxgen/
+$ go build
+$ go install
+
+$ cd /mnt/hgfs/env-path/fabric-samples/first-network/
+$ ./byfn.sh generate
+
+HOST环境
+192.168.186.185    orderer.example.com
+192.168.186.186    peer0.org1.example.com
+192.168.186.187    peer1.org1.example.com
