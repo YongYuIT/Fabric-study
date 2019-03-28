@@ -24,6 +24,27 @@ $ cd $GOPATH/src/github.com/hyperledger/fabric/common/tools/configtxgen/
 $ go build
 $ go install
 
+########改fabric-samples/first-network/configtx.yaml文件
+73行
+            - Host: peer0.org1.example.com
+改为
+            - Host: peer0-org1-example-com
+104行
+            - Host: peer0.org2.example.com
+改为
+            - Host: peer0-org2-example-com			
+211行
+        - orderer.example.com:7050
+改为
+        - orderer-example-com:7050
+360行
+                - Host: orderer.example.com
+改为
+                - Host: orderer-example-com
+381行
+                - orderer.example.com:7050
+改为
+                - orderer-example-com:7050
 $ cd /mnt/hgfs/env-path/fabric-samples/first-network/
 $ ./byfn.sh generate
 
@@ -40,8 +61,17 @@ $ sudo gpasswd -a ${USER} docker
 $ sudo service docker restart
 $ newgrp - docker
 $ docker-compose -f orderer.yaml up -d
-$ docker logs c845d372f040
+$ docker logs 27d1923df502
 
 同理，创建peer0.org1和peer1.org1
+为了能操作通道和链码，参照cli配置，增加两个映射关系
 $ docker-compose -f peer0.org1.yaml up -d
 $ docker-compose -f peer1.org1.yaml up -d
+
+在peer0-org1上
+$ docker exec -it b27dc7ebecda /bin/bash
+# peer channel list
+# export CHANNEL_NAME=mychannel
+# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /fabric-config/fabric-samples20190326001/first-network/channel-artifacts/channel.tx
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
