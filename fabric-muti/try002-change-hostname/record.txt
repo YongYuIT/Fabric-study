@@ -72,6 +72,6 @@ $ docker-compose -f peer1.org1.yaml up -d
 $ docker exec -it b27dc7ebecda /bin/bash
 # peer channel list
 # export CHANNEL_NAME=mychannel
-# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /fabric-config/fabric-samples20190326001/first-network/channel-artifacts/channel.tx
+# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx
 # peer channel join -b ${CHANNEL_NAME}.block
 # peer channel list
