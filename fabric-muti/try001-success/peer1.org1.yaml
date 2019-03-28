@@ -34,10 +34,12 @@ services:
         #- /var/run/:/host/var/run/ ####修改3
         - /mnt/hgfs/env-path/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp:/etc/hyperledger/fabric/msp
         - /mnt/hgfs/env-path/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls:/etc/hyperledger/fabric/tls
-        #- peer1.org1.example.com:/var/hyperledger/production ####修改4
+        - /mnt/hgfs/env-path/fabric-samples/chaincode:/opt/gopath/src/github.com/chaincode ####修改4
+        - /mnt/hgfs/env-path/fabric-samples/first-network/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts ####修改5
+        #- peer1.org1.example.com:/var/hyperledger/production ####修改6
     ports:
       - 8051:8051
-    extra_hosts: ####修改5
+    extra_hosts: ####修改7
       - "orderer.example.com:192.168.186.185"
       - "peer0.org1.example.com:192.168.186.186"
       - "peer1.org1.example.com:192.168.186.187"
