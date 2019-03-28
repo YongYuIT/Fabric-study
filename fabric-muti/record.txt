@@ -40,6 +40,8 @@ $ sudo gpasswd -a ${USER} docker
 $ sudo service docker restart
 $ newgrp - docker
 $ docker-compose -f orderer.yaml up -d
-$ docker logs 18249546e52c
+$ docker logs c845d372f040
 
 同理，创建peer0.org1和peer1.org1
+$ docker-compose -f peer0.org1.yaml up -d
+$ docker-compose -f peer1.org1.yaml up -d
