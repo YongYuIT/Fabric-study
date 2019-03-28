@@ -32,7 +32,7 @@ HOST环境
 192.168.186.186    peer0.org1.example.com
 192.168.186.187    peer1.org1.example.com
 
-柔和fabric-samples\first-network\base里面的连个docker compose文件，得到orderer的配置
+糅合fabric-samples\first-network\base里面的连个docker compose文件，得到orderer的配置
 有1处修改，已标注
 在机器orderer上启动排序服务
 $ sudo groupadd docker
@@ -41,3 +41,5 @@ $ sudo service docker restart
 $ newgrp - docker
 $ docker-compose -f orderer.yaml up -d
 $ docker logs 18249546e52c
+
+同理，创建peer0.org1和peer1.org1

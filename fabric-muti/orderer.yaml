@@ -25,9 +25,14 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
+        - /etc/hosts:/etc/hosts ####修改2
         - /mnt/hgfs/env-path/fabric-samples/first-network/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
         - /mnt/hgfs/env-path/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
         - /mnt/hgfs/env-path/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
-        #- orderer.example.com:/var/hyperledger/production/orderer ####修改2
+        #- orderer.example.com:/var/hyperledger/production/orderer ####修改3
     ports:
       - 7050:7050
+    extra_hosts: ####修改4
+      - "orderer.example.com:192.168.186.185"
+      - "peer0.org1.example.com:192.168.186.186"
+      - "peer1.org1.example.com:192.168.186.187"
