@@ -61,7 +61,7 @@ $ sudo gpasswd -a ${USER} docker
 $ sudo service docker restart
 $ newgrp - docker
 $ docker-compose -f orderer.yaml up -d
-$ docker logs 27d1923df502
+$ docker logs 22c165394c04
 
 同理，创建peer0.org1和peer1.org1
 为了能操作通道和链码，参照cli配置，增加两个映射关系
@@ -69,7 +69,7 @@ $ docker-compose -f peer0.org1.yaml up -d
 $ docker-compose -f peer1.org1.yaml up -d
 
 在peer0-org1上
-$ docker exec -it 22c96c159675 /bin/bash
+$ docker exec -it c8e39e983c5b /bin/bash
 # peer channel list
 # export CHANNEL_NAME=mychannel
 # peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
