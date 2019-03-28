@@ -45,3 +45,12 @@ $ docker logs c845d372f040
 同理，创建peer0.org1和peer1.org1
 $ docker-compose -f peer0.org1.yaml up -d
 $ docker-compose -f peer1.org1.yaml up -d
+
+在peer0-org1上
+$ docker exec -it 18ed385cdae9 /bin/bash
+# peer channel list
+# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+# export CHANNEL_NAME=mychannel
+# peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
