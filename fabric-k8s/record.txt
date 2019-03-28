@@ -83,9 +83,9 @@ $ sudo chmod -R 777 nfs-test
 # kubectl create -f orderer-rc.yaml
 # kubectl get pods
 NAME            READY   STATUS    RESTARTS   AGE
-orderer-6qmj6   1/1     Running   0          11s
+orderer-dxnr8   1/1     Running   0          11s
 # kubectl describe pod orderer-vhntt
-# kubectl logs orderer-6qmj6
+# kubectl logs orderer-dxnr8
 2019-03-27 06:53:55.250 UTC [localconfig] completeInitialization -> INFO 001 Kafka.Version unset, setting to 0.10.2.0
 2019-03-27 06:53:55.332 UTC [orderer.common.server] prettyPrintStruct -> INFO 002 Orderer config values:
 	General.LedgerType = "file"
@@ -181,3 +181,10 @@ orderer-6qmj6   1/1     Running   0          11s
 # kubectl create -f peer1-org1-rc.yaml
 # kubectl create -f peer0-org1-svc.yaml
 # kubectl create -f peer1-org1-svc.yaml
+
+# kubectl exec -it peer0-org1-6mq6v /bin/bash
+# peer channel list
+# export CHANNEL_NAME=mychannel
+# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /fabric-config/fabric-samples20190326001/first-network/channel-artifacts/channel.tx
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
