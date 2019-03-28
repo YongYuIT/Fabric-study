@@ -69,9 +69,11 @@ $ docker-compose -f peer0.org1.yaml up -d
 $ docker-compose -f peer1.org1.yaml up -d
 
 在peer0-org1上
-$ docker exec -it b27dc7ebecda /bin/bash
+$ docker exec -it 22c96c159675 /bin/bash
 # peer channel list
 # export CHANNEL_NAME=mychannel
+# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+########如果TLS失败。取消TLS再试
 # peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx
 # peer channel join -b ${CHANNEL_NAME}.block
 # peer channel list
