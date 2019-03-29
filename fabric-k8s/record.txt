@@ -187,9 +187,10 @@ orderer-dxnr8   1/1     Running   0          11s
 # kubectl create -f peer1-org1-rc.yaml
 # kubectl create -f peer1-org1-svc.yaml
 
-# kubectl exec -it peer0-org1-6mq6v /bin/bash
+# kubectl exec -it peer0-org1-zwdr7 /bin/bash
 # peer channel list
 # export CHANNEL_NAME=mychannel
-# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /fabric-config/fabric-samples20190326001/first-network/channel-artifacts/channel.tx
+# export CORE_PEER_MSPCONFIGPATH=/fabric-config/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin\@org1.example.com/msp/
+# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /fabric-config/fabric-samples/first-network/channel-artifacts/channel.tx
 # peer channel join -b ${CHANNEL_NAME}.block
 # peer channel list
