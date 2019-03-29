@@ -69,7 +69,12 @@ $ showmount -e 192.168.186.151 #192.168.186.151是nfs服务器地址
 Export list for 192.168.186.151:
 /home/yong/nfs-test 192.168.186.0/24
 ####回到fabric环境
-$ cp -r fabric-samples20190326001 /home/yong/nfs-test
+$ cd /home/yong/nfs-test
+$ git clone https://github.com/hyperledger/fabric-samples.git
+$ cd fabric-samples/first-network/
+########参照Fabric-study/fabric-muti/try002-change-hostname里面的，对fabric-samples配置文件进行修改
+$ ./byfn.sh generate
+$ cd /home/yong/
 $ sudo chown -R nobody:nogroup nfs-test
 $ sudo chmod -R 777 nfs-test
 

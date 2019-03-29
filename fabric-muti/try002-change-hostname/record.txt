@@ -32,7 +32,7 @@ $ go install
 104行
             - Host: peer0.org2.example.com
 改为
-            - Host: peer0-org2-example-com			
+            - Host: peer0-org2-example-com
 211行
         - orderer.example.com:7050
 改为
