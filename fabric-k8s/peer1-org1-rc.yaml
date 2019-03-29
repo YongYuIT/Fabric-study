@@ -16,9 +16,9 @@ spec:
           image: hyperledger/fabric-peer ####container img
           env:
             - name: CORE_PEER_ID
-              value: peer1-org1
+              value: peer1.org1.example.com
             - name: CORE_PEER_ADDRESS
-              value: peer1-org1:8051
+              value: peer1-org1-example-com:8051
             - name: CORE_PEER_LISTENADDRESS
               value: 0.0.0.0:8051
             - name: CORE_PEER_CHAINCODEADDRESS
