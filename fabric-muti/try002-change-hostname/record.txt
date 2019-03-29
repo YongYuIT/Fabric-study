@@ -69,11 +69,23 @@ $ docker-compose -f peer0.org1.yaml up -d
 $ docker-compose -f peer1.org1.yaml up -d
 
 在peer0-org1上
-$ docker exec -it c8e39e983c5b /bin/bash
+$ docker exec -it 1b0e258554c2 /bin/bash
 # peer channel list
 # export CHANNEL_NAME=mychannel
+# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
 # peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 ########如果TLS失败。取消TLS再试
 # peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx
 # peer channel join -b ${CHANNEL_NAME}.block
 # peer channel list
+
+########将生成的${CHANNEL_NAME}.block考出来，放到其他共享给其他peer
+$ docker cp 1b0e258554c2:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block /mnt/hgfs/env-path/
+
+在peer1-org0上
+$ docker cp /mnt/hgfs/env-path/mychannel.block fadae0865288:/opt/gopath/src/github.com/hyperledger/fabric/peer/
+# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+# export CHANNEL_NAME=mychannel
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
+########测试成功！！！！
