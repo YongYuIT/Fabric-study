@@ -58,7 +58,12 @@ spec:
           volumeMounts:
             - mountPath: "/fabric-config/"
               name: fabric-config
+            - mountPath: /var/run/docker.sock
+              name: docker-sock-volume
       volumes:
         - name: fabric-config
           persistentVolumeClaim:
             claimName: pvc-fabric
+        - name: docker-sock-volume
+          hostPath:
+            path: /var/run/docker.sock
