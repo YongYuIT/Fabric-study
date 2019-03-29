@@ -34,7 +34,7 @@ spec:
             - name: CORE_VM_ENDPOINT
               value: unix:///host/var/run/docker.sock
             - name: FABRIC_LOGGING_SPEC
-              value: INFO
+              value: DEBUG
             - name: CORE_PEER_TLS_ENABLED
               value: 'false'
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
