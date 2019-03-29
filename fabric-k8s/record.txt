@@ -194,3 +194,5 @@ orderer-dxnr8   1/1     Running   0          11s
 # peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /fabric-config/fabric-samples/first-network/channel-artifacts/channel.tx
 # peer channel join -b ${CHANNEL_NAME}.block
 # peer channel list
+
+这里有问题，怀疑是CORE_VM_ENDPOINT配置相关，线索在https://www.sohu.com/a/164354478_609552
