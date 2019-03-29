@@ -51,7 +51,8 @@ spec:
               value: /fabric-config/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           imagePullPolicy: IfNotPresent
-          command: ["peer node start"]
+          tty: true
+          #command: ["peer node start"]
           ports:
             - containerPort: 7051
           volumeMounts:
