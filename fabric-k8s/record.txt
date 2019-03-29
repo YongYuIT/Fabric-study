@@ -183,8 +183,8 @@ orderer-dxnr8   1/1     Running   0          11s
 2019-03-27 06:53:55.377 UTC [orderer.common.server] Start -> INFO 007 Beginning to serve requests
 # kubectl create -f orderer-svc.yaml
 # kubectl create -f peer0-org1-rc.yaml
-# kubectl create -f peer1-org1-rc.yaml
 # kubectl create -f peer0-org1-svc.yaml
+# kubectl create -f peer1-org1-rc.yaml
 # kubectl create -f peer1-org1-svc.yaml
 
 # kubectl exec -it peer0-org1-6mq6v /bin/bash
