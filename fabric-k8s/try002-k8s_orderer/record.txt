@@ -38,6 +38,13 @@ HOST环境
 192.168.186.187    peer1-org1-example-com
 
 在k8s上部署orderer
+# kubectl create -f pv.yaml
+# kubectl get persistentvolume
+# kubectl create -f pvc.yaml
+# kubectl get persistentvolumeclaim
+
+# kubectl create -f orderer-rc.yaml
+# kubectl create -f orderer-svc.yaml
 
 在两个peer两个上挂载nfs
 $ sudo apt install nfs-common
