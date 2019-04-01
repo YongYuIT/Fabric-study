@@ -1,0 +1,11 @@
+########在CA服务器上，构建fabtic-ca服务器环境
+$ ifconfig
+192.168.186.185
+$ cd $GOPATH/src/github.com/hyperledger
+$ git clone https://github.com/hyperledger/fabric-ca.git
+$ cd fabric-ca/cmd/fabric-ca-server/
+$ go build
+$ go install
+$ mkdir FABRIC_CA_SERVER
+$ cd FABRIC_CA_SERVER
+$ fabric-ca-server start -b yuyong-ca-admin:19911214 --cfg.affiliations.allowremove  --cfg.identities.allowremove

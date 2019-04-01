@@ -1,0 +1,40 @@
+########在orderer服务器上，构建联盟结构，并准备orderer的msp
+$ ifconfig
+192.168.186.185
+$ cd $GOPATH/src/github.com/hyperledger
+$ cd fabric-ca/cmd/fabric-ca-client/
+$ go build
+$ go install
+
+$ cd ~
+$ mkdir ~/FABRIC_CA_ORD
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/FABRIC_CA_ORD
+$ fabric-ca-client enroll -u http://yuyong-ca-admin:19911214@192.168.186.185:7054
+$ fabric-ca-client affiliation list
+$ fabric-ca-client affiliation add com
+$ fabric-ca-client affiliation add com.example
+$ fabric-ca-client affiliation add com.example.org1
+$ fabric-ca-client affiliation add com.example.org2
+$ fabric-ca-client affiliation list
+
+$ mkdir -p /home/yong/FABRIC_CA_ORD/yong-msps
+$ fabric-ca-client getcacert -M /home/yong/FABRIC_CA_ORD/yong-msps/example.com/msp
+$ fabric-ca-client register --id.name Admin@example.com \
+                            --id.type client \
+                            --id.affiliation "com.example" \
+                            --id.attrs '"hf.Registrar.Roles=client,orderer,peer,user","hf.Registrar.DelegateRoles=client,orderer,peer,user",hf.Registrar.Attributes=*,hf.GenCRL=true,hf.Revoker=true,hf.AffiliationMgr=true,hf.IntermediateCA=true,role=admin:ecert'
+KyWCGTMfKVeY
+$ mkdir -p /home/yong/FABRIC_CA_ORD/yong-msps/example.com/admin
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/FABRIC_CA_ORD/yong-msps/example.com/admin
+$ fabric-ca-client enroll -u http://Admin@example.com:KyWCGTMfKVeY@192.168.186.185:7054
+$ fabric-ca-client register --id.name orderer.example.com \
+                            --id.type orderer \
+                            --id.affiliation "com.example" \
+                            --id.maxenrollments 0 \
+                            --id.attrs 'role=orderer:ecert'
+YtSjMBMjHJdP
+$ mkdir -p /home/yong/FABRIC_CA_ORD/yong-msps/example.com/orderer
+$ export FABRIC_CA_CLIENT_HOME=/home/yong/FABRIC_CA_ORD/yong-msps/example.com/orderer
+$ fabric-ca-client enroll -u http://orderer.example.com:YtSjMBMjHJdP@192.168.186.185:7054
+$ mkdir /home/yong/FABRIC_CA_ORD/yong-msps/example.com/orderer/msp/admincerts
+$ cp /home/yong/FABRIC_CA_ORD/yong-msps/example.com/admin/msp/signcerts/cert.pem /home/yong/FABRIC_CA_ORD/yong-msps/example.com/orderer/msp/admincerts/
