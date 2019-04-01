@@ -41,5 +41,5 @@ services:
       - 7051:7051
     extra_hosts: ####修改9
       - "k8s:192.168.186.131"
-      - "peer0-org1-example-com:192.168.186.186"
+      - "peer0-org1-example-com:192.168.186.188"
       - "peer1-org1-example-com:192.168.186.187"

@@ -34,7 +34,7 @@ $ sudo chmod -R 777 nfs-test
 
 HOST环境
 192.168.186.131    k8s
-192.168.186.186    peer0-org1-example-com
+192.168.186.188    peer0-org1-example-com
 192.168.186.187    peer1-org1-example-com
 
 在k8s上部署orderer
