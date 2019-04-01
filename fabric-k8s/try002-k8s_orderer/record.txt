@@ -56,10 +56,20 @@ $ sudo chmod -R 777 /fabric-config
 $ sudo mount -t nfs 192.168.186.151:/home/yong/nfs-test /fabric-config
 $ ls /fabric-config
 ####清空docker环境
-docker stop $(docker ps -aq)
-docker rm -f $(docker ps -aq)
-docker network prune
-docker volume rm $(docker volume list)
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+$ docker network prune
+$ docker volume rm $(docker volume list)
 ####启动peer
 $ docker-compose -f peer0.org1.yaml up -d
 $ docker-compose -f peer1.org1.yaml up -d
+
+测试
+$ docker exec -it a3b8362f09a1 /bin/bash
+$ peer channel list
+$ export CHANNEL_NAME=mychannel
+$ export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+$ peer channel create -o k8s:30050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx
+$ peer channel join -b ${CHANNEL_NAME}.block
+$ peer channel list
+########success
