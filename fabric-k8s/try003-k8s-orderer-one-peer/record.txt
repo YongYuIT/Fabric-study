@@ -34,7 +34,7 @@ $ sudo chmod -R 777 nfs-test
 
 HOST环境
 192.168.186.131    k8s
-192.168.186.200    peer0-org1-example-com
+192.168.186.202    peer0-org1-example-com
 192.168.186.131    peer1-org1-example-com
 
 在k8s上部署orderer
@@ -45,3 +45,13 @@ HOST环境
 
 # kubectl create -f orderer-rc.yaml
 # kubectl create -f orderer-svc.yaml
+
+在peer0上挂载nfs
+$ sudo apt install nfs-common
+$ showmount -e 192.168.186.151 #192.168.186.151是nfs服务器地址
+Export list for 192.168.186.151:
+/home/yong/nfs-test 192.168.186.0/24
+$ sudo mkdir /fabric-config
+$ sudo chmod -R 777 /fabric-config
+$ sudo mount -t nfs 192.168.186.151:/home/yong/nfs-test /fabric-config
+$ ls /fabric-config
