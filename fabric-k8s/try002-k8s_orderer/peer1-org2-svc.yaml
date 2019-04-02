@@ -5,6 +5,6 @@ metadata:
 spec:
   type: NodePort ####can be accessed from outside
   ports:
-  - port: 7051 ####port of service, open to pub
+  - port: 8051 ####port of service, open to pub
   selector:
     app: peer0-org2 ####label for Pod

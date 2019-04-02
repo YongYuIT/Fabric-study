@@ -1,0 +1,4 @@
+进入peer0-org2 pod
+# apt-get update
+# apt-get install dnsutils
+# nslookup www.baidu.com
