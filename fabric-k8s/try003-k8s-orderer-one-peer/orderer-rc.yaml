@@ -19,6 +19,8 @@ spec:
               value: INFO
             - name: ORDERER_GENERAL_LISTENADDRESS
               value: 0.0.0.0
+            - name: ORDERER_GENERAL_LISTENPORT
+              value: 30050
             - name: ORDERER_GENERAL_GENESISMETHOD
               value: file
             - name: ORDERER_GENERAL_GENESISFILE
