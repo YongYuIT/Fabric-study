@@ -55,3 +55,18 @@ $ sudo mkdir /fabric-config
 $ sudo chmod -R 777 /fabric-config
 $ sudo mount -t nfs 192.168.186.151:/home/yong/nfs-test /fabric-config
 $ ls /fabric-config
+
+####启动peer
+$ docker-compose -f peer0.org1.yaml up -d
+
+在k8s上部署peer1.org1
+# kubectl create -f peer1-org1-rc.yaml
+# kubectl create -f peer1-org1-svc.yaml
+
+进入peer1-org1 pod
+# apt-get update
+# apt-get install dnsutils
+# nslookup www.baidu.com
+# nslookup peer0-org1-example-com
+# apt-get install iputils-ping
+# ping 192.168.186.202
