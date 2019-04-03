@@ -1,0 +1,70 @@
+$ sudo service vsftpd restart
+$ sudo docker restart 761f1c46fad9
+
+# ansible-playbook -i inventory/mycluster/hosts.ini --become --become-user=root reset.yml
+# ansible-playbook -i inventory/mycluster/hosts.ini cluster.yml -b -v -k
+
+export GOROOT=/mnt/hgfs/go-env/go
+export GOPATH=/mnt/hgfs/go-env/go-path
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+
+$ cd ~
+$ rm -rf nfs-test
+$ mkdir nfs-test
+$ cd nfs-test
+$ git clone https://github.com/hyperledger/fabric-samples.git
+########改fabric-samples/first-network/configtx.yaml文件
+73行
+            - Host: peer0.org1.example.com
+改为
+            - Host: peer0-org1-example-com
+104行
+            - Host: peer0.org2.example.com
+改为
+            - Host: peer0-org2-example-com
+211行
+        - orderer.example.com:7050
+改为
+        - orderer-example-com:7050
+360行
+                - Host: orderer.example.com
+改为
+                - Host: orderer-example-com
+381行
+                - orderer.example.com:7050
+改为
+                - orderer-example-com:7050
+$ ./byfn.sh generate
+$ cd ~
+$ sudo chown nobody:nogroup nfs-test
+$ sudo chmod 777 nfs-test
+$ ll
+$ sudo gedit  /etc/exports
+/home/yong/nfs-test    192.168.186.0/24(rw,sync)
+$ showmount -e localhost
+
+# kubectl create -f pvc.yaml -f pv.yaml
+# kubectl create -f peer0-org1-rc.yaml \
+-f peer0-org1-svc.yaml \
+-f peer1-org1-rc.yaml \
+-f peer1-org1-svc.yaml \
+-f orderer-rc.yaml \
+-f orderer-svc.yaml
+
+# kubectl exec -it peer0-org1-65s6z /bin/bash
+# peer channel list
+# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+# export CHANNEL_NAME=mychannel
+# peer channel create -o orderer-example-com:7050 -c $CHANNEL_NAME -f /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/channel.tx
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
+# cp mychannel.block /opt/gopath/src/github.com/chaincode/
+
+# kubectl exec -it peer1-org1-kdbzs /bin/bash
+# cp /opt/gopath/src/github.com/chaincode/mychannel.block .
+# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+# export CHANNEL_NAME=mychannel
+# peer channel list
+# peer channel join -b ${CHANNEL_NAME}.block
+# peer channel list
