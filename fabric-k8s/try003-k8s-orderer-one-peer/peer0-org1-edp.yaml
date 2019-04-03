@@ -4,7 +4,7 @@ metadata:
   name: peer0-org1-example-com
 subsets:
   - addresses:
-      - ip: "10.5.10.109"
+      - ip: 192.168.186.202
     ports:
-      - port: 3306
+      - port: 7051
         protocol: TCP
