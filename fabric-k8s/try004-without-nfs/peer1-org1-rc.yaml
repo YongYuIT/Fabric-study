@@ -66,7 +66,7 @@ spec:
             - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
               name: crypto-config
             - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
-              name:channel-artifacts
+              name: channel-artifacts
       volumes:
         - name: docker-sock-volume
           hostPath:
