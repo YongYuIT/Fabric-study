@@ -47,7 +47,8 @@ spec:
               value: peer1-org1-example-com:8051
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
               value: peer0-org1-example-com:7051
-            - name: CORE_PEER_LOCALMSPID=Org1MSP
+            - name: CORE_PEER_LOCALMSPID
+              value: Org1MSP
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           imagePullPolicy: IfNotPresent
           command: ["peer"]
