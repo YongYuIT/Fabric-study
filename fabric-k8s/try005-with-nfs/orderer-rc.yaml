@@ -53,7 +53,7 @@ spec:
           volumeMounts:
             - mountPath: /var/run/docker.sock
               name: docker-sock-volume
-            - mountPath: /var/hyperledger/orderer/orderer.genesis.block
+            - mountPath: /var/hyperledger/orderer/
               name: genesis
             - mountPath: /var/hyperledger/orderer/msp
               name: orderer-msp
@@ -65,7 +65,7 @@ spec:
             path: /var/run/docker.sock
         - name: genesis
           persistentVolumeClaim:
-            claimName: genesis
+            claimName: channel-artifacts
         - name: orderer-msp
           persistentVolumeClaim:
             claimName: orderer-msp
