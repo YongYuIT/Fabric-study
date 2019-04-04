@@ -55,24 +55,18 @@ spec:
             - mountPath: /var/run/docker.sock
               name: docker-sock-volume
             - mountPath: /var/hyperledger/orderer/orderer.genesis.block
-              subPath: /fabric-config/fabric-samples/first-network/channel-artifacts/genesis.block
-              name: genesis
+              subPath: fabric-samples/first-network/channel-artifacts/genesis.block
+              name: fabric-config
             - mountPath: /var/hyperledger/orderer/msp
-              subPath: /fabric-config/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
-              name: orderer-msp
+              subPath: fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
+              name: fabric-config
             - mountPath: /var/hyperledger/orderer/tls
-              subPath: /fabric-config/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls
-              name: orderer-tls
+              subPath: fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls
+              name: fabric-config
       volumes:
         - name: docker-sock-volume
           hostPath:
             path: /var/run/docker.sock
-        - name: genesis
-          persistentVolumeClaim:
-            claimName: pvc-fabric
-        - name: orderer-msp
-          persistentVolumeClaim:
-            claimName: pvc-fabric
-        - name: orderer-tls
+        - name: fabric-config
           persistentVolumeClaim:
             claimName: pvc-fabric
