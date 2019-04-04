@@ -71,6 +71,9 @@ $ showmount -e localhost
 # kubectl create -f pv-orderer-msp.yaml \
 -f pvc-orderer-msp.yaml
 
+# kubectl create -f pv-genesis.yaml \
+-f pvc-genesis.yaml
+
 # kubectl create -f peer0-org1-rc.yaml \
 -f peer0-org1-svc.yaml \
 -f peer1-org1-rc.yaml \
