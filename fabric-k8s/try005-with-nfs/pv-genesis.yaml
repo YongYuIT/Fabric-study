@@ -8,5 +8,5 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    path: /home/yong/nfs-test/fabric-samples/first-network/channel-artifacts/genesis.block
+    file: /home/yong/nfs-test/fabric-samples/first-network/channel-artifacts/genesis.block
     server: 192.168.186.151
