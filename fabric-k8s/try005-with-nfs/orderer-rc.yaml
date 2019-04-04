@@ -64,11 +64,11 @@ spec:
           hostPath:
             path: /var/run/docker.sock
         - name: genesis
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/first-network/channel-artifacts/genesis.block
+          persistentVolumeClaim:
+            claimName: genesis
         - name: orderer-msp
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
+          persistentVolumeClaim:
+            claimName: orderer-msp
         - name: orderer-tls
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls
+          persistentVolumeClaim:
+            claimName: orderer-tls

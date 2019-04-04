@@ -73,17 +73,17 @@ spec:
           hostPath:
             path: /var/run/docker.sock
         - name: peer-msp
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/msp
+          persistentVolumeClaim:
+            claimName: peer1-msp
         - name: peer-tls
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls
+          persistentVolumeClaim:
+            claimName: peer1-tls
         - name: chain-code
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/chaincode
+          persistentVolumeClaim:
+            claimName: chain-code
         - name: crypto-config
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/first-network/crypto-config
+          persistentVolumeClaim:
+            claimName: crypto-config
         - name: channel-artifacts
-          hostPath:
-            path: /mnt/hgfs/go-env/fabric-samples/first-network/channel-artifacts
+          persistentVolumeClaim:
+            claimName: channel-artifacts
