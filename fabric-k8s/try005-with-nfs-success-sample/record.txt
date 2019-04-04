@@ -54,7 +54,7 @@ $ showmount -e localhost
 -f orderer-rc.yaml \
 -f orderer-svc.yaml
 
-# kubectl exec -it peer0-org1-2vlm7 /bin/bash
+# kubectl exec -it peer0-org1-fsstf /bin/bash
 # peer channel list
 # export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
 # export CHANNEL_NAME=mychannel
@@ -63,7 +63,7 @@ $ showmount -e localhost
 # peer channel list
 # cp mychannel.block /opt/gopath/src/github.com/chaincode/
 
-# kubectl exec -it peer1-org1-n9nrm /bin/bash
+# kubectl exec -it peer1-org1-4klsb /bin/bash
 # cp /opt/gopath/src/github.com/chaincode/mychannel.block .
 # export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
 # export CHANNEL_NAME=mychannel
