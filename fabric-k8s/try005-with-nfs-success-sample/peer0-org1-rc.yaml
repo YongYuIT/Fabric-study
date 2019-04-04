@@ -60,19 +60,19 @@ spec:
               name: docker-sock-volume
             - mountPath: /etc/hyperledger/fabric/msp
               subPath: fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp
-              name: pvc-fabric
+              name: fabric-config
             - mountPath: /etc/hyperledger/fabric/tls
               subPath: fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls
-              name: pvc-fabric
+              name: fabric-config
             - mountPath: /opt/gopath/src/github.com/chaincode
               subPath: fabric-samples/chaincode
-              name: pvc-fabric
+              name: fabric-config
             - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
               subPath: fabric-samples/first-network/crypto-config
-              name: pvc-fabric
+              name: fabric-config
             - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
               subPath: fabric-samples//first-network/channel-artifacts
-              name: channel-artifacts
+              name: fabric-config
       volumes:
         - name: docker-sock-volume
           hostPath:
