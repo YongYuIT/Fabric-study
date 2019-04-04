@@ -65,14 +65,8 @@ $ showmount -e localhost
 # kubectl create -f pv-chain-code.yaml \
 -f pvc-chain-code.yaml
 
-# kubectl create -f pv-orderer-tls.yaml \
--f pvc-orderer-tls.yaml
-
-# kubectl create -f pv-orderer-msp.yaml \
--f pvc-orderer-msp.yaml
-
-# kubectl create -f pv-genesis.yaml \
--f pvc-genesis.yaml
+# kubectl create -f pv.yaml \
+-f pvc.yaml
 
 # kubectl create -f peer0-org1-rc.yaml \
 -f peer0-org1-svc.yaml \
@@ -81,7 +75,7 @@ $ showmount -e localhost
 -f orderer-rc.yaml \
 -f orderer-svc.yaml
 
-# kubectl exec -it peer0-org1-65s6z /bin/bash
+# kubectl exec -it peer0-org1-2vlm7 /bin/bash
 # peer channel list
 # export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
 # export CHANNEL_NAME=mychannel
@@ -90,7 +84,7 @@ $ showmount -e localhost
 # peer channel list
 # cp mychannel.block /opt/gopath/src/github.com/chaincode/
 
-# kubectl exec -it peer1-org1-kdbzs /bin/bash
+# kubectl exec -it peer1-org1-n9nrm /bin/bash
 # cp /opt/gopath/src/github.com/chaincode/mychannel.block .
 # export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
 # export CHANNEL_NAME=mychannel
