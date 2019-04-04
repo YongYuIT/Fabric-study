@@ -37,8 +37,8 @@ $ git clone https://github.com/hyperledger/fabric-samples.git
                 - orderer-example-com:7050
 $ ./byfn.sh generate
 $ cd ~
-$ sudo chown nobody:nogroup nfs-test
-$ sudo chmod 777 nfs-test
+$ sudo chown -R nobody:nogroup nfs-test
+$ sudo chmod -R 777 nfs-test
 $ ll
 $ sudo gedit  /etc/exports
 /home/yong/nfs-test    192.168.186.0/24(rw,sync)
@@ -70,9 +70,6 @@ $ showmount -e localhost
 
 # kubectl create -f pv-orderer-msp.yaml \
 -f pvc-orderer-msp.yaml
-
-# kubectl create -f pv-genesis.yaml \
--f pvc-genesis.yaml
 
 # kubectl create -f peer0-org1-rc.yaml \
 -f peer0-org1-svc.yaml \
