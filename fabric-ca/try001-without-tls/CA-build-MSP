@@ -60,7 +60,8 @@ affiliation: .
       affiliation: com.example
          affiliation: com.example.org1
          affiliation: com.example.org2
-####gen msp for each org and copy cacert to each msp
+####gen msp dir for each org and copy cacert to each msp dir
+####这一步抄给各个msp dir的CA公钥都是一致的！所谓CA公钥就是用于校验消息（文件）是否是由CA发出来的
 $ mkdir client-guo-msps
 $ cd client-guo-msps
 $ mkdir -p ./example.com/msp
