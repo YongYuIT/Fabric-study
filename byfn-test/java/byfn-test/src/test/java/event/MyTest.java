@@ -61,19 +61,37 @@ public class MyTest {
             }
         });
         System.out.println("blockHandlerId-->" + blockHandlerId);
-        String chaincodeHandlerId = channel.registerChaincodeEventListener(Pattern.compile(".*"), Pattern.compile(Pattern.quote("invoke")), new ChaincodeEventListener() {
+        String chaincodeHandlerId = channel.registerChaincodeEventListener(Pattern.compile("chaincode_event1001"), Pattern.compile("test_event_name"), new ChaincodeEventListener() {
             @Override
             public void received(String handle, BlockEvent blockEvent, ChaincodeEvent chaincodeEvent) {
-                System.out.println("registerChaincodeEventListener-->" + chaincodeEvent.getEventName());
+                System.out.println("registerChaincodeEventListener-->" + chaincodeEvent.getEventName() + "-->" + new String(chaincodeEvent.getPayload()));
             }
         });
         System.out.println("chaincodeHandlerId-->" + chaincodeHandlerId);
         /*
+         * BlockListener works, ChaincodeEventListener doesn't work
          * $ cd /mnt/hgfs/fabric-env/fabric-samples/first-network
          * $ docker exec -it cli bash
          * # peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
          * # peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n mycc --peerAddresses peer0.org1.example.com:7051 --peerAddresses peer0.org2.example.com:9051 -c '{"Args":["invoke","a","b","10"]}'
          * */
+
+        /*
+         * ChaincodeEventListener works
+         * $ cd /mnt/hgfs/fabric-env/fabric-samples/chaincode
+         * $ mkdir -p event_test/go
+         * $ cd event_test/go
+         * $ cp /mnt/hgfs/proj/Go-Stu/smart_contract/chaincode_event1001.go .
+         * $ docker exec -it cli bash
+         * # peer chaincode install -n chaincode_event1001 -v v0 -p github.com/chaincode/event_test/go
+         * # peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n chaincode_event1001 -v v0 -c '{"Args":[]}' -P "AND('Org1MSP.member')"
+         * this way doesn't work
+         * # peer chaincode query -C mychannel -n chaincode_event1001 -c '{"Args":["test_env","test_event_key"]}'
+         * this way works
+         * # peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n chaincode_event1001 --peerAddresses peer0.org1.example.com:7051 -c '{"Args":["test_env","test_event_key"]}'
+         * */
         System.in.read();
+        channel.unregisterBlockListener(blockHandlerId);
+        channel.unregisterChaincodeEventListener(chaincodeHandlerId);
     }
 }

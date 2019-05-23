@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3045f014-3129-48ce-bcb1-c278d556cc7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/event/MyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/event/PeerUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/event/PeerUserEnrollment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/event/readme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/event/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/event/MyTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,14 +21,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/event/PeerUserEnrollment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            <state relative-caret-position="270">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1706#1707#0" expanded="true" />
-                <element signature="e#1737#1738#0" expanded="true" />
+                <element signature="e#1753#1754#0" expanded="true" />
                 <element signature="e#1823#1824#0" expanded="true" />
-                <element signature="e#1870#1871#0" expanded="true" />
+                <element signature="e#1871#1872#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/event/MyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="71" column="65" lean-forward="true" selection-start-line="71" selection-start-column="65" selection-end-line="71" selection-end-column="65" />
+            <state relative-caret-position="270">
+              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/helper/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
+            <state relative-caret-position="3885">
               <caret line="317" column="29" selection-start-line="317" selection-start-column="29" selection-end-line="317" selection-end-column="29" />
             </state>
           </provider>
@@ -73,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/event/PeerUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="210">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,7 +94,11 @@
       <find>tls</find>
       <find>url</find>
       <find>EventHub</find>
+      <find>chaincode_event</find>
     </findStrings>
+    <replaceStrings>
+      <replace>chaincode_event1001</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -137,48 +135,6 @@
             <path>
               <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="connect_to_channel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="event" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="query_based_couch" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -241,7 +197,9 @@
       <updated>1558507681163</updated>
       <workItem from="1558507687459" duration="587000" />
       <workItem from="1558508314818" duration="2530000" />
-      <workItem from="1558510970755" duration="9345000" />
+      <workItem from="1558510970755" duration="11103000" />
+      <workItem from="1558577083136" duration="3993000" />
+      <workItem from="1558581301041" duration="417000" />
     </task>
     <task id="LOCAL-00001" summary="BlockListener works, but ChaincodeEventListener doesn't work">
       <created>1558520296611</created>
@@ -250,25 +208,31 @@
       <option name="project" value="LOCAL" />
       <updated>1558520296612</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="BlockListener works, but ChaincodeEventListener doesn't work">
+      <created>1558520439554</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558520439554</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ChaincodeEventListener works">
+      <created>1558580694453</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1558580694453</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ChaincodeEventListener works">
+      <created>1558580759259</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1558580759259</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTest_test - 2019.05.22 at 02h 42m 07s.xml">
-      <configuration name="MyTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTest_test - 2019.05.22 at 02h 43m 34s.xml">
-      <configuration name="MyTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTest_test - 2019.05.22 at 02h 52m 23s.xml">
-      <configuration name="MyTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTest_test - 2019.05.22 at 02h 52m 46s.xml">
-      <configuration name="MyTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTest_test - 2019.05.22 at 02h 59m 40s.xml">
-      <configuration name="MyTest.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyTest_test - 2019.05.22 at 03h 00m 22s.xml">
       <configuration name="MyTest.test" configurationId="JUnit" />
     </history-entry>
@@ -284,9 +248,24 @@
     <history-entry file="MyTest_test - 2019.05.22 at 03h 14m 18s.xml">
       <configuration name="MyTest.test" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyTest_test - 2019.05.22 at 19h 31m 37s.xml">
+      <configuration name="MyTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTest_test - 2019.05.22 at 19h 32m 25s.xml">
+      <configuration name="MyTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTest_test - 2019.05.22 at 19h 48m 25s.xml">
+      <configuration name="MyTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTest_test - 2019.05.22 at 19h 56m 18s.xml">
+      <configuration name="MyTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTest_test - 2019.05.22 at 20h 00m 38s.xml">
+      <configuration name="MyTest.test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12462000" />
+    <option name="totallyTimeSpent" value="18630000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -299,18 +278,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31152993" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31929046" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3293348" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27480915" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27371866" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -320,6 +299,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3293348" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3293348" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -339,7 +319,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="BlockListener works, but ChaincodeEventListener doesn't work" />
-    <option name="LAST_COMMIT_MESSAGE" value="BlockListener works, but ChaincodeEventListener doesn't work" />
+    <MESSAGE value="ChaincodeEventListener works" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChaincodeEventListener works" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/connect_to_channel/ByfnConnToChannelTest.java">
@@ -430,13 +411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/helper/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="317" column="29" selection-start-line="317" selection-start-column="29" selection-end-line="317" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/EventHub.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1167">
@@ -465,13 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="5406" column="18" selection-start-line="5406" selection-start-column="18" selection-end-line="5406" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/ChaincodeEventListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -486,26 +453,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/event/PeerUser.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/Channel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="572">
+          <caret line="5406" column="18" selection-start-line="5406" selection-start-column="18" selection-end-line="5406" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/event/PeerUserEnrollment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="270">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1706#1707#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
+            <element signature="e#1753#1754#0" expanded="true" />
             <element signature="e#1823#1824#0" expanded="true" />
-            <element signature="e#1870#1871#0" expanded="true" />
+            <element signature="e#1871#1872#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -517,10 +481,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/helper/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3885">
+          <caret line="317" column="29" selection-start-line="317" selection-start-column="29" selection-end-line="317" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/event/PeerUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/event/MyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="71" column="65" lean-forward="true" selection-start-line="71" selection-start-column="65" selection-end-line="71" selection-end-column="65" />
+        <state relative-caret-position="270">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
