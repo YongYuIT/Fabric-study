@@ -97,7 +97,7 @@ docker-py version: 3.7.3
 CPython version: 2.7.16
 OpenSSL version: OpenSSL 1.1.1b  26 Feb 2019
 
-########install zk
+########install zk, ref to http://zookeeper.apache.org/releases.html
 $ wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/stable/apache-zookeeper-3.5.5-bin.tar.gz
 $ tar xvf apache-zookeeper-3.5.5-bin.tar.gz
 $ cd apache-zookeeper-3.5.5-bin/conf/
@@ -106,7 +106,7 @@ $ echo "server.1=test_1.thinking.com:2888:3888" >> zoo.cfg
 $ echo "server.2=test_2.thinking.com:2888:3888" >> zoo.cfg
 $ echo "server.3=test_3.thinking.com:2888:3888" >> zoo.cfg
 
-########start docker-compose
+########start docker-compose for zk cluster
 ####clean env
 $ docker stop $(docker ps -aq)
 $ docker rm -f $(docker ps -aq)
@@ -161,3 +161,25 @@ WATCHER::
 WatchedEvent state:Closed type:None path:null
 2019-07-31 07:13:11,729 [myid:] - INFO  [main-EventThread:ClientCnxn$EventThread@524] - EventThread shut down for session: 0x100013d42770000
 2019-07-31 07:13:11,729 [myid:] - INFO  [main:ZooKeeper@1422] - Session: 0x100013d42770000 closed
+
+########install kafka, ref to https://kafka.apache.org/downloads
+$ wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.3.0/kafka_2.12-2.3.0.tgz
+$ tar xvf kafka_2.12-2.3.0.tgz
+$ cd kafka_2.12-2.3.0/
+$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd/server_1.properties
+$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd/server_2.properties
+$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd/server_3.properties
+####need to modify --> broker.id, host.name, log.dirs, zookeeper.connect
+
+########start docker-compose for kafka cluster
+$ sudo rm -rf kafka_2.12-2.3.0/logs
+$ sudo rm -rf /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/
+$ docker-compose -f /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/docker-compose-kafka.yml up -d
+$ docker exec -it kafka_1.thinking.com /bin/bash
+# cd /kafka/bin
+# ./kafka-topics.sh --create --zookeeper test_1.thinking.com:2181 --replication-factor 1 --partitions 1 --topic test_yong
+# ./kafka-console-producer.sh --broker-list kafka_1.thinking.com:9092 --topic test_yong
+# ./kafka-console-consumer.sh --bootstrap-server kafka_1.thinking.com:9092 --topic test_yong --from-beginning
+
+
+########install kafka manager

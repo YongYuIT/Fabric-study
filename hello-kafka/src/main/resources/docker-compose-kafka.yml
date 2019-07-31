@@ -1,0 +1,59 @@
+version: '2'
+
+networks:
+  thinking:
+
+services:
+  kafka_1.thinking.com:
+    image: ubuntu
+    container_name: kafka_1.thinking.com
+    command: sh /kafka-cmd/kafka_1.sh
+    tty: true
+    networks:
+      - thinking
+    ports:
+      - "2181:2181"
+    volumes:
+      - /mnt/hgfs/java-env/jdk1.8.0_211:/java
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd:/kafka-cmd
+      - /home/yong/kafka_2.12-2.3.0:/kafka
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/log-1:/tmp/kafka-logs
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/sys-log-1:/kafka/logs
+    environment:
+      - JAVA_HOME=/java
+
+  kafka_2.thinking.com:
+    image: ubuntu
+    container_name: kafka_2.thinking.com
+    command: sh /kafka-cmd/kafka_2.sh
+    tty: true
+    networks:
+      - thinking
+    ports:
+      - "2182:2181"
+    volumes:
+      - /mnt/hgfs/java-env/jdk1.8.0_211:/java
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd:/kafka-cmd
+      - /home/yong/kafka_2.12-2.3.0:/kafka
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/log-2:/tmp/kafka-logs
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/sys-log-2:/kafka/logs
+    environment:
+      - JAVA_HOME=/java
+
+  kafka_3.thinking.com:
+    image: ubuntu
+    container_name: kafka_3.thinking.com
+    command: sh /kafka-cmd/kafka_3.sh
+    tty: true
+    networks:
+      - thinking
+    ports:
+      - "2183:2181"
+    volumes:
+      - /mnt/hgfs/java-env/jdk1.8.0_211:/java
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd:/kafka-cmd
+      - /home/yong/kafka_2.12-2.3.0:/kafka
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/log-3:/tmp/kafka-logs
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/sys-log-3:/kafka/logs
+    environment:
+      - JAVA_HOME=/java
