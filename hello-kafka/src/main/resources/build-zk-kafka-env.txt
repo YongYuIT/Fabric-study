@@ -183,3 +183,14 @@ $ docker exec -it kafka_1.thinking.com /bin/bash
 
 
 ########install kafka manager
+$ git clone https://github.com/yahoo/kafka-manager.git
+$ cd kafka-manager/
+$ ./sbt clean dist
+$ cp target/universal/kafka-manager-2.0.0.2.zip /mnt/hgfs/zk-kafka-env/
+$ cd /mnt/hgfs/zk-kafka-env/
+$ unzip kafka-manager-2.0.0.2.zip
+$ cd kafka-manager-2.0.0.2/
+$ gedit conf/application.conf
+####need to modify kafka-manager.zkhosts
+$ bin/kafka-manager &
+####open 0.0.0.0:9000
