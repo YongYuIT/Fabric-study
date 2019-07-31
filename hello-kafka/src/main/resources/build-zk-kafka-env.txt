@@ -1,0 +1,99 @@
+########install java env
+$ echo $JAVA_HOME
+/mnt/hgfs/java-env/jdk1.8.0_211
+$ java -version
+java version "1.8.0_211"
+Java(TM) SE Runtime Environment (build 1.8.0_211-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.211-b12, mixed mode)
+
+########install docker, ref to https://docs.docker.com/install/linux/docker-ce/ubuntu/
+$ sudo apt-get update
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+$ sudo apt-get update
+$ apt-cache madison docker-ce
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+$ sudo groupadd docker
+$ sudo gpasswd -a ${USER} docker
+$ sudo service docker restart
+$ newgrp - docker
+$ docker version
+Client: Docker Engine - Community
+ Version:           19.03.1
+ API version:       1.40
+ Go version:        go1.12.5
+ Git commit:        74b1e89
+ Built:             Thu Jul 25 21:21:22 2019
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.1
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.12.5
+  Git commit:       74b1e89
+  Built:            Thu Jul 25 21:19:53 2019
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.2.6
+  GitCommit:        894b81a4b802e4eb2a91d1ce216b8817763c29fb
+ runc:
+  Version:          1.0.0-rc8
+  GitCommit:        425e105d5a03fabd737a126ad93d62a9eeede87f
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+
+########install docker-compose
+$ sudo apt-get install python-pip
+$ sudo pip install docker-compose
+$ docker-compose version
+Traceback (most recent call last):
+  File "/usr/local/bin/docker-compose", line 6, in <module>
+    from compose.cli.main import main
+  File "/usr/local/lib/python2.7/dist-packages/compose/cli/main.py", line 17, in <module>
+    import docker
+  File "/usr/local/lib/python2.7/dist-packages/docker/__init__.py", line 2, in <module>
+    from .api import APIClient
+  File "/usr/local/lib/python2.7/dist-packages/docker/api/__init__.py", line 2, in <module>
+    from .client import APIClient
+  File "/usr/local/lib/python2.7/dist-packages/docker/api/client.py", line 10, in <module>
+    from .build import BuildApiMixin
+  File "/usr/local/lib/python2.7/dist-packages/docker/api/build.py", line 6, in <module>
+    from .. import auth
+  File "/usr/local/lib/python2.7/dist-packages/docker/auth.py", line 9, in <module>
+    from .utils import config
+  File "/usr/local/lib/python2.7/dist-packages/docker/utils/__init__.py", line 3, in <module>
+    from .decorators import check_resource, minimum_version, update_headers
+  File "/usr/local/lib/python2.7/dist-packages/docker/utils/decorators.py", line 4, in <module>
+    from . import utils
+  File "/usr/local/lib/python2.7/dist-packages/docker/utils/utils.py", line 13, in <module>
+    from .. import tls
+  File "/usr/local/lib/python2.7/dist-packages/docker/tls.py", line 5, in <module>
+    from .transport import SSLHTTPAdapter
+  File "/usr/local/lib/python2.7/dist-packages/docker/transport/__init__.py", line 3, in <module>
+    from .ssladapter import SSLHTTPAdapter
+  File "/usr/local/lib/python2.7/dist-packages/docker/transport/ssladapter.py", line 23, in <module>
+    from backports.ssl_match_hostname import match_hostname
+ImportError: No module named ssl_match_hostname
+$ cd /usr/local/lib/python2.7/dist-packages
+$ sudo cp -r backports /usr/local/lib/python2.7/dist-packages/docker/transport
+$ docker-compose version
+docker-compose version 1.24.1, build 4667896
+docker-py version: 3.7.3
+CPython version: 2.7.16
+OpenSSL version: OpenSSL 1.1.1b  26 Feb 2019
+
