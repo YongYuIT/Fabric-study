@@ -1,0 +1,47 @@
+version: '2'
+
+networks:
+  thinking:
+
+services:
+  test_1.thinking.com:
+    image: ubuntu
+    container_name: test_1.thinking.com
+    command: sh /zk-cmd/start1.sh
+    tty: true
+    networks:
+      - thinking
+    volumes:
+      - /mnt/hgfs/java-env/jdk1.8.0_211:/java
+      - /home/yong/apache-zookeeper-3.5.5-bin:/zookeeper
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/zk-cmd:/zk-cmd
+    environment:
+      - JAVA_HOME=/java
+
+  test_2.thinking.com:
+    image: ubuntu
+    container_name: test_2.thinking.com
+    command: sh /zk-cmd/start2.sh
+    tty: true
+    networks:
+      - thinking
+    volumes:
+      - /mnt/hgfs/java-env/jdk1.8.0_211:/java
+      - /home/yong/apache-zookeeper-3.5.5-bin:/zookeeper
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/zk-cmd:/zk-cmd
+    environment:
+      - JAVA_HOME=/java
+
+  test_3.thinking.com:
+    image: ubuntu
+    container_name: test_3.thinking.com
+    command: sh /zk-cmd/start3.sh
+    tty: true
+    networks:
+      - thinking
+    volumes:
+      - /mnt/hgfs/java-env/jdk1.8.0_211:/java
+      - /home/yong/apache-zookeeper-3.5.5-bin:/zookeeper
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/zk-cmd:/zk-cmd
+    environment:
+      - JAVA_HOME=/java

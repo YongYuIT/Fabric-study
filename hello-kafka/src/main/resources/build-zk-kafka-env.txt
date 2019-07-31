@@ -97,3 +97,67 @@ docker-py version: 3.7.3
 CPython version: 2.7.16
 OpenSSL version: OpenSSL 1.1.1b  26 Feb 2019
 
+########install zk
+$ wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/stable/apache-zookeeper-3.5.5-bin.tar.gz
+$ tar xvf apache-zookeeper-3.5.5-bin.tar.gz
+$ cd apache-zookeeper-3.5.5-bin/conf/
+$ cp -r zoo_sample.cfg zoo.cfg
+$ echo "server.1=test_1.thinking.com:2888:3888" >> zoo.cfg
+$ echo "server.2=test_2.thinking.com:2888:3888" >> zoo.cfg
+$ echo "server.3=test_3.thinking.com:2888:3888" >> zoo.cfg
+
+########start docker-compose
+####clean env
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+$ docker network prune
+$ docker volume rm $(docker volume list)
+$ sudo rm -rf /home/yong/apache-zookeeper-3.5.5/logs
+$ docker-compose -f /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/docker-compose-zookeeper.yml up -d
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+a3f99ec28e10        ubuntu              "sh /zk-cmd/start1.sh"   7 seconds ago       Up 6 seconds                            test_1.thinking.com
+4fa30d952066        ubuntu              "sh /zk-cmd/start3.sh"   7 seconds ago       Up 6 seconds                            test_3.thinking.com
+4f9d9d45a17f        ubuntu              "sh /zk-cmd/start2.sh"   7 seconds ago       Up 6 seconds                            test_2.thinking.com
+$ docker exec -it test_1.thinking.com /bin/bash
+root@a3f99ec28e10:/# cd /zookeeper/bin
+root@a3f99ec28e10:/zookeeper/bin# sh zkCli.sh
+Connecting to localhost:2181
+2019-07-31 07:12:43,778 [myid:] - INFO  [main:Environment@109] - Client environment:zookeeper.version=3.5.5-390fe37ea45dee01bf87dc1c042b5e3dcce88653, built on 05/03/2019 12:07 GMT
+2019-07-31 07:12:43,782 [myid:] - INFO  [main:Environment@109] - Client environment:host.name=a3f99ec28e10
+2019-07-31 07:12:43,783 [myid:] - INFO  [main:Environment@109] - Client environment:java.version=1.8.0_211
+2019-07-31 07:12:43,788 [myid:] - INFO  [main:Environment@109] - Client environment:java.vendor=Oracle Corporation
+2019-07-31 07:12:43,788 [myid:] - INFO  [main:Environment@109] - Client environment:java.home=/java/jre
+2019-07-31 07:12:43,789 [myid:] - INFO  [main:Environment@109] - Client environment:java.class.path=/zookeeper/bin/../zookeeper-server/target/classes:/zookeeper/bin/../build/classes:/zookeeper/bin/../zookeeper-server/target/lib/*.jar:/zookeeper/bin/../build/lib/*.jar:/zookeeper/bin/../lib/zookeeper-jute-3.5.5.jar:/zookeeper/bin/../lib/zookeeper-3.5.5.jar:/zookeeper/bin/../lib/slf4j-log4j12-1.7.25.jar:/zookeeper/bin/../lib/slf4j-api-1.7.25.jar:/zookeeper/bin/../lib/netty-all-4.1.29.Final.jar:/zookeeper/bin/../lib/log4j-1.2.17.jar:/zookeeper/bin/../lib/json-simple-1.1.1.jar:/zookeeper/bin/../lib/jline-2.11.jar:/zookeeper/bin/../lib/jetty-util-9.4.17.v20190418.jar:/zookeeper/bin/../lib/jetty-servlet-9.4.17.v20190418.jar:/zookeeper/bin/../lib/jetty-server-9.4.17.v20190418.jar:/zookeeper/bin/../lib/jetty-security-9.4.17.v20190418.jar:/zookeeper/bin/../lib/jetty-io-9.4.17.v20190418.jar:/zookeeper/bin/../lib/jetty-http-9.4.17.v20190418.jar:/zookeeper/bin/../lib/javax.servlet-api-3.1.0.jar:/zookeeper/bin/../lib/jackson-databind-2.9.8.jar:/zookeeper/bin/../lib/jackson-core-2.9.8.jar:/zookeeper/bin/../lib/jackson-annotations-2.9.0.jar:/zookeeper/bin/../lib/commons-cli-1.2.jar:/zookeeper/bin/../lib/audience-annotations-0.5.0.jar:/zookeeper/bin/../zookeeper-*.jar:/zookeeper/bin/../zookeeper-server/src/main/resources/lib/*.jar:/zookeeper/bin/../conf:
+2019-07-31 07:12:43,789 [myid:] - INFO  [main:Environment@109] - Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2019-07-31 07:12:43,789 [myid:] - INFO  [main:Environment@109] - Client environment:java.io.tmpdir=/tmp
+2019-07-31 07:12:43,790 [myid:] - INFO  [main:Environment@109] - Client environment:java.compiler=<NA>
+2019-07-31 07:12:43,790 [myid:] - INFO  [main:Environment@109] - Client environment:os.name=Linux
+2019-07-31 07:12:43,790 [myid:] - INFO  [main:Environment@109] - Client environment:os.arch=amd64
+2019-07-31 07:12:43,790 [myid:] - INFO  [main:Environment@109] - Client environment:os.version=5.0.0-13-generic
+2019-07-31 07:12:43,790 [myid:] - INFO  [main:Environment@109] - Client environment:user.name=root
+2019-07-31 07:12:43,791 [myid:] - INFO  [main:Environment@109] - Client environment:user.home=/root
+2019-07-31 07:12:43,791 [myid:] - INFO  [main:Environment@109] - Client environment:user.dir=/zookeeper/bin
+2019-07-31 07:12:43,791 [myid:] - INFO  [main:Environment@109] - Client environment:os.memory.free=174MB
+2019-07-31 07:12:43,794 [myid:] - INFO  [main:Environment@109] - Client environment:os.memory.max=228MB
+2019-07-31 07:12:43,794 [myid:] - INFO  [main:Environment@109] - Client environment:os.memory.total=180MB
+2019-07-31 07:12:43,798 [myid:] - INFO  [main:ZooKeeper@868] - Initiating client connection, connectString=localhost:2181 sessionTimeout=30000 watcher=org.apache.zookeeper.ZooKeeperMain$MyWatcher@3b95a09c
+2019-07-31 07:12:43,807 [myid:] - INFO  [main:X509Util@79] - Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+2019-07-31 07:12:43,826 [myid:] - INFO  [main:ClientCnxnSocket@237] - jute.maxbuffer value is 4194304 Bytes
+2019-07-31 07:12:43,836 [myid:] - INFO  [main:ClientCnxn@1653] - zookeeper.request.timeout value is 0. feature enabled=
+Welcome to ZooKeeper!
+2019-07-31 07:12:43,847 [myid:localhost:2181] - INFO  [main-SendThread(localhost:2181):ClientCnxn$SendThread@1112] - Opening socket connection to server localhost/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error)
+JLine support is enabled
+2019-07-31 07:12:43,936 [myid:localhost:2181] - INFO  [main-SendThread(localhost:2181):ClientCnxn$SendThread@959] - Socket connection established, initiating session, client: /127.0.0.1:51974, server: localhost/127.0.0.1:2181
+2019-07-31 07:12:43,963 [myid:localhost:2181] - INFO  [main-SendThread(localhost:2181):ClientCnxn$SendThread@1394] - Session establishment complete on server localhost/127.0.0.1:2181, sessionid = 0x100013d42770000, negotiated timeout = 30000
+
+WATCHER::
+
+WatchedEvent state:SyncConnected type:None path:null
+[zk: localhost:2181(CONNECTED) 0] close
+
+WATCHER::
+
+WatchedEvent state:Closed type:None path:null
+2019-07-31 07:13:11,729 [myid:] - INFO  [main-EventThread:ClientCnxn$EventThread@524] - EventThread shut down for session: 0x100013d42770000
+2019-07-31 07:13:11,729 [myid:] - INFO  [main:ZooKeeper@1422] - Session: 0x100013d42770000 closed
