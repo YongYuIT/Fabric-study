@@ -16,7 +16,7 @@ services:
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /home/yong/apache-zookeeper-3.5.5-bin:/zookeeper
-      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/zk-cmd:/zk-cmd
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/zk-cmd:/zk-cmd
     environment:
       - JAVA_HOME=/java
 
@@ -32,7 +32,7 @@ services:
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /home/yong/apache-zookeeper-3.5.5-bin:/zookeeper
-      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/zk-cmd:/zk-cmd
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/zk-cmd:/zk-cmd
     environment:
       - JAVA_HOME=/java
 
@@ -48,6 +48,6 @@ services:
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /home/yong/apache-zookeeper-3.5.5-bin:/zookeeper
-      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/zk-cmd:/zk-cmd
+      - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/zk-cmd:/zk-cmd
     environment:
       - JAVA_HOME=/java

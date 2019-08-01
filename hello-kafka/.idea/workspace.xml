@@ -2,51 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1534b051-07f3-4e65-be36-ba6569268478" name="Default Changelist" comment="zk and kafka and kafka-manager built success">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-1/.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-1/cleaner-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-1/log-start-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-1/meta.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-1/recovery-point-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-1/replication-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-2/.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-2/cleaner-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-2/log-start-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-2/meta.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-2/recovery-point-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-2/replication-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-3/.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-3/cleaner-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-3/log-start-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-3/meta.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-3/recovery-point-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/log-3/replication-offset-checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/controller.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/kafka-authorizer.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/kafka-request.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/kafkaServer-gc.log.0.current" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/kafkaServer.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/log-cleaner.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/server.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-1/state-change.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/controller.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/kafka-authorizer.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/kafka-request.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/kafkaServer-gc.log.0.current" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/kafkaServer.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/log-cleaner.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/server.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-2/state-change.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/controller.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/kafka-authorizer.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/kafka-request.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/kafkaServer-gc.log.0.current" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/kafkaServer.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/log-cleaner.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/server.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/state-change.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_3.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_3.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/server_3.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/kafka-cmd/server_3.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/build-zk-kafka-env.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/build-zk-kafka-env.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docker-compose-kafka.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/docker-compose-kafka.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docker-compose-zookeeper.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/docker-compose-zookeeper.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_1.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/kafka_1.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_2.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/kafka_2.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_3.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/kafka_3.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/server_1.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/server_1.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/server_2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/server_2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/kafka-cmd/server_3.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/server_3.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zk-cmd/start1.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/zk-cmd/start1.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zk-cmd/start2.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/zk-cmd/start2.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zk-cmd/start3.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/build-env/zk-cmd/start3.sh" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,10 +31,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/build-zk-kafka-env.txt">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/build-zk-kafka-env.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+            <state relative-caret-position="287">
+              <caret line="161" column="66" lean-forward="true" selection-start-line="161" selection-start-column="66" selection-end-line="161" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -78,7 +56,12 @@
       <find>ports</find>
       <find>$PROJECT_DIR$/src/main/resources/kafka-cmd</find>
       <find>.thinking.com</find>
+      <find>main/resources</find>
+      <find>$PROJECT_DIR$/src/main/resources</find>
     </findStrings>
+    <replaceStrings>
+      <replace>$PROJECT_DIR$/src/main/resources/build-env</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -98,6 +81,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/docker-compose-kafka.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_3.sh" />
         <option value="$PROJECT_DIR$/src/main/resources/kafka-cmd/server_3.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/build-env/build-zk-kafka-env.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/build-env/docker-compose-kafka.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/build-env/docker-compose-zookeeper.yml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -143,32 +130,6 @@
               <item name="hello-kafka" type="b2602c69:ProjectViewProjectNode" />
               <item name="hello-kafka" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="hello-kafka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hello-kafka" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hello-kafka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hello-kafka" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hello-kafka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hello-kafka" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hello-kafka" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hello-kafka" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="kafka-cmd" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -186,6 +147,9 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/build-env" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/kafka-cmd" />
       <recent name="$PROJECT_DIR$/src/main/resources/zk-cmd" />
@@ -217,7 +181,7 @@
       <workItem from="1564478537707" duration="3105000" />
       <workItem from="1564537363823" duration="2840000" />
       <workItem from="1564543849376" duration="15631000" />
-      <workItem from="1564624441307" duration="2710000" />
+      <workItem from="1564624441307" duration="5526000" />
     </task>
     <task id="LOCAL-00001" summary="build basic env">
       <created>1564537610363</created>
@@ -247,15 +211,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564568518071</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="zk and kafka and kafka-manager built success">
+      <created>1564627273957</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1564627273957</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25072000" />
+    <option name="totallyTimeSpent" value="27888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33259425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -264,6 +234,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Spring" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293348" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.15049073" />
@@ -298,49 +269,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="zk and kafka and kafka-manager built success" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/zk-cmd/start3.sh">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/zk-cmd/start3.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/zk-cmd/start2.sh">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/zk-cmd/start2.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/zk-cmd/start1.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_1.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/docker-compose-zookeeper.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/kafka-cmd/server_1.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/server_1.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="30" />
@@ -377,14 +320,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/kafka-logs/sys-log-3/log-cleaner.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_2.sh">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/kafka_2.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/kafka-cmd/server_2.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/server_2.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1845">
           <caret line="123" column="92" selection-start-line="123" selection-start-column="92" selection-end-line="123" selection-end-column="92" />
@@ -419,31 +362,59 @@
         <state relative-caret-position="-5938" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/kafka-cmd/kafka_3.sh">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/kafka_3.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/kafka-cmd/server_3.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/server_3.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
           <caret line="123" column="92" lean-forward="true" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="92" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/docker-compose-kafka.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/docker-compose-kafka.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="668">
+          <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/build-zk-kafka-env.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/kafka-cmd/kafka_1.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/zk-cmd/start1.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/docker-compose-zookeeper.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/build-env/build-zk-kafka-env.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="161" column="66" lean-forward="true" selection-start-line="161" selection-start-column="66" selection-end-line="161" selection-end-column="66" />
         </state>
       </provider>
     </entry>

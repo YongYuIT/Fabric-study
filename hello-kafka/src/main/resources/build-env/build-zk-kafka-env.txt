@@ -113,7 +113,7 @@ $ docker rm -f $(docker ps -aq)
 $ docker network prune
 $ docker volume rm $(docker volume list)
 $ sudo rm -rf /home/yong/apache-zookeeper-3.5.5/logs
-$ docker-compose -f /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/docker-compose-zookeeper.yml up -d
+$ docker-compose -f /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/docker-compose-zookeeper.yml up -d
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 a3f99ec28e10        ubuntu              "sh /zk-cmd/start1.sh"   7 seconds ago       Up 6 seconds                            test_1.thinking.com
@@ -166,15 +166,15 @@ WatchedEvent state:Closed type:None path:null
 $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.3.0/kafka_2.12-2.3.0.tgz
 $ tar xvf kafka_2.12-2.3.0.tgz
 $ cd kafka_2.12-2.3.0/
-$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd/server_1.properties
-$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd/server_2.properties
-$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-cmd/server_3.properties
+$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/kafka-cmd/server_1.properties
+$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/kafka-cmd/server_2.properties
+$ cp -r config/server.properties /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/kafka-cmd/server_3.properties
 ####need to modify --> broker.id, host.name, log.dirs, zookeeper.connect
 
 ########start docker-compose for kafka cluster
 $ sudo rm -rf kafka_2.12-2.3.0/logs
-$ sudo rm -rf /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/kafka-logs/
-$ docker-compose -f /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/docker-compose-kafka.yml up -d
+$ sudo rm -rf /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/kafka-logs/
+$ docker-compose -f /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/docker-compose-kafka.yml up -d
 $ docker exec -it kafka_1.thinking.com /bin/bash
 # cd /kafka/bin
 # ./kafka-topics.sh --create --zookeeper test_1.thinking.com:2181 --replication-factor 1 --partitions 1 --topic test_yong
