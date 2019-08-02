@@ -11,6 +11,8 @@ services:
     tty: true
     networks:
       - thinking
+    ports:
+      - "9092:9092"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/kafka-cmd:/kafka-cmd
@@ -27,6 +29,8 @@ services:
     tty: true
     networks:
       - thinking
+    ports:
+      - "9093:9092"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/kafka-cmd:/kafka-cmd
@@ -43,6 +47,8 @@ services:
     tty: true
     networks:
       - thinking
+    ports:
+      - "9094:9092"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /home/yong/Fabric-study20190730002/hello-kafka/src/main/resources/build-env/kafka-cmd:/kafka-cmd
