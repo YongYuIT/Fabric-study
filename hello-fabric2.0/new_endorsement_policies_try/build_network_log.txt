@@ -1,0 +1,13 @@
+1、参照https://blog.csdn.net/YongYu_IT/article/details/105206244将fabric2.0的示例网络先跑起来
+2、启动3org网络
+3、修改fabric-samples/first-network/docker-compose-cli.yaml文件的cli配置节
+   和fabric-samples/first-network/docker-compose-org3.yaml文件的Org3cli配置节
+   添加go-path下mod的映射，避免重复下载依赖
+    volumes:
+        - /mnt/hgfs/go-env-1/go-path/pkg/mod/:/opt/gopath/pkg/mod/
+
+$ cd fabric-samples/first-network/
+$ ./byfn.sh up
+$ ./eyfn.sh up
+
+
