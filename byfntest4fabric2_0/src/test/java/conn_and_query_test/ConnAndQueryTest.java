@@ -70,14 +70,13 @@ public class ConnAndQueryTest {
 
         //-------------------------------------------------------------
         //执行查询（单节点，无需背书）
-        ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName("mycc").setVersion("1");
-        ChaincodeID chaincodeID = chaincodeIDBuilder.build();
-
         QueryByChaincodeRequest queryByChaincodeRequest = hfclient.newQueryProposalRequest();
-        queryByChaincodeRequest.setArgs(new String[]{"a"});
+        queryByChaincodeRequest.setArgs("a");
         queryByChaincodeRequest.setFcn("query");
-        queryByChaincodeRequest.setChaincodeID(chaincodeID);
-        Collection<ProposalResponse> queryProposals = channel.queryByChaincode(queryByChaincodeRequest);
+        queryByChaincodeRequest.setChaincodeName("mycc");
+        queryByChaincodeRequest.setChaincodeVersion("1");
+
+        Collection<ProposalResponse> queryProposals = channel.queryByChaincode(queryByChaincodeRequest, channel.getPeers());
         for (ProposalResponse pr : queryProposals) {
             if (!pr.isVerified() || pr.getStatus() != ChaincodeResponse.Status.SUCCESS) {
                 System.out.println("Failed query proposal from peer!");
