@@ -70,6 +70,9 @@ public class ConnAndQueryTest {
 
         //-------------------------------------------------------------
         //执行查询（单节点，无需背书）
+
+        //新写法，参考
+        //https://github.com/hyperledger/fabric-sdk-java/blob/master/src/test/java/org/hyperledger/fabric/sdkintegration/End2endLifecycleIT.java
         QueryByChaincodeRequest queryByChaincodeRequest = hfclient.newQueryProposalRequest();
         queryByChaincodeRequest.setArgs("a");
         queryByChaincodeRequest.setFcn("query");
