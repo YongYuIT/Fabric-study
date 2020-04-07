@@ -39,6 +39,7 @@ public class ConnAndQueryTest {
 
         //orderer节点的连接信息
         Properties ordererProperties = new Properties();
+        //crt：服务器的公钥，发给客户端，客户端用这个与服务器进行TLS通信
         ordererProperties.setProperty("pemFile", CRYPTO_HOME + ORDERER_CRYPTO_HOME + "orderers/orderer.example.com/tls/server.crt");
         ordererProperties.setProperty("hostnameOverride", "orderer.example.com");
         ordererProperties.setProperty("sslProvider", "openSSL");
@@ -48,7 +49,7 @@ public class ConnAndQueryTest {
 
         //peer0.org1节点的连接信息
         Properties peer0_org1Properties = new Properties();
-        //crt：服务器的公钥，发给客户端，用这个进行TLS通信
+        //crt：服务器的公钥，发给客户端，客户端用这个与服务器进行TLS通信
         peer0_org1Properties.setProperty("pemFile", CRYPTO_HOME + ORG1_CRYPTO_HOME + "" + "peers/peer0.org1.example.com/tls/server.crt");
         peer0_org1Properties.setProperty("hostnameOverride", "peer0.org1.example.com");
         peer0_org1Properties.setProperty("sslProvider", "openSSL");
