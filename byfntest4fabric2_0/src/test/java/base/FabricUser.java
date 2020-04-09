@@ -1,4 +1,4 @@
-package conn_and_query_test;
+package base;
 
 import org.hyperledger.fabric.sdk.Enrollment;
 import org.hyperledger.fabric.sdk.User;

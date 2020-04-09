@@ -1,4 +1,4 @@
-package conn_and_query_test;
+package base;
 
 import org.apache.commons.io.IOUtils;
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;

@@ -1,5 +1,6 @@
 package conn_and_query_test;
 
+import base.FabricUser;
 import org.hyperledger.fabric.sdk.*;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 import org.junit.Test;
@@ -79,7 +80,10 @@ public class ConnAndQueryTest {
         queryByChaincodeRequest.setChaincodeName("mycc");
         queryByChaincodeRequest.setChaincodeVersion("1");
 
+        //发起网络请求
         Collection<ProposalResponse> queryProposals = channel.queryByChaincode(queryByChaincodeRequest, channel.getPeers());
+
+        //解析结果
         for (ProposalResponse pr : queryProposals) {
             if (!pr.isVerified() || pr.getStatus() != ChaincodeResponse.Status.SUCCESS) {
                 System.out.println("Failed query proposal from peer!");
