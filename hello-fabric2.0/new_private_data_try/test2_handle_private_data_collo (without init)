@@ -1,0 +1,40 @@
+$ docker exec -it Org3cli /bin/bash
+# cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode
+# export GO111MODULE=on
+# export GOPROXY=https://mirrors.aliyun.com/goproxy/
+#### 参照test3建立关于3个org的环境变量
+# ./env_build.sh
+# source env_build.sh
+# export pack_name=marbles02_private_v3
+# export pack_id=c0446d12a1f18cb496424fa05560c041765ea6a594341a9a51c4bdc74630523a
+#### 转到peer0.org1，安装 & 批准链码
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode package ${pack_name}.tar.gz --path marbles02_private/go/ --lang golang --label ${pack_name}
+# peer lifecycle chaincode install ${pack_name}.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+
+#### 转到org2，安装、批准
+# ./change_to_org2.sh
+# source change_to_org2.sh
+# peer lifecycle chaincode install ${pack_name}.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+
+#### 转到org1，提交、调用
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --version 1 --sequence 1 --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode querycommitted --channelID mychannel --name ${pack_name}
+
+# export MARBLE=$(echo -n "{\"name\":\"marble1\",\"color\":\"blue\",\"size\":35,\"owner\":\"tom\",\"price\":99}" | base64 | tr -d \\n)
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} -c '{"Args":["initMarble"]}' --transient "{\"marble\":\"$MARBLE\"}"
+# export MARBLE=$(echo -n "{\"name\":\"marble2\",\"color\":\"red\",\"size\":50,\"owner\":\"tom\",\"price\":102}" | base64 | tr -d \\n)
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} -c '{"Args":["initMarble"]}' --transient "{\"marble\":\"$MARBLE\"}"
+# export MARBLE=$(echo -n "{\"name\":\"marble3\",\"color\":\"blue\",\"size\":70,\"owner\":\"tom\",\"price\":103}" | base64 | tr -d \\n)
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} -c '{"Args":["initMarble"]}' --transient "{\"marble\":\"$MARBLE\"}"
+# export MARBLE_OWNER=$(echo -n "{\"name\":\"marble2\",\"owner\":\"jerry\"}" | base64 | tr -d \\n)
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} -c '{"Args":["transferMarble"]}' --transient "{\"marble_owner\":\"$MARBLE_OWNER\"}"
