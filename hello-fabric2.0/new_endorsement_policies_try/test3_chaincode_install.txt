@@ -78,9 +78,9 @@ export CORE_PEER_MSPCONFIGPATH=${CORE_PEER_MSPCONFIGPATH_3}
 # source change_to_org1.sh
 # peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --peerAddresses ${CORE_PEER_ADDRESS_3} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_3} --version 1 --sequence 1 --init-required --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
 # peer lifecycle chaincode querycommitted --channelID mychannel --name ${pack_name}
-# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --peerAddresses ${CORE_PEER_ADDRESS_3} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_3} --isInit -c '{"Args":["Init","a","100","b","100"]}'
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --peerAddresses ${CORE_PEER_ADDRESS_3} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_3} --isInit -c '{"Args":["Init","a","100","b","100"]}' --waitForEvent
 #### Chaincode invoke successful
-
+#### 没加--waitForEvent看起来可以成功，实际加上之后发现没有执行成功，原因待查
 
 
 

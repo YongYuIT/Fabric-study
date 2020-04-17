@@ -36,7 +36,8 @@ $ docker exec -it Org3cli /bin/bash
 #### 居然可以部署成功，尝试调用一下
 # peer lifecycle chaincode queryinstalled
 # peer lifecycle chaincode querycommitted --channelID mychannel --name ${pack_name}
-# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --isInit -c '{"Args":["Init","a","100","b","100"]}'
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --isInit -c '{"Args":["Init","a","123","b","321"]}'
 #### Chaincode invoke successful
 # peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
 #### 调用成功
+#### 没加--waitForEvent看起来可以成功，实际加上之后发现没有执行成功，原因待查
