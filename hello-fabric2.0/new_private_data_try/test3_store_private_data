@@ -5,32 +5,31 @@ $ docker exec -it Org3cli /bin/bash
 #### 参照test3建立关于3个org的环境变量
 # ./env_build.sh
 # source env_build.sh
-# export pack_name=abstore
-# export pack_id=9e11241ded7f81b8c2fbd835be8caa7990fd07184c0f4117c2a23cb85efdd5c6
+# export pack_name=histroy_try20200420001
+# export pack_id=c9c3a2173689cb40ad0a14268c61d4321207816c87a481e46bfb3488751f71c3
+# export pack_endorsement="AND('Org1MSP.member','Org2MSP.member')"
 #### 转到peer0.org1，安装 & 批准链码
 # ./change_to_org1.sh
 # source change_to_org1.sh
-# peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}
+# peer lifecycle chaincode package ${pack_name}.tar.gz --path histroy_try/go/ --lang golang --label ${pack_name}
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member','Org2.member')"
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --signature-policy "AND('Org1.member','Org2.member')"
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --signature-policy ${pack_endorsement}
 
 #### 转到org2，安装、批准
 # ./change_to_org2.sh
 # source change_to_org2.sh
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member','Org2.member')"
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --signature-policy "AND('Org1.member','Org2.member')"
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --signature-policy ${pack_endorsement}
 
 #### 转到org1，提交、调用
 # ./change_to_org1.sh
 # source change_to_org1.sh
-# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --version 1 --sequence 1 --signature-policy "AND('Org1.member','Org2.member')" --waitForEvent
+# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --version 1 --sequence 1 --signature-policy ${pack_endorsement} --waitForEvent
 # peer lifecycle chaincode querycommitted --channelID mychannel --name ${pack_name}
 # peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} -c '{"Args":["put_kv","test_key","test-001"]}' --waitForEvent
-# peer chaincode query -C mychannel -n ${pack_name} -c '{"Args":["get_value","test_key"]}' --waitForEvent
-# peer chaincode query -C mychannel -n ${pack_name} -c '{"Args":["get_value_history","test_key"]}' --waitForEvent
-
-####这段执行链码调用的时候不成功，原因待查
+# peer chaincode query -C mychannel -n ${pack_name} -c '{"Args":["get_value","test_key"]}'
+# peer chaincode query -C mychannel -n ${pack_name} -c '{"Args":["get_value_history","test_key"]}'
