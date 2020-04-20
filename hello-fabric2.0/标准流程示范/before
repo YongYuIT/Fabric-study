@@ -1,0 +1,56 @@
+1、参照https://blog.csdn.net/YongYu_IT/article/details/105206244将fabric2.0的示例网络先跑起来
+2、启动3org网络
+3、修改fabric-samples/first-network/docker-compose-cli.yaml文件的cli配置节
+   和fabric-samples/first-network/docker-compose-org3.yaml文件的Org3cli配置节
+   添加go-path下mod的映射，避免重复下载依赖
+    volumes:
+        - /mnt/hgfs/go-env-1/go-path/pkg/mod/:/opt/gopath/pkg/mod/
+
+$ cd fabric-samples/first-network/
+$ ./byfn.sh up
+$ ./eyfn.sh up
+
+$ docker exec -it Org3cli /bin/bash
+# cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/
+
+#### 编写change_to_org1.sh、change_to_org2.sh、change_to_org3.sh如下，
+# vi env_build.sh
+export CORE_PEER_ADDRESS_1=peer0.org1.example.com:7051
+export CORE_PEER_LOCALMSPID_1=Org1MSP
+export CORE_PEER_TLS_ROOTCERT_FILE_1=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH_1=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin\@org1.example.com/msp/
+
+export CORE_PEER_ADDRESS_2=peer0.org2.example.com:9051
+export CORE_PEER_LOCALMSPID_2=Org2MSP
+export CORE_PEER_TLS_ROOTCERT_FILE_2=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH_2=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/users/Admin\@org2.example.com/msp/
+
+export CORE_PEER_ADDRESS_3=peer0.org3.example.com:11051
+export CORE_PEER_LOCALMSPID_3=Org3MSP
+export CORE_PEER_TLS_ROOTCERT_FILE_3=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH_3=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/users/Admin\@org3.example.com/msp/
+
+export ORDERER_ADDRESS=orderer.example.com:7050
+export ORDERER_CA_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+# vi change_to_org1.sh
+export CORE_PEER_ADDRESS=${CORE_PEER_ADDRESS_1}
+export CORE_PEER_LOCALMSPID=${CORE_PEER_LOCALMSPID_1}
+export CORE_PEER_TLS_ROOTCERT_FILE=${CORE_PEER_TLS_ROOTCERT_FILE_1}
+export CORE_PEER_MSPCONFIGPATH=${CORE_PEER_MSPCONFIGPATH_1}
+
+# vi change_to_org2.sh
+export CORE_PEER_ADDRESS=${CORE_PEER_ADDRESS_2}
+export CORE_PEER_LOCALMSPID=${CORE_PEER_LOCALMSPID_2}
+export CORE_PEER_TLS_ROOTCERT_FILE=${CORE_PEER_TLS_ROOTCERT_FILE_2}
+export CORE_PEER_MSPCONFIGPATH=${CORE_PEER_MSPCONFIGPATH_2}
+
+# vi change_to_org3.sh
+export CORE_PEER_ADDRESS=${CORE_PEER_ADDRESS_3}
+export CORE_PEER_LOCALMSPID=${CORE_PEER_LOCALMSPID_3}
+export CORE_PEER_TLS_ROOTCERT_FILE=${CORE_PEER_TLS_ROOTCERT_FILE_3}
+export CORE_PEER_MSPCONFIGPATH=${CORE_PEER_MSPCONFIGPATH_3}
+
+# chmod -R 755 *.sh
+# ./env_build.sh
+# source env_build.sh

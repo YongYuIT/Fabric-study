@@ -1,0 +1,32 @@
+#### 正确示范1 三个组织，默认背书条件下两个参与背书、调用
+$ docker exec -it Org3cli /bin/bash
+# cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/
+# export GO111MODULE=on
+
+#### 转到org1，打包、安装、批准
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode package abstore_20200417003.tar.gz --path abstore/go/ --lang golang --label abstore_20200417003
+# peer lifecycle chaincode install abstore_20200417003.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417003 --version 1 --init-required --package-id abstore_20200417003:5da64648916157b27288f86796e501f0d4935dfa2367193af8d60199e36a89f2 --sequence 1 --waitForEvent
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name abstore_20200417003 --version 1 --sequence 1 --output json --init-required
+
+#### 转到org2，安装、批准
+# ./change_to_org2.sh
+# source change_to_org2.sh
+# peer lifecycle chaincode install abstore_20200417003.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417003 --version 1 --init-required --package-id abstore_20200417003:5da64648916157b27288f86796e501f0d4935dfa2367193af8d60199e36a89f2 --sequence 1 --waitForEvent
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name abstore_20200417003 --version 1 --sequence 1 --output json --init-required
+
+#### 转到org1，提交、调用
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode commit -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417003 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --version 1 --sequence 1 --init-required
+# peer lifecycle chaincode querycommitted --channelID mychannel --name abstore_20200417003
+# peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n abstore_20200417003 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --isInit -c '{"Args":["Init","a","123","b","654"]}'
+# peer chaincode query -C mychannel -n abstore_20200417003 -c '{"Args":["query","a"]}'
+
+
+

@@ -1,0 +1,40 @@
+#### 在test2的基础上改变签名策略为"AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"，增加参与方org3，其他不变
+$ docker exec -it Org3cli /bin/bash
+# cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/
+# export GO111MODULE=on
+
+#### 转到org1，打包、安装、批准
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode package abstore_20200417005.tar.gz --path abstore/go/ --lang golang --label abstore_20200417005
+# peer lifecycle chaincode install abstore_20200417005.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417005 --version 1 --init-required --package-id abstore_20200417005:41eff2d1c32d198fb319b3a946216c5af8a2ac5eaec47e474357585bfb7e8b86 --sequence 1 --waitForEvent --signature-policy "AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name abstore_20200417005 --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
+
+#### 转到org2，安装、批准
+# ./change_to_org2.sh
+# source change_to_org2.sh
+# peer lifecycle chaincode install abstore_20200417005.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417005 --version 1 --init-required --package-id abstore_20200417005:41eff2d1c32d198fb319b3a946216c5af8a2ac5eaec47e474357585bfb7e8b86 --sequence 1 --waitForEvent --signature-policy "AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name abstore_20200417005 --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
+
+#### 转到org3，安装、批准
+# ./change_to_org3.sh
+# source change_to_org3.sh
+# peer lifecycle chaincode install abstore_20200417005.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417005 --version 1 --init-required --package-id abstore_20200417005:41eff2d1c32d198fb319b3a946216c5af8a2ac5eaec47e474357585bfb7e8b86 --sequence 1 --waitForEvent --signature-policy "AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name abstore_20200417005 --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
+
+#### 转到org1，提交、调用
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode commit -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417005 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt --version 1 --sequence 1 --init-required --signature-policy "AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
+# peer lifecycle chaincode querycommitted --channelID mychannel --name abstore_20200417005
+# peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n abstore_20200417005 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --peerAddresses peer0.org3.example.com:11051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt --isInit -c '{"Args":["Init","a","123","b","654"]}'
+# peer chaincode query -C mychannel -n abstore_20200417005 -c '{"Args":["query","a"]}'
+
+
+

@@ -1,0 +1,34 @@
+#### 正确示范2 三个组织，自定义背书条件下两个参与背书、调用
+$ docker exec -it Org3cli /bin/bash
+# cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/
+# export GO111MODULE=on
+
+#### 转到org1，打包、安装、批准
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode package abstore_20200417004.tar.gz --path abstore/go/ --lang golang --label abstore_20200417004
+# peer lifecycle chaincode install abstore_20200417004.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417004 --version 1 --init-required --package-id abstore_20200417004:cb1acf2f92648821b7f7efe7e941bb63b7442543093c02dbe4e28779534c9808 --sequence 1 --waitForEvent --signature-policy "AND('Org1MSP.member','Org2MSP.member')"
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name abstore_20200417004 --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1MSP.member','Org2MSP.member')"
+
+#### 转到org2，安装、批准
+# ./change_to_org2.sh
+# source change_to_org2.sh
+# peer lifecycle chaincode install abstore_20200417004.tar.gz
+# peer lifecycle chaincode queryinstalled
+# peer lifecycle chaincode approveformyorg --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417004 --version 1 --init-required --package-id abstore_20200417004:cb1acf2f92648821b7f7efe7e941bb63b7442543093c02dbe4e28779534c9808 --sequence 1 --waitForEvent --signature-policy "AND('Org1MSP.member','Org2MSP.member')"
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name abstore_20200417004 --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1MSP.member','Org2MSP.member')"
+
+#### 转到org1，提交、调用
+# ./change_to_org1.sh
+# source change_to_org1.sh
+# peer lifecycle chaincode commit -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name abstore_20200417004 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --version 1 --sequence 1 --init-required --signature-policy "AND('Org1MSP.member','Org2MSP.member')"
+# peer lifecycle chaincode querycommitted --channelID mychannel --name abstore_20200417004
+# peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n abstore_20200417004 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --isInit -c '{"Args":["Init","a","123","b","654"]}'
+# peer chaincode query -C mychannel -n abstore_20200417004 -c '{"Args":["query","a"]}'
+
+####此前参照此前参照https://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html#setting-chaincode-level-endorsement-policies，背书策略写成"AND('Org1.member', 'Org2.member')"，其中的msp id其实写错了，导致一直失败
+
+
+
