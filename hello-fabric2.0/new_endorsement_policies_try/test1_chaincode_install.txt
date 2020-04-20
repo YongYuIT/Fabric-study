@@ -9,12 +9,13 @@ $ docker exec -it cli /bin/bash
 # ./env_build.sh
 # source env_build.sh
 # export pack_name=abstore_test_v1
+# export pack_path=abstore/go/
 # export pack_id=0815eddc914fe7d8e195ba4069b6e19bef0a7f0d05b9126c9fe37f15d7a2d48f
 
 #### 转到peer0.org1，安装 & 批准链码
 # ./change_to_org1.sh
 # source change_to_org1.sh
-# peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}
+# peer lifecycle chaincode package ${pack_name}.tar.gz --path ${pack_path} --lang golang --label ${pack_name}
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
 # peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent
@@ -36,7 +37,8 @@ $ docker exec -it cli /bin/bash
 # source change_to_org1.sh
 # peer lifecycle chaincode commit -o orderer.example.com:7050 --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --version 1 --sequence 1 --init-required
 # peer lifecycle chaincode querycommitted --channelID mychannel --name ${pack_name}
-# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --isInit -c '{"Args":["Init","a","100","b","100"]}'
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --isInit -c '{"Args":["Init","a","123","b","321"]}'
+# peer chaincode query -C mychannel -n ${pack_name} -c '{"Args":["query","a"]}'
 # 部署&调用成功，事实证明，大多数组织批准链码，可以在默认背书策略（大多数同意即可）下部署链码
 
 # 为了严谨，尝试在只有org1批准链码的情况下，链码是否可以在默认背书策略下部署成功
@@ -45,7 +47,7 @@ $ docker exec -it cli /bin/bash
 # export pack_name=abstore_test_v2
 # export pack_id=55e4d12fff28eb62a8d9a3281ba118b1bf61ad055d65e98575e6adbb12cb47e2
 # cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode
-# peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}
+# peer lifecycle chaincode package ${pack_name}.tar.gz --path ${pack_path} --lang golang --label ${pack_name}
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent
 # peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required
@@ -56,12 +58,13 @@ Error: transaction invalidated with status (ENDORSEMENT_POLICY_FAILURE)
 # 再次修改，如果背书策略指定只需org1背书，则应该可以部署成功
 # export pack_name=abstore_test_v3
 # export pack_id=fed990954a222601b20962623b2608ca7ba83d4f3ebaf7dec463b7571f918b38
+# export pack_endorsement="AND('Org1MSP.member')"
 # cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode
-# peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}
+# peer lifecycle chaincode package ${pack_name}.tar.gz --path ${pack_path} --lang golang --label ${pack_name}
 # peer lifecycle chaincode install ${pack_name}.tar.gz
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member')"
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1.member')"
-# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --version 1 --sequence 1 --init-required --signature-policy "AND('Org1.member')"
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement}
+# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --version 1 --sequence 1 --init-required --signature-policy ${pack_endorsement}
 # 很奇怪，在部署的地方报错，待查......
 
 

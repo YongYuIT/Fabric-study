@@ -47,40 +47,41 @@ export CORE_PEER_MSPCONFIGPATH=${CORE_PEER_MSPCONFIGPATH_3}
 # source env_build.sh
 
 #### 转到org1，打包、安装、批准
-# export pack_name=abstore_test_v6
-# export pack_id=6ee4901f4454bdaf0c29c68074d347afbfef1da9fc004ac82741968808099f5a
+# export pack_name=abstore_test_v7
+# export pack_id=8448ce3dc3af215aae0a8803ad53b6ff50a5eba1a0316de19d3fbde7b9a8d521
+# export pack_endorsement="AND('Org1MSP.member',OR('Org2MSP.member','Org3MSP.member'))"
 # ./change_to_org1.sh
 # source change_to_org1.sh
 # peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement}
 
 #### 转到org2，安装、批准
 # ./change_to_org2.sh
 # source change_to_org2.sh
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement}
 
 #### 转到org3，安装、批准
 # ./change_to_org3.sh
 # source change_to_org3.sh
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement}
 
 #### 转到org1，提交、调用
 # ./change_to_org1.sh
 # source change_to_org1.sh
-# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --peerAddresses ${CORE_PEER_ADDRESS_3} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_3} --version 1 --sequence 1 --init-required --signature-policy "AND('Org1.member',OR('Org2.member','Org3.member'))"
+# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --peerAddresses ${CORE_PEER_ADDRESS_3} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_3} --version 1 --sequence 1 --init-required --signature-policy ${pack_endorsement}
 # peer lifecycle chaincode querycommitted --channelID mychannel --name ${pack_name}
-# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --peerAddresses ${CORE_PEER_ADDRESS_3} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_3} --isInit -c '{"Args":["Init","a","100","b","100"]}' --waitForEvent
+# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --peerAddresses ${CORE_PEER_ADDRESS_3} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_3} --isInit -c '{"Args":["Init","a","123","b","321"]}' --waitForEvent
 #### Chaincode invoke successful
-#### 没加--waitForEvent看起来可以成功，实际加上之后发现没有执行成功，原因待查
+# peer chaincode query -C mychannel -n ${pack_name} -c '{"Args":["query","a"]}'
 
 
 
