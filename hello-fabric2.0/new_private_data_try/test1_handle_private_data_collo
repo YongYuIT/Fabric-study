@@ -7,29 +7,29 @@ $ docker exec -it Org3cli /bin/bash
 # source env_build.sh
 # export pack_name=marbles02_private_v2
 # export pack_id=317cb0d248acd7899990eda5453227d0132d46d8f33f9344a5e76c0e541bf4ae
+# export pack_endorsement="AND('Org1MSP.member','Org2MSP.member')"
 #### 转到peer0.org1，安装 & 批准链码
 # ./change_to_org1.sh
 # source change_to_org1.sh
 # peer lifecycle chaincode package ${pack_name}.tar.gz --path marbles02_private/go/ --lang golang --label ${pack_name}
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement} --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement} --collections-config marbles02_private/collections_config.json
 
 #### 转到org2，安装、批准
 # ./change_to_org2.sh
 # source change_to_org2.sh
 # peer lifecycle chaincode install ${pack_name}.tar.gz
 # peer lifecycle chaincode queryinstalled
-# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
-# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement} --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement} --collections-config marbles02_private/collections_config.json
 
 #### 转到org1，提交、调用
 # ./change_to_org1.sh
 # source change_to_org1.sh
-# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --version 1 --sequence 1 --init-required --signature-policy "AND('Org1.member','Org2.member')" --collections-config marbles02_private/collections_config.json
+# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID mychannel --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --version 1 --sequence 1 --init-required --signature-policy ${pack_endorsement} --collections-config marbles02_private/collections_config.json
 # peer lifecycle chaincode querycommitted --channelID mychannel --name ${pack_name}
 # peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --isInit -c '{"Args":[]}'
 # export MARBLE=$(echo -n "{\"name\":\"marble1\",\"color\":\"blue\",\"size\":35,\"owner\":\"tom\",\"price\":99}" | base64 | tr -d \\n)
 # peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C mychannel -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} -c '{"Args":["initMarble"]}' --transient "{\"marble\":\"$MARBLE\"}"
-#### 初始化成功，调用失败，待查
