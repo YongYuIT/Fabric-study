@@ -1,0 +1,15 @@
+PeerOrgs:
+  - Name: THKOrg1
+    Domain: thk_org1.thinking.com
+    EnableNodeOUs: true
+    Template:
+      Count: 3
+    Users:
+      Count: 3
+  - Name: THKOrg2
+    Domain: thk_org2.thinking.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 1
