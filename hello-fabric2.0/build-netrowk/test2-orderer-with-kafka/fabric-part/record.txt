@@ -1,0 +1,360 @@
+1、计划初始网路结构
+	1.1、orderer组织结构，详见《crypto-config-orderer.yaml》
+	1.2、peer组织结构，详见《crypto-config-peer.yaml》
+
+2、生成MSP配置文件
+
+$ sudo ln -s /home/yong/Desktop/env_init/fabric-samples/bin/cryptogen /usr/bin/cryptogen
+$ cryptogen generate --config crypto-config-orderer.yaml
+$ cryptogen generate --config crypto-config-peer.yaml
+$ tree crypto-config
+crypto-config
+├── ordererOrganizations
+│   └── thinking.com
+│       ├── ca
+│       │   ├── ca.thinking.com-cert.pem
+│       │   └── priv_sk
+│       ├── msp
+│       │   ├── admincerts
+│       │   │   └── Admin@thinking.com-cert.pem
+│       │   ├── cacerts
+│       │   │   └── ca.thinking.com-cert.pem
+│       │   └── tlscacerts
+│       │       └── tlsca.thinking.com-cert.pem
+│       ├── orderers
+│       │   └── thinking_orderer.thinking.com
+│       │       ├── msp
+│       │       │   ├── admincerts
+│       │       │   │   └── Admin@thinking.com-cert.pem
+│       │       │   ├── cacerts
+│       │       │   │   └── ca.thinking.com-cert.pem
+│       │       │   ├── keystore
+│       │       │   │   └── priv_sk
+│       │       │   ├── signcerts
+│       │       │   │   └── thinking_orderer.thinking.com-cert.pem
+│       │       │   └── tlscacerts
+│       │       │       └── tlsca.thinking.com-cert.pem
+│       │       └── tls
+│       │           ├── ca.crt
+│       │           ├── server.crt
+│       │           └── server.key
+│       ├── tlsca
+│       │   ├── priv_sk
+│       │   └── tlsca.thinking.com-cert.pem
+│       └── users
+│           └── Admin@thinking.com
+│               ├── msp
+│               │   ├── admincerts
+│               │   │   └── Admin@thinking.com-cert.pem
+│               │   ├── cacerts
+│               │   │   └── ca.thinking.com-cert.pem
+│               │   ├── keystore
+│               │   │   └── priv_sk
+│               │   ├── signcerts
+│               │   │   └── Admin@thinking.com-cert.pem
+│               │   └── tlscacerts
+│               │       └── tlsca.thinking.com-cert.pem
+│               └── tls
+│                   ├── ca.crt
+│                   ├── client.crt
+│                   └── client.key
+└── peerOrganizations
+    ├── thk_org1.thinking.com
+    │   ├── ca
+    │   │   ├── ca.thk_org1.thinking.com-cert.pem
+    │   │   └── priv_sk
+    │   ├── msp
+    │   │   ├── admincerts
+    │   │   ├── cacerts
+    │   │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │   │   ├── config.yaml
+    │   │   └── tlscacerts
+    │   │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │   ├── peers
+    │   │   ├── peer0.thk_org1.thinking.com
+    │   │   │   ├── msp
+    │   │   │   │   ├── admincerts
+    │   │   │   │   ├── cacerts
+    │   │   │   │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │   │   │   │   ├── config.yaml
+    │   │   │   │   ├── keystore
+    │   │   │   │   │   └── priv_sk
+    │   │   │   │   ├── signcerts
+    │   │   │   │   │   └── peer0.thk_org1.thinking.com-cert.pem
+    │   │   │   │   └── tlscacerts
+    │   │   │   │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │   │   │   └── tls
+    │   │   │       ├── ca.crt
+    │   │   │       ├── server.crt
+    │   │   │       └── server.key
+    │   │   ├── peer1.thk_org1.thinking.com
+    │   │   │   ├── msp
+    │   │   │   │   ├── admincerts
+    │   │   │   │   ├── cacerts
+    │   │   │   │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │   │   │   │   ├── config.yaml
+    │   │   │   │   ├── keystore
+    │   │   │   │   │   └── priv_sk
+    │   │   │   │   ├── signcerts
+    │   │   │   │   │   └── peer1.thk_org1.thinking.com-cert.pem
+    │   │   │   │   └── tlscacerts
+    │   │   │   │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │   │   │   └── tls
+    │   │   │       ├── ca.crt
+    │   │   │       ├── server.crt
+    │   │   │       └── server.key
+    │   │   └── peer2.thk_org1.thinking.com
+    │   │       ├── msp
+    │   │       │   ├── admincerts
+    │   │       │   ├── cacerts
+    │   │       │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │   │       │   ├── config.yaml
+    │   │       │   ├── keystore
+    │   │       │   │   └── priv_sk
+    │   │       │   ├── signcerts
+    │   │       │   │   └── peer2.thk_org1.thinking.com-cert.pem
+    │   │       │   └── tlscacerts
+    │   │       │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │   │       └── tls
+    │   │           ├── ca.crt
+    │   │           ├── server.crt
+    │   │           └── server.key
+    │   ├── tlsca
+    │   │   ├── priv_sk
+    │   │   └── tlsca.thk_org1.thinking.com-cert.pem
+    │   └── users
+    │       ├── Admin@thk_org1.thinking.com
+    │       │   ├── msp
+    │       │   │   ├── admincerts
+    │       │   │   ├── cacerts
+    │       │   │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │       │   │   ├── config.yaml
+    │       │   │   ├── keystore
+    │       │   │   │   └── priv_sk
+    │       │   │   ├── signcerts
+    │       │   │   │   └── Admin@thk_org1.thinking.com-cert.pem
+    │       │   │   └── tlscacerts
+    │       │   │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │       │   └── tls
+    │       │       ├── ca.crt
+    │       │       ├── client.crt
+    │       │       └── client.key
+    │       ├── User1@thk_org1.thinking.com
+    │       │   ├── msp
+    │       │   │   ├── admincerts
+    │       │   │   ├── cacerts
+    │       │   │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │       │   │   ├── config.yaml
+    │       │   │   ├── keystore
+    │       │   │   │   └── priv_sk
+    │       │   │   ├── signcerts
+    │       │   │   │   └── User1@thk_org1.thinking.com-cert.pem
+    │       │   │   └── tlscacerts
+    │       │   │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │       │   └── tls
+    │       │       ├── ca.crt
+    │       │       ├── client.crt
+    │       │       └── client.key
+    │       ├── User2@thk_org1.thinking.com
+    │       │   ├── msp
+    │       │   │   ├── admincerts
+    │       │   │   ├── cacerts
+    │       │   │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │       │   │   ├── config.yaml
+    │       │   │   ├── keystore
+    │       │   │   │   └── priv_sk
+    │       │   │   ├── signcerts
+    │       │   │   │   └── User2@thk_org1.thinking.com-cert.pem
+    │       │   │   └── tlscacerts
+    │       │   │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │       │   └── tls
+    │       │       ├── ca.crt
+    │       │       ├── client.crt
+    │       │       └── client.key
+    │       └── User3@thk_org1.thinking.com
+    │           ├── msp
+    │           │   ├── admincerts
+    │           │   ├── cacerts
+    │           │   │   └── ca.thk_org1.thinking.com-cert.pem
+    │           │   ├── config.yaml
+    │           │   ├── keystore
+    │           │   │   └── priv_sk
+    │           │   ├── signcerts
+    │           │   │   └── User3@thk_org1.thinking.com-cert.pem
+    │           │   └── tlscacerts
+    │           │       └── tlsca.thk_org1.thinking.com-cert.pem
+    │           └── tls
+    │               ├── ca.crt
+    │               ├── client.crt
+    │               └── client.key
+    └── thk_org2.thinking.com
+        ├── ca
+        │   ├── ca.thk_org2.thinking.com-cert.pem
+        │   └── priv_sk
+        ├── msp
+        │   ├── admincerts
+        │   ├── cacerts
+        │   │   └── ca.thk_org2.thinking.com-cert.pem
+        │   ├── config.yaml
+        │   └── tlscacerts
+        │       └── tlsca.thk_org2.thinking.com-cert.pem
+        ├── peers
+        │   ├── peer0.thk_org2.thinking.com
+        │   │   ├── msp
+        │   │   │   ├── admincerts
+        │   │   │   ├── cacerts
+        │   │   │   │   └── ca.thk_org2.thinking.com-cert.pem
+        │   │   │   ├── config.yaml
+        │   │   │   ├── keystore
+        │   │   │   │   └── priv_sk
+        │   │   │   ├── signcerts
+        │   │   │   │   └── peer0.thk_org2.thinking.com-cert.pem
+        │   │   │   └── tlscacerts
+        │   │   │       └── tlsca.thk_org2.thinking.com-cert.pem
+        │   │   └── tls
+        │   │       ├── ca.crt
+        │   │       ├── server.crt
+        │   │       └── server.key
+        │   └── peer1.thk_org2.thinking.com
+        │       ├── msp
+        │       │   ├── admincerts
+        │       │   ├── cacerts
+        │       │   │   └── ca.thk_org2.thinking.com-cert.pem
+        │       │   ├── config.yaml
+        │       │   ├── keystore
+        │       │   │   └── priv_sk
+        │       │   ├── signcerts
+        │       │   │   └── peer1.thk_org2.thinking.com-cert.pem
+        │       │   └── tlscacerts
+        │       │       └── tlsca.thk_org2.thinking.com-cert.pem
+        │       └── tls
+        │           ├── ca.crt
+        │           ├── server.crt
+        │           └── server.key
+        ├── tlsca
+        │   ├── priv_sk
+        │   └── tlsca.thk_org2.thinking.com-cert.pem
+        └── users
+            ├── Admin@thk_org2.thinking.com
+            │   ├── msp
+            │   │   ├── admincerts
+            │   │   ├── cacerts
+            │   │   │   └── ca.thk_org2.thinking.com-cert.pem
+            │   │   ├── config.yaml
+            │   │   ├── keystore
+            │   │   │   └── priv_sk
+            │   │   ├── signcerts
+            │   │   │   └── Admin@thk_org2.thinking.com-cert.pem
+            │   │   └── tlscacerts
+            │   │       └── tlsca.thk_org2.thinking.com-cert.pem
+            │   └── tls
+            │       ├── ca.crt
+            │       ├── client.crt
+            │       └── client.key
+            └── User1@thk_org2.thinking.com
+                ├── msp
+                │   ├── admincerts
+                │   ├── cacerts
+                │   │   └── ca.thk_org2.thinking.com-cert.pem
+                │   ├── config.yaml
+                │   ├── keystore
+                │   │   └── priv_sk
+                │   ├── signcerts
+                │   │   └── User1@thk_org2.thinking.com-cert.pem
+                │   └── tlscacerts
+                │       └── tlsca.thk_org2.thinking.com-cert.pem
+                └── tls
+                    ├── ca.crt
+                    ├── client.crt
+                    └── client.key
+
+133 directories, 125 files
+
+####补充点1，解读MSP配置中的各种证书
+
+3、生成区块链初始化文件，包括：初始区块、通道配置、锚节点配置
+	3.1 创建初始区块
+	$ sudo ln -s /home/yong/Desktop/env_init/fabric-samples/bin/configtxgen /usr/bin/configtxgen
+	创建用于生成初始区块的配置文件，详见《configtx_firstblock.yaml》
+	####补充点2，解读生成初始区块配置中的OrdererType: etcdraft
+	$ ln -s configtx_firstblock.yaml configtx.yaml
+	$ mkdir channel-artifacts
+	$ configtxgen -profile SampleMultiNodeEtcdRaft -channelID thk-sys-channel -outputBlock channel-artifacts/genesis.block
+	####补充点3，提炼、归纳、解读《configtx_firstblock.yaml》
+	3.2 创建通道配置
+	创建用于生成通道配置的配置文件，详见《configtx_channel.yaml》
+	$ rm configtx.yaml
+	$ ln -s configtx_channel.yaml configtx.yaml
+	$ configtxgen -profile THKChannel -outputCreateChannelTx channel-artifacts/channel.tx -channelID thkchannel
+	3.3 创建锚节点配置
+	还是用《configtx_channel.yaml》文件
+	$ configtxgen -profile THKChannel -outputAnchorPeersUpdate channel-artifacts/THKOrg1MSPanchors.tx -channelID thkchannel -asOrg THKOrg1
+	$ configtxgen -profile THKChannel -outputAnchorPeersUpdate channel-artifacts/THKOrg2MSPanchors.tx -channelID thkchannel -asOrg THKOrg2
+	
+4、启动orderer组织（基于docker compose虚拟网络）
+	4.0 清空docker环境
+	$ docker stop $(docker ps -aq)
+	$ docker rm -f $(docker ps -aq)
+	$ docker network prune
+	$ docker volume rm $(docker volume list)
+	4.1 准备《docker_comp_orderer.yaml》文件
+	4.2 启动orderer节点
+	$ cd thk_network
+	$ docker-compose -f docker_comp_orderer.yaml up -d
+5、启动peer组织（基于docker compose虚拟网络）
+	5.1 准备《docker_comp_thk_org1.yaml》、《docker_comp_thk_org1.yaml》
+	5.2 启动thk_org1
+	$ docker-compose -f docker_comp_thk_org1.yaml up -d
+	5.3 启动thk_org2
+	$ docker-compose -f docker_comp_thk_org2.yaml up -d
+6、启动客户端节点，操作区块链
+	6.1 准备《docker_comp_cli.yaml》文件
+	6.2 启动cli节点
+	$ docker-compose -f docker_comp_cli.yaml up -d
+	6.3 创建通道，各个节点加入通道
+		6.3.1 查询当前节点连接通道的情况
+		$ docker ps | grep cli
+		$ docker exec -it aca6b97aee30 /bin/bash
+		# peer channel list
+		6.3.2 创建并加入通道
+		# peer channel create -o thinking_orderer.thinking.com:7050 -c thkchannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem
+		# ls
+		# peer channel join -b thkchannel.block
+		# peer channel list
+		6.3.3 切换其他节点，加入通道（以peer1.thk_org1为例）
+		# export CORE_PEER_ADDRESS=peer1.thk_org1.thinking.com:8051
+		# export CORE_PEER_LOCALMSPID=THKOrg1MSP
+		# export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/tls/ca.crt
+		# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/msp
+		# peer channel join -b thkchannel.block
+		# peer channel list
+	6.4 安装、执行链码（参照《new_endorsement_policies_try/test3_chaincode_install.txt》）
+	$ sudo cp -r ~/Desktop/env_init/fabric-samples/chaincode/abstore chaincode/
+	# cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/
+	# chmod -R 755 *.sh
+	# ./env_build.sh
+	# source env_build.sh
+	# ./change_to_org1.sh
+	# source change_to_org1.sh
+	# export export pack_name=abstore_20200424001
+	# export pack_id=2288c0c28f9510b96ac4ac154966180bb6f17dcd9e81916c0fcdd7fe06a69f92
+	# export pack_endorsement="AND('THKOrg1MSP.member','THKOrg2MSP.member')"
+	# export channelid=thkchannel
+	# peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}
+	# peer lifecycle chaincode install ${pack_name}.tar.gz
+	# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID ${channelid} --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+	# peer lifecycle chaincode checkcommitreadiness --channelID ${channelid} --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement}
+	
+	# ./change_to_org2.sh
+	# source change_to_org2.sh
+	# peer lifecycle chaincode install ${pack_name}.tar.gz
+	# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID ${channelid} --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+	# peer lifecycle chaincode checkcommitreadiness --channelID ${channelid} --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement}
+	
+	# ./change_to_org1.sh
+	# source change_to_org1.sh
+	# peer lifecycle chaincode commit -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} --channelID ${channelid} --name ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --version 1 --sequence 1 --init-required --signature-policy ${pack_endorsement}
+	# peer lifecycle chaincode querycommitted --channelID ${channelid} --name ${pack_name}
+	# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C ${channelid} -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --isInit -c '{"Args":["Init","a","123","b","321"]}' --waitForEvent
+	# peer chaincode query -C ${channelid} -n ${pack_name} -c '{"Args":["query","a"]}'
+	####成功！！！

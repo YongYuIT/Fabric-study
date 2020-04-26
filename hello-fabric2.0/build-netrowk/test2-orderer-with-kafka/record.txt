@@ -34,7 +34,7 @@
 	CPython version: 3.7.3
 	OpenSSL version: OpenSSL 1.1.0j  20 Nov 2018
 	
-	1.3 下载解压zookeeper安装包，编写zookeeper配置文件
+	1.3 下载解压zookeeper安装包，编辑zookeeper配置文件
 	$ wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/stable/apache-zookeeper-3.5.7-bin.tar.gz
 	$ tar xvf apache-zookeeper-3.5.7-bin.tar.gz
 	$ cd apache-zookeeper-3.5.7-bin/conf/
@@ -42,6 +42,70 @@
 	$ echo "server.1=test_1.thinking.com:2888:3888" >> zoo.cfg
 	$ echo "server.2=test_2.thinking.com:2888:3888" >> zoo.cfg
 	$ echo "server.3=test_3.thinking.com:2888:3888" >> zoo.cfg
+	
+	1.4 编写docker-compose文件和zk启动命令，启动zookeeper集群（参见docker-compose-zookeeper.yaml和zk-cmd文件夹）
+	$ cd ~/Desktop/Fabric-study/hello-fabric2.0/build-netrowk/test2-orderer-with-kafka/zk-kafka-part
+	$ docker stop $(docker ps -aq)
+	$ docker rm -f $(docker ps -aq)
+	$ docker network prune
+	$ docker volume rm $(docker volume list)
+	$ docker-compose -f docker-compose-zookeeper.yaml up -d
+	
+	1.5 查看集群情况
+	$ docker ps | grep test_1.thinking.com
+	$ docker exec -it a8bd4ca92ca8 /bin/bash
+	# /zookeeper/bin/zkServer.sh status
+	ZooKeeper JMX enabled by default
+	Using config: /zookeeper/bin/../conf/zoo.cfg
+	Client port found: 2181. Client address: localhost.
+	Mode: follower
+	$ docker ps | grep test_2.thinking.com
+	$ docker exec -it 1110c4d1ab0d /bin/bash
+	# /zookeeper/bin/zkServer.sh status
+	ZooKeeper JMX enabled by default
+	Using config: /zookeeper/bin/../conf/zoo.cfg
+	Client port found: 2181. Client address: localhost.
+	Mode: follower
+	$ docker ps | grep test_3.thinking.com
+	$ docker exec -it 3fa8d91bb5b7 /bin/bash
+	# /zookeeper/bin/zkServer.sh status
+	ZooKeeper JMX enabled by default
+	Using config: /zookeeper/bin/../conf/zoo.cfg
+	Client port found: 2181. Client address: localhost.
+	Mode: leader
+	####这里可以清楚地看到test_3.thinking.com被选举为leader，其他两个为follower
+	
+2、在zookeeper集群地基础上，搭建kafka集群，参考https://github.com/YongYuIT/Fabric-study/tree/master/hello-kafka
+####注意，fabric网络要求kafka节点数目最小是4个，参考https://hyperledger-fabric.readthedocs.io/en/latest/kafka.html#steps
+
+	2.1 下载并解压kafka安装包
+	$ wget https://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.5.0/kafka_2.13-2.5.0.tgz
+	$ tar xvf kafka_2.13-2.5.0.tgz
+	2.2 编辑kafka配置文件
+	$ cd ~/Desktop/Fabric-study/hello-fabric2.0/build-netrowk/test2-orderer-with-kafka/zk-kafka-part
+	$ cp /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0/config/server.properties kafka-cmd/server_1.properties
+	$ cp /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0/config/server.properties kafka-cmd/server_2.properties
+	$ cp /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0/config/server.properties kafka-cmd/server_3.properties
+	$ cp /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0/config/server.properties kafka-cmd/server_4.properties
+	####编辑这三个配置文件，需要求改broker.id，host.name，log.dirs，zookeeper.connect四个参数
+	2.3 编写docker-compose文件和kafka启动命令，启动kafka集群（参见docker-compose-kafka.yaml和kafka-cmd文件夹）
+	$ docker-compose -f docker-compose-kafka.yaml up -d
+	2.4 创建测试主题，验证集群可用性
+	$ docker exec -it kafka_1.thinking.com /bin/bash
+	# cd /kafka/bin
+	# ./kafka-topics.sh --create --zookeeper test_1.thinking.com:2181 --replication-factor 2 --partitions 3 --topic test-with-create
+	# ./kafka-topics.sh --zookeeper test_1.thinking.com:2181 --describe --topic test-with-create
+
+3、安装kafka manager（便于可视化），参考https://github.com/YongYuIT/Fabric-study/tree/master/hello-kafka
+
+	3.1 git下载kafka manager源码并编译
+	$ git clone https://github.com/yahoo/kafka-manager.git
+	$ cd kafka-manager/
+	$ ./sbt clean dist
+	
+4、使用kafka作为orderer消息组件，参考https://hyperledger-fabric.readthedocs.io/en/latest/kafka.html#bringing-up-a-kafka-based-ordering-service
+
+
 
 
 	
