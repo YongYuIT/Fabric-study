@@ -1,7 +1,7 @@
 version: '2'
 
 networks:
-  thinking:
+  thk_blocks:
 
 services:
   test_1.thinking.com:
@@ -10,13 +10,13 @@ services:
     command: sh /zk-cmd/start1.sh
     tty: true
     networks:
-      - thinking
+      - thk_blocks
     ports:
       - "2181:2181"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /mnt/hgfs/zk-kafka-env/apache-zookeeper-3.5.7-bin:/zookeeper
-      - ./zk-cmd:/zk-cmd
+      - ../zk-cmd:/zk-cmd
     environment:
       - JAVA_HOME=/java
 
@@ -26,13 +26,13 @@ services:
     command: sh /zk-cmd/start2.sh
     tty: true
     networks:
-      - thinking
+      - thk_blocks
     ports:
       - "2182:2181"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /mnt/hgfs/zk-kafka-env/apache-zookeeper-3.5.7-bin:/zookeeper
-      - ./zk-cmd:/zk-cmd
+      - ../zk-cmd:/zk-cmd
     environment:
       - JAVA_HOME=/java
 
@@ -42,12 +42,12 @@ services:
     command: sh /zk-cmd/start3.sh
     tty: true
     networks:
-      - thinking
+      - thk_blocks
     ports:
       - "2183:2181"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
       - /mnt/hgfs/zk-kafka-env/apache-zookeeper-3.5.7-bin:/zookeeper
-      - ./zk-cmd:/zk-cmd
+      - ../zk-cmd:/zk-cmd
     environment:
       - JAVA_HOME=/java

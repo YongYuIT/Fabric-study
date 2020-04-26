@@ -279,7 +279,7 @@ crypto-config
 	####补充点2，解读生成初始区块配置中的OrdererType: etcdraft
 	$ ln -s configtx_firstblock.yaml configtx.yaml
 	$ mkdir channel-artifacts
-	$ configtxgen -profile SampleMultiNodeEtcdRaft -channelID thk-sys-channel -outputBlock channel-artifacts/genesis.block
+	$ configtxgen -profile OrdererWithKafka -channelID thk-sys-channel -outputBlock channel-artifacts/genesis.block
 	####补充点3，提炼、归纳、解读《configtx_firstblock.yaml》
 	3.2 创建通道配置
 	创建用于生成通道配置的配置文件，详见《configtx_channel.yaml》

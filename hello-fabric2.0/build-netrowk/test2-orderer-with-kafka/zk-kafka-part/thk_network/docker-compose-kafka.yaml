@@ -1,7 +1,7 @@
 version: '2'
 
 networks:
-  thinking:
+  thk_blocks:
 
 services:
   kafka_1.thinking.com:
@@ -10,15 +10,15 @@ services:
     command: sh /kafka-cmd/kafka_1.sh
     tty: true
     networks:
-      - thinking
+      - thk_blocks
     ports:
       - "9092:9092"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
-      - ./kafka-cmd:/kafka-cmd
+      - ../kafka-cmd:/kafka-cmd
       - /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0:/kafka
-      - ./kafka-logs/log-1:/tmp/kafka-logs
-      - ./kafka-logs/sys-log-1:/kafka/logs
+      - ../kafka-logs/log-1:/tmp/kafka-logs
+      - ../kafka-logs/sys-log-1:/kafka/logs
     environment:
       - JAVA_HOME=/java
 
@@ -28,15 +28,15 @@ services:
     command: sh /kafka-cmd/kafka_2.sh
     tty: true
     networks:
-      - thinking
+      - thk_blocks
     ports:
       - "9093:9092"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
-      - ./kafka-cmd:/kafka-cmd
+      - ../kafka-cmd:/kafka-cmd
       - /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0:/kafka
-      - ./kafka-logs/log-2:/tmp/kafka-logs
-      - ./kafka-logs/sys-log-2:/kafka/logs
+      - ../kafka-logs/log-2:/tmp/kafka-logs
+      - ../kafka-logs/sys-log-2:/kafka/logs
     environment:
       - JAVA_HOME=/java
 
@@ -46,15 +46,15 @@ services:
     command: sh /kafka-cmd/kafka_3.sh
     tty: true
     networks:
-      - thinking
+      - thk_blocks
     ports:
       - "9094:9092"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
-      - ./kafka-cmd:/kafka-cmd
+      - ../kafka-cmd:/kafka-cmd
       - /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0:/kafka
-      - ./kafka-logs/log-3:/tmp/kafka-logs
-      - ./kafka-logs/sys-log-3:/kafka/logs
+      - ../kafka-logs/log-3:/tmp/kafka-logs
+      - ../kafka-logs/sys-log-3:/kafka/logs
     environment:
       - JAVA_HOME=/java
       
@@ -64,14 +64,14 @@ services:
     command: sh /kafka-cmd/kafka_4.sh
     tty: true
     networks:
-      - thinking
+      - thk_blocks
     ports:
       - "9095:9092"
     volumes:
       - /mnt/hgfs/java-env/jdk1.8.0_211:/java
-      - ./kafka-cmd:/kafka-cmd
+      - ../kafka-cmd:/kafka-cmd
       - /mnt/hgfs/zk-kafka-env/kafka_2.13-2.5.0:/kafka
-      - ./kafka-logs/log-4:/tmp/kafka-logs
-      - ./kafka-logs/sys-log-4:/kafka/logs
+      - ../kafka-logs/log-4:/tmp/kafka-logs
+      - ../kafka-logs/sys-log-4:/kafka/logs
     environment:
       - JAVA_HOME=/java

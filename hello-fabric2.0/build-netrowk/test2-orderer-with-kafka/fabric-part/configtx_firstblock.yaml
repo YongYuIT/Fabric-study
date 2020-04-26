@@ -100,7 +100,7 @@ Organizations:
               Port: 10051
  
 Orderer: &OrdererDefaults
-    OrdererType: etcdraft
+    OrdererType: kafka
     BatchTimeout: 2s
     BatchSize:
         MaxMessageCount: 10
@@ -120,9 +120,16 @@ Orderer: &OrdererDefaults
         BlockValidation:
             Type: ImplicitMeta
             Rule: "ANY Writers"
+    Kafka:
+        Brokers:
+         - kafka_1.thinking.com:9092
+         - kafka_2.thinking.com:9092
+         - kafka_3.thinking.com:9092
+         - kafka_4.thinking.com:9092
+             
 
 Profiles:
-    SampleMultiNodeEtcdRaft:
+    OrdererWithKafka:
         <<: *ChannelDefaults
         Capabilities:
             <<: *ChannelCapabilities
@@ -137,13 +144,7 @@ Profiles:
                 - *THKOrg2
         Orderer:
             <<: *OrdererDefaults
-            OrdererType: etcdraft
-            EtcdRaft:
-                Consenters:
-                - Host: thinking_orderer.thinking.com
-                  Port: 7050
-                  ClientTLSCert: crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/tls/server.crt
-                  ServerTLSCert: crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/tls/server.crt
+            OrdererType: kafka
             Addresses:
                 - thinking_orderer.thinking.com:7050
             Organizations:
