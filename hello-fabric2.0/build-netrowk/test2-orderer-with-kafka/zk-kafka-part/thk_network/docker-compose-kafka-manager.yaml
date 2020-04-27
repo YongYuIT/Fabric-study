@@ -1,0 +1,21 @@
+version: '2'
+
+networks:
+  thk_blocks:
+
+services:
+  kafka_manager.thinking.com:
+    image: ubuntu
+    container_name: kafka_manager.thinking.com
+    command: sh /kafka-cmd/kafka_manager.sh
+    tty: true
+    networks:
+      - thk_blocks
+    ports:
+      - "9000:9000"
+    volumes:
+      - /mnt/hgfs/java-env/jdk-11.0.7:/java
+      - ../kafka-cmd_1.0.2:/kafka-cmd
+      - /mnt/hgfs/zk-kafka-env/cmak-3.0.0.4:/cmak
+    environment:
+      - JAVA_HOME=/java

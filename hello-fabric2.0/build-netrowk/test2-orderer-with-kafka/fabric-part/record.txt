@@ -356,4 +356,6 @@ crypto-config
 	# peer lifecycle chaincode querycommitted --channelID ${channelid} --name ${pack_name}
 	# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C ${channelid} -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} --isInit -c '{"Args":["Init","a","123","b","321"]}' --waitForEvent
 	# peer chaincode query -C ${channelid} -n ${pack_name} -c '{"Args":["query","a"]}'
+	# peer chaincode invoke -o ${ORDERER_ADDRESS} --tls true --cafile ${ORDERER_CA_FILE} -C ${channelid} -n ${pack_name} --peerAddresses ${CORE_PEER_ADDRESS_1} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_1} --peerAddresses ${CORE_PEER_ADDRESS_2} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE_2} -c '{"Args":["invoke","a","b","10"]}' --waitForEvent
+	# peer chaincode query -C ${channelid} -n ${pack_name} -c '{"Args":["query","a"]}'
 	####成功！！！

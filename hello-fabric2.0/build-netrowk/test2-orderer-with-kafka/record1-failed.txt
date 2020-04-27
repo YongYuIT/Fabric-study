@@ -115,6 +115,42 @@
 	####git tag
 	####git checkout 1.3.3.18
 	####./sbt clean dist
+	####还是编译失败，查看https://github.com/yahoo/kafka-manager.git，发现需要java11，临时配置java11
+	$ cd kafka-manager/
+	$ git checkout 3.0.0.4
+	$ export JAVA_HOME=/mnt/hgfs/java-env/jdk-11.0.7
+	$ export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+	$ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
+	$ ./sbt clean dist
+	$ cp target/universal/cmak-3.0.0.4.zip /mnt/hgfs/zk-kafka-env/
+	$ cd /mnt/hgfs/zk-kafka-env/
+	$ unzip cmak-3.0.0.4.zip
+	$ cd cmak-3.0.0.4/
+	$ vim conf/application.conf
+	3.2 配置、启动、使用kafka manager
+	####参照https://blog.csdn.net/YongYu_IT/article/details/81535462修改如下
+	####---------------------------------------------------------------------------------------
+	#kafka-manager.zkhosts="kafka-manager-zookeeper:2181"
+	#kafka-manager.zkhosts=${?ZK_HOSTS}
+	kafka-manager.zkhosts="0.0.0.0:2181,0.0.0.0:2182,0.0.0.0:2183"
+	#cmak.zkhosts="kafka-manager-zookeeper:2181"
+	#cmak.zkhosts=${?ZK_HOSTS}
+	cmak.zkhosts="0.0.0.0:2181,0.0.0.0:2182,0.0.0.0:2183"
+	####---------------------------------------------------------------------------------------
+	$ bin/cmak
+	####服务地址在0:0:0:0:9000，参照https://blog.csdn.net/YongYu_IT/article/details/81535462配置并使用
+	3.3 由于kafka的域名是在docker-compose虚拟网络里面的，kafka manager并不认识，所以最好是把kafka manager也放在docker-compose环境里面去
+	####对应地，kafka-manager的配置文件应改为
+	####---------------------------------------------------------------------------------------
+	#kafka-manager.zkhosts="kafka-manager-zookeeper:2181"
+	#kafka-manager.zkhosts=${?ZK_HOSTS}
+	kafka-manager.zkhosts="test_1.thinking.com:2181,test_2.thinking.com:2181,test_3.thinking.com:2181"
+	#cmak.zkhosts="kafka-manager-zookeeper:2181"
+	#cmak.zkhosts=${?ZK_HOSTS}
+	cmak.zkhosts="test_1.thinking.com:2181,test_2.thinking.com:2181,test_3.thinking.com:2181"
+	####---------------------------------------------------------------------------------------
+	$ docker-compose -f docker-compose-kafka-manager.yaml up -d
+	
 	
 4、使用kafka作为orderer消息组件，参考https://hyperledger-fabric.readthedocs.io/en/latest/kafka.html#bringing-up-a-kafka-based-ordering-service
 	4.1 修改初始区块的配置文件，主要是
