@@ -122,10 +122,10 @@ Orderer: &OrdererDefaults
             Rule: "ANY Writers"
     Kafka:
         Brokers:
-         - kafka_1.thinking.com:9092
-         - kafka_2.thinking.com:9092
-         - kafka_3.thinking.com:9092
-         - kafka_4.thinking.com:9092
+         - kafka1.thinking.com:9092
+         - kafka2.thinking.com:9092
+         - kafka3.thinking.com:9092
+         - kafka4.thinking.com:9092
              
 
 Profiles:

@@ -313,8 +313,7 @@ crypto-config
 	$ docker-compose -f docker_comp_cli.yaml up -d
 	6.3 创建通道，各个节点加入通道
 		6.3.1 查询当前节点连接通道的情况
-		$ docker ps | grep cli
-		$ docker exec -it aca6b97aee30 /bin/bash
+		$ docker exec -it cli /bin/bash
 		# peer channel list
 		6.3.2 创建并加入通道
 		# peer channel create -o thinking_orderer.thinking.com:7050 -c thkchannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem
@@ -336,8 +335,8 @@ crypto-config
 	# source env_build.sh
 	# ./change_to_org1.sh
 	# source change_to_org1.sh
-	# export export pack_name=abstore_20200424001
-	# export pack_id=2288c0c28f9510b96ac4ac154966180bb6f17dcd9e81916c0fcdd7fe06a69f92
+	# export export pack_name=abstore_20200427001
+	# export pack_id=ddbc8e510ec3f487761226a8f159bb90a415e7fb3964b46a742946500de261e3
 	# export pack_endorsement="AND('THKOrg1MSP.member','THKOrg2MSP.member')"
 	# export channelid=thkchannel
 	# peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}

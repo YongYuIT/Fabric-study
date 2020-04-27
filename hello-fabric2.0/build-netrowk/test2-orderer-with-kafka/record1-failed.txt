@@ -122,9 +122,19 @@
 	Orderer.Kafka.Brokers
 	Orderer.AbsoluteMaxBytes
 
-#########################################################################
-##启动orderer时失败，初步怀疑是由于orderer版本太高导致的，换1.0版本再试##
-#########################################################################
-	
-
+###################################################################################################################################################
+##  启动orderer时失败，初步怀疑是由于orderer版本太高导致的，换低版本再试                                                                         ##
+##  参考https://hyperledger-fabric.readthedocs.io/en/latest/kafka.html#kafka-protocol-version-compatibility，得知fabric只支持1.0版本的kafka协议  ##
+###################################################################################################################################################
+$ docker pull hyperledger/fabric-kafka
+$ docker run -it hyperledger/fabric-kafka /bin/bash
+$ cat /opt/kafka/bin/kafka-server-start.sh
+$ ls /opt/kafka/libs
+####发现是kafka_2.11-1.0.2版本的
+####其实跟fabric2.0镜像一起下载的已经包含kafka的docker镜像了（参见https://blog.csdn.net/YongYu_IT/article/details/105206244）
+####看看那个版本的kafka是多少
+$ docker run -it hyperledger/fabric-kafka:0.4.18 /bin/bash
+$ ls /opt/kafka/libs
+####也是kafka_2.11-1.0.2版本的
+####居然还用1.0.2版本的kafka，fuck
 	

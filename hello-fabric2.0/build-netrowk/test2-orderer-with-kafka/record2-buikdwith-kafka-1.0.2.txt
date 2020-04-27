@@ -1,0 +1,24 @@
+$ wget https://archive.apache.org/dist/kafka/1.0.2/kafka_2.11-1.0.2.tgz
+$ tar xvf kafka_2.11-1.0.2.tgz
+####照抄zk启动
+$ docker-compose -f docker-compose-zookeeper.yaml up -d
+####编辑kafka配置文件（修改方法完全照抄）
+$ cd ~/Desktop/Fabric-study/hello-fabric2.0/build-netrowk/test2-orderer-with-kafka/zk-kafka-part
+$ mkdir kafka-cmd_1.0.2
+$ cp /mnt/hgfs/zk-kafka-env/kafka_2.11-1.0.2/config/server.properties kafka-cmd_1.0.2/server_1.properties
+$ cp /mnt/hgfs/zk-kafka-env/kafka_2.11-1.0.2/config/server.properties kafka-cmd_1.0.2/server_2.properties
+$ cp /mnt/hgfs/zk-kafka-env/kafka_2.11-1.0.2/config/server.properties kafka-cmd_1.0.2/server_3.properties
+$ cp /mnt/hgfs/zk-kafka-env/kafka_2.11-1.0.2/config/server.properties kafka-cmd_1.0.2/server_4.properties
+####编辑docker-compose文件，启动容器
+$ cd thk_network
+$ docker-compose -f docker-compose-kafka_1.0.2.yaml up -d
+####检验集群
+$ docker exec -it kafka_1.thinking.com /bin/bash
+# cd /kafka/bin
+# ./kafka-topics.sh --create --zookeeper test_1.thinking.com:2181 --replication-factor 2 --partitions 3 --topic test-with-create
+# ./kafka-topics.sh --zookeeper test_1.thinking.com:2181 --describe --topic test-with-create
+####还是失败，报错也和record1相同
+####想起channel命名不能带下划线的教训，把kafka主机名去掉下划线，改成：
+####kafka1.thinking.com，kafka2.thinking.com，kafka3.thinking.com，kafka4.thinking.com
+####成功，fuck，教训深刻：在fabric里面名称不要随便使用下划线中划线之类的！！！
+
