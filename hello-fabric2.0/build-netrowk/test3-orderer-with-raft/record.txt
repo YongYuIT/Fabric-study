@@ -1,0 +1,2 @@
+ref to：https://hyperledger-fabric.readthedocs.io/en/latest/orderer/ordering_service.html#raft
+ref to：https://hyperledger-fabric.readthedocs.io/en/latest/raft_configuration.html
