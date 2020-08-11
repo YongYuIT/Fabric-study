@@ -1,0 +1,9 @@
+1\ env
+
+
+$ cd /fabric-samples
+$ git checkout -b release-1.4 origin/release-1.4
+$ cd first-network
+$ ./byfn.sh down
+$ ./byfn.sh up -i 1.4.6 -a
+

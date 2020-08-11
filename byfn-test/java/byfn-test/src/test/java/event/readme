@@ -1,2 +1,2 @@
 based on query_based_couch
-improve PeerUser
+import PeerUser
