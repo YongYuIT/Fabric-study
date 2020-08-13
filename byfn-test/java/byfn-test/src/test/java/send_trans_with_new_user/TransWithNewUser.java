@@ -81,12 +81,16 @@ public class TransWithNewUser {
 
 
     //用fabric-ca创建org1的普通用户，交易成功！
-    private static String newUserName = "User10@org1.example.com";
+    private static String newUserName = "User11@org1.example.com";
 
     @Test
     public void test1() throws Exception {
         Properties properties = new Properties();
-        HFCAClient hfcaClient = HFCAClient.createNewInstance("http://0.0.0.0:7054", properties);
+        properties.setProperty("sslProvider", "openSSL");//this conf allowed delete
+        properties.setProperty("negotiationType", "TLS");//this conf allowed delete
+        properties.setProperty("pemFile", "/home/yong/Desktop/codes/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem");
+        properties.setProperty("allowAllHostNames", "true");
+        HFCAClient hfcaClient = HFCAClient.createNewInstance("https://0.0.0.0:7054", properties);
         hfcaClient.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
         //========================================================
         //登录fabric-ca服务器(ca_peerOrg1)
