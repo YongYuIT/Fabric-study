@@ -65,8 +65,9 @@ public class TransWithNewUser {
             System.out.printf("proposal use for invoke Txid : %s from peer: %s\n", pr.getTransactionID(), pr.getPeer().getName());
         }
         //========================================================
+        String tid = null;
         try {
-            String tid = channel.sendTransaction(proposals, org1Admin).get(10, TimeUnit.SECONDS).getTransactionID();
+            tid = channel.sendTransaction(proposals, org1Admin).get(10, TimeUnit.SECONDS).getTransactionID();
             System.out.println("transact success tid-->" + tid);
         } catch (Exception e) {
             System.out.println("transact failed-->" + e.getMessage());
@@ -74,6 +75,19 @@ public class TransWithNewUser {
 
         //$ docker exec -it cli /bin/bash
         //# peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
+
+        TransactionInfo transactionInfo = channel.queryTransactionByID(tid);
+        System.out.println("query tx-->" + transactionInfo.getTransactionID());
+        System.out.println("query tx-->" + transactionInfo.getValidationCode());
+        System.out.println("query tx-->" + transactionInfo.getEnvelope().getSignature());
+
+        BlockInfo blockInfo = channel.queryBlockByTransactionID(tid);
+        System.out.println("query block-->" + blockInfo.getBlockNumber());
+        System.out.println("query block-->" + blockInfo.getDataHash());
+        System.out.println("query block-->" + blockInfo.getPreviousHash());
+        System.out.println("query block-->" + blockInfo.getTransactionCount());
+
+
     }
 
 
