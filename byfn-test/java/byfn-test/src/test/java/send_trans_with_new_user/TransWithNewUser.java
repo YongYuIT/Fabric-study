@@ -9,10 +9,7 @@ import org.hyperledger.fabric_ca.sdk.HFCAClient;
 import org.hyperledger.fabric_ca.sdk.RegistrationRequest;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.security.PrivateKey;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -81,14 +78,15 @@ public class TransWithNewUser {
 
 
     //用fabric-ca创建org1的普通用户，交易成功！
-    private static String newUserName = "User1@org1.example.com";
+    private static String newUserName = "User122@org1.example.com";
 
     @Test
     public void test1() throws Exception {
         Properties properties = new Properties();
         properties.setProperty("sslProvider", "openSSL");//this conf allowed delete
         properties.setProperty("negotiationType", "TLS");//this conf allowed delete
-        properties.setProperty("pemFile", ORG1_CONFIG_PATH + "ca/ca.org1.example.com-cert.pem");
+        //properties.setProperty("pemFile", ORG1_CONFIG_PATH + "ca/ca.org1.example.com-cert.pem");//this way is ok
+        properties.put("pemBytes", readFile(ORG1_CONFIG_PATH + "ca/ca.org1.example.com-cert.pem").getBytes());//this way is ok
         properties.setProperty("allowAllHostNames", "true");
         HFCAClient hfcaClient = HFCAClient.createNewInstance("https://0.0.0.0:7054", properties);
         hfcaClient.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
@@ -257,6 +255,17 @@ public class TransWithNewUser {
         fwriter.write(content);
         fwriter.flush();
         fwriter.close();
+    }
+
+    public static String readFile(String filePath) throws Exception {
+        StringBuilder result = new StringBuilder();
+        BufferedReader br = new BufferedReader(new FileReader(filePath));
+        String s = "";
+        while ((s = br.readLine()) != null) {
+            result.append(System.lineSeparator() + s);
+        }
+        br.close();
+        return result.toString();
     }
 
 }
