@@ -78,7 +78,7 @@ public class TransWithNewUser {
 
 
     //用fabric-ca创建org1的普通用户，交易成功！
-    private static String newUserName = "User122@org1.example.com";
+    private static String newUserName = "User1222@org1.example.com";
 
     @Test
     public void test1() throws Exception {
