@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_new_user/TransWithNewUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="88" column="83" selection-end-line="262" />
+            <state relative-caret-position="335">
+              <caret line="90" column="96" selection-end-line="262" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -190,7 +190,7 @@
       <updated>1597130987905</updated>
       <workItem from="1597130989404" duration="710000" />
       <workItem from="1597131740229" duration="13044000" />
-      <workItem from="1597289063379" duration="2544000" />
+      <workItem from="1597289063379" duration="4211000" />
     </task>
     <task id="LOCAL-00001" summary="finish test with ca">
       <created>1597148283601</created>
@@ -199,16 +199,17 @@
       <option name="project" value="LOCAL" />
       <updated>1597148283601</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="conn ca with tls">
+      <created>1597292794160</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597292794161</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TransWithNewUser_test1 - 2020.08.11 at 05h 16m 01s.xml">
-      <configuration name="TransWithNewUser.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TransWithNewUser_test1 - 2020.08.12 at 20h 25m 53s.xml">
-      <configuration name="TransWithNewUser.test1" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TransWithNewUser_test1 - 2020.08.12 at 20h 27m 11s.xml">
       <configuration name="TransWithNewUser.test1" configurationId="JUnit" />
     </history-entry>
@@ -233,9 +234,15 @@
     <history-entry file="TransWithNewUser_test1 - 2020.08.12 at 21h 25m 00s.xml">
       <configuration name="TransWithNewUser.test1" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TransWithNewUser_test1 - 2020.08.12 at 22h 04m 06s.xml">
+      <configuration name="TransWithNewUser.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TransWithNewUser_test1 - 2020.08.12 at 22h 04m 20s.xml">
+      <configuration name="TransWithNewUser.test1" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16298000" />
+    <option name="totallyTimeSpent" value="17965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="27" width="1848" height="1053" extended-state="6" />
@@ -277,7 +284,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="finish test with ca" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish test with ca" />
+    <MESSAGE value="conn ca with tls" />
+    <option name="LAST_COMMIT_MESSAGE" value="conn ca with tls" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/connect_to_channel/ByfnQueryHistoryTest.java">
@@ -412,8 +420,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_new_user/TransWithNewUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="88" column="83" selection-end-line="262" />
+        <state relative-caret-position="335">
+          <caret line="90" column="96" selection-end-line="262" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
