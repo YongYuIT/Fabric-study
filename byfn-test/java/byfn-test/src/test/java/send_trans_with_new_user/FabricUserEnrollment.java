@@ -22,7 +22,9 @@ public class FabricUserEnrollment implements Enrollment, Serializable {
 
     public FabricUserEnrollment(File privateKeyFile, File certificateFile) throws Exception {
         this.certificate = new String(IOUtils.toByteArray(new FileInputStream(certificateFile)));
-        this.privateKey = getPrivateKeyFromBytes(IOUtils.toByteArray(new FileInputStream(privateKeyFile)));
+        if (privateKeyFile != null) {
+            this.privateKey = getPrivateKeyFromBytes(IOUtils.toByteArray(new FileInputStream(privateKeyFile)));
+        }
     }
 
 
