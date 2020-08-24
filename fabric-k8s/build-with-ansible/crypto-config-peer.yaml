@@ -1,0 +1,26 @@
+!PeerOrgConfigSet
+PeerOrgs: 
+- !PeerOrgConfig
+   Domain: org1.example.com
+   EnableNodeOUs: true
+   Name: Org1
+   Template: 
+      Count: 1
+   Users: 
+      Count: 2
+- !PeerOrgConfig
+   Domain: org2.example.com
+   EnableNodeOUs: true
+   Name: Org2
+   Template: 
+      Count: 2
+   Users: 
+      Count: 2
+- !PeerOrgConfig
+   Domain: org3.example.com
+   EnableNodeOUs: true
+   Name: Org3
+   Template: 
+      Count: 3
+   Users: 
+      Count: 2

@@ -1,1 +1,14 @@
+0、基于fabric版本1.4.6
+
+$ git clone https://github.com/hyperledger/fabric-samples.git
+$ git checkout -b release-1.3 origin/release-1.3 ##switch branch
+
+1、计划网络：
+
+一个orderer组织，三个peer组织
+
+参考fabric-samples/crypto-config.yaml创建crypto-config-peer.yaml
+第一个peer组织内包含一个peer
+第二个peer组织内包含两个peer
+第三个peer组织内包含三个peer
 
