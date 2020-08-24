@@ -12,3 +12,7 @@ $ git checkout -b release-1.3 origin/release-1.3 ##switch branch
 第二个peer组织内包含两个peer
 第三个peer组织内包含三个peer
 
+创建crypto-config-orderer.yaml
+
+$ cryptogen generate --config=./crypto-config-peer.yaml
+$ cryptogen generate --config=./crypto-config-orderer.yaml
