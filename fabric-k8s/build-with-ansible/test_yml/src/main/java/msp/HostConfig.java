@@ -1,3 +1,5 @@
+package msp;
+
 import lombok.Data;
 
 @Data
