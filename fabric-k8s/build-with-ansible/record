@@ -14,10 +14,20 @@ $ git checkout -b release-1.3 origin/release-1.3 ##switch branch
 
 创建crypto-config-orderer.yaml
 
-$ cryptogen generate --config=./crypto-config-peer.yaml
-$ cryptogen generate --config=./crypto-config-orderer.yaml
+$ cryptogen generate --config=test_yml/crypto-config-peer.yaml
+$ cryptogen generate --config=test_yml/crypto-config-orderer.yaml
 
 2、生成创世区块
 
 参考fabric-samples/configtx.yaml
+
+创建创世区块生成文件configtx-genesis.yaml
+
+$ mkdir channel-artifacts
+$ ln -s test_yml/configtx-genesis.yaml configtx.yaml
+$ configtxgen -profile OrdererGenesis -channelID sys_channel -outputBlock channel-artifacts/genesis.block
+
+创建通道配置文件和锚节点信息文件
+$ ln -s test_yml/configtx-channel.yaml configtx.yaml
+$ configtxgen -profile Channel -channelID sys_channel -outputCreateChannelTx channel-artifacts/channel.tx
 
