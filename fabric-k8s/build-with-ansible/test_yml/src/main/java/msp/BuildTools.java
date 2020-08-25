@@ -3,13 +3,14 @@ package msp;
 import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlWriter;
 
+import java.io.FileWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 
 public class BuildTools {
 
 
-    public static void buildOrdererOrgs() {
+    public static void buildOrdererOrgs() throws Exception {
         OrdererOrgConfigSet ordererOrgConfigSet = new OrdererOrgConfigSet();
         ordererOrgConfigSet.setOrdererOrgs(new ArrayList<Config>());
         Config config = new Config();
@@ -36,9 +37,10 @@ public class BuildTools {
         //--------------------------------------------------------------
         String yaml = getYml(ordererOrgConfigSet);
         System.out.println(yaml);
+        saveFile(yaml, "crypto-config-orderer.yaml");
     }
 
-    public static void buildPeerOrgs() {
+    public static void buildPeerOrgs() throws Exception {
         PeerOrgConfigSet peerOrgConfigSet = new PeerOrgConfigSet();
         peerOrgConfigSet.setPeerOrgs(new ArrayList<Config>());
         //--------------------------------------------------------------
@@ -80,6 +82,7 @@ public class BuildTools {
         //--------------------------------------------------------------
         String yaml = getYml(peerOrgConfigSet);
         System.out.println(yaml);
+        saveFile(yaml, "crypto-config-peer.yaml");
     }
 
     private static String getYml(Object object) {
@@ -92,5 +95,12 @@ public class BuildTools {
             e.printStackTrace();
         }
         return stringWriter.toString();
+    }
+
+    public static void saveFile(String content, String fileName) throws Exception {
+        FileWriter fwriter = new FileWriter(fileName);
+        fwriter.write(content);
+        fwriter.flush();
+        fwriter.close();
     }
 }

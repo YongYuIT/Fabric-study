@@ -11,18 +11,27 @@ public class ProfileConfig {
 
     @Data
     public static class ProfileConfigItem {
-        private ChannelConfig SystemChannelConfig;
+        private ChannelConfig OrdererGenesis;
+        private ChannelConfig Channel;
     }
 
     @Data
-    public static class ChannelConfig extends ChannelDefaultConfig {
+    public static class ChannelConfig extends ChannelDefConfig {
         private OrderConfig Orderer;
         private ClientConfig Consortiums;
+        private String Consortium;
+        private ApplicationConfig Application;
+
     }
 
     @Data
     public static class ClientConfig {
         private SampleConsortiumConfig SampleConsortium;
+    }
+
+    @Data
+    public static class ApplicationConfig extends ApplicationDefConfig {
+        private List<PeerOrgConfig> Organizations;
     }
 
     @Data
@@ -34,7 +43,7 @@ public class ProfileConfig {
     @Data
     public static class OrderConfig extends OrderDefConfig {
         private List<OrdererOrgConfig> Organizations;
-        private OrdererCapabilityConfig Capabilities;
+        private CapabilityConfig Capabilities;
     }
 
     @Data
@@ -42,20 +51,4 @@ public class ProfileConfig {
 
     }
 
-    @Data
-    public static class PeerOrgConfig extends BaseNodeConfig {
-        private List<AnchorConfig> AnchorPeers;
-    }
-
-    @Data
-    public static class AnchorConfig {
-        private String Host;
-        private int Port;
-    }
-
-    @Data
-    public static class OrdererCapabilityConfig {
-        private boolean V1_4_2;
-        private boolean V1_1;
-    }
 }
