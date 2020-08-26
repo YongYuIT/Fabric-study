@@ -1,0 +1,26 @@
+$ docker stop $(docker ps -aq)
+$ docker rm -f $(docker ps -aq)
+$ docker network prune
+$ docker volume rm $(docker volume list)
+
+$ rm -rf channel-artifacts/ configtx.yaml crypto-config/
+$ cryptogen generate --config=test_yml/crypto-config.sample.yaml
+
+$ mkdir channel-artifacts
+$ ln -s test_yml/configtx.sample.yaml configtx.yaml
+$ configtxgen -profile TwoOrgsOrdererGenesis -channelID syschannel -outputBlock channel-artifacts/genesis.block
+
+$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputCreateChannelTx channel-artifacts/channel.tx
+$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -asOrg Org1MSP
+$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -asOrg Org2MSP
+
+$ docker-compose -f test_yml/docker-compose-orderer.sample.yaml up -d
+$ docker-compose -f test_yml/docker-compose-peer0-org1.sample.yaml up -d
+$ docker-compose -f test_yml/docker-compose-peer1-org1.sample.yaml up -d
+$ docker-compose -f test_yml/docker-compose-peer0-org2.sample.yaml up -d
+
+$ docker-compose -f test_yml/docker-compose-cli.sample.yaml up -d
+$ docker exec -it cli /bin/bash
+# peer channel create -o orderer.example.com:7050 -c syschannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+Error: got unexpected status: FORBIDDEN
