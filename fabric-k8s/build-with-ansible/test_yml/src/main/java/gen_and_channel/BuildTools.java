@@ -188,7 +188,7 @@ public class BuildTools {
 
         profileConfig.getProfiles().getChannel().getApplication().setCapabilities(new CapabilityConfig());
         profileConfig.getProfiles().getChannel().getApplication().getCapabilities().setV1_1("false");
-        profileConfig.getProfiles().getChannel().getApplication().getCapabilities().setV1_4_3("true");
+        profileConfig.getProfiles().getChannel().getApplication().getCapabilities().setV1_4_2("true");
         profileConfig.getProfiles().getChannel().getApplication().getCapabilities().setV1_3("false");
         profileConfig.getProfiles().getChannel().getApplication().getCapabilities().setV1_2("false");
 
