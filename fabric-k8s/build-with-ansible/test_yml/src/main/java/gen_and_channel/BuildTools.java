@@ -1,4 +1,4 @@
-package sys_channel;
+package gen_and_channel;
 
 import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlWriter;
