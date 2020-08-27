@@ -14,6 +14,7 @@ $ git checkout -b release-1.3 origin/release-1.3 ##switch branch
 
 创建crypto-config-orderer.yaml
 
+$ rm -rf channel-artifacts/ configtx.yaml crypto-config/
 $ cryptogen generate --config=test_yml/crypto-config-peer.yaml
 $ cryptogen generate --config=test_yml/crypto-config-orderer.yaml
 
@@ -25,9 +26,33 @@ $ cryptogen generate --config=test_yml/crypto-config-orderer.yaml
 
 $ mkdir channel-artifacts
 $ ln -s test_yml/configtx-genesis.yaml configtx.yaml
-$ configtxgen -profile OrdererGenesis -channelID sys_channel -outputBlock channel-artifacts/genesis.block
+$ configtxgen -profile OrdererGenesis -channelID syschannel -outputBlock channel-artifacts/genesis.block
+####如果试用sample
+$ ln -s test_yml/configtx-genesis.sample.yaml configtx.yaml
+$ configtxgen -profile TwoOrgsOrdererGenesis -channelID syschannel -outputBlock channel-artifacts/genesis.block
 
 创建通道配置文件和锚节点信息文件
+$ rm configtx.yaml
 $ ln -s test_yml/configtx-channel.yaml configtx.yaml
-$ configtxgen -profile Channel -channelID sys_channel -outputCreateChannelTx channel-artifacts/channel.tx
+$ configtxgen -profile Channel -channelID syschannel -outputCreateChannelTx channel-artifacts/channel.tx
+$ configtxgen -profile Channel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -asOrg Org1MSP
+$ configtxgen -profile Channel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -asOrg Org2MSP
+$ configtxgen -profile Channel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org3MSPanchors.tx -asOrg Org3MSP
+####如果试用sample
+$ ln -s test_yml/configtx-channel.sample.yaml configtx.yaml
+$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputCreateChannelTx channel-artifacts/channel.tx
+$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -asOrg Org1MSP
+$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -asOrg Org2MSP
+$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org3MSPanchors.tx -asOrg Org3MSP
 
+创建docker-compose配置文件，然后启动
+$ docker-compose -f test_yml/docker-compose-orderer.yaml up -d
+$ docker-compose -f test_yml/docker-compose-peer0.org1.example.com.yaml up -d
+$ docker-compose -f test_yml/docker-compose-peer0.org2.example.com.yaml up -d
+$ docker-compose -f test_yml/docker-compose-peer0.org3.example.com.yaml up -d
+
+创建并加入channel
+$ docker-compose -f test_yml/docker-compose-cli.sample.yaml up -d
+$ cp -r fabric-samples/chaincode .
+$ docker exec -it cli /bin/bash
+# peer channel create -o orderer.example.com:7050 -c syschannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
