@@ -34,16 +34,16 @@ $ configtxgen -profile TwoOrgsOrdererGenesis -channelID syschannel -outputBlock 
 创建通道配置文件和锚节点信息文件
 $ rm configtx.yaml
 $ ln -s test_yml/configtx-channel.yaml configtx.yaml
-$ configtxgen -profile Channel -channelID syschannel -outputCreateChannelTx channel-artifacts/channel.tx
-$ configtxgen -profile Channel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -asOrg Org1MSP
-$ configtxgen -profile Channel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -asOrg Org2MSP
-$ configtxgen -profile Channel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org3MSPanchors.tx -asOrg Org3MSP
+$ configtxgen -profile Channel -channelID demochannel -outputCreateChannelTx channel-artifacts/channel.tx
+$ configtxgen -profile Channel -channelID demochannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -asOrg Org1MSP
+$ configtxgen -profile Channel -channelID demochannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -asOrg Org2MSP
+$ configtxgen -profile Channel -channelID demochannel -outputAnchorPeersUpdate ./channel-artifacts/Org3MSPanchors.tx -asOrg Org3MSP
 ####如果试用sample
 $ ln -s test_yml/configtx-channel.sample.yaml configtx.yaml
-$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputCreateChannelTx channel-artifacts/channel.tx
-$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -asOrg Org1MSP
-$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -asOrg Org2MSP
-$ configtxgen -profile TwoOrgsChannel -channelID syschannel -outputAnchorPeersUpdate ./channel-artifacts/Org3MSPanchors.tx -asOrg Org3MSP
+$ configtxgen -profile TwoOrgsChannel -channelID demochannel -outputCreateChannelTx channel-artifacts/channel.tx
+$ configtxgen -profile TwoOrgsChannel -channelID demochannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -asOrg Org1MSP
+$ configtxgen -profile TwoOrgsChannel -channelID demochannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -asOrg Org2MSP
+$ configtxgen -profile TwoOrgsChannel -channelID demochannel -outputAnchorPeersUpdate ./channel-artifacts/Org3MSPanchors.tx -asOrg Org3MSP
 
 创建docker-compose配置文件，然后启动
 $ docker-compose -f test_yml/docker-compose-orderer.yaml up -d
@@ -52,7 +52,57 @@ $ docker-compose -f test_yml/docker-compose-peer0.org2.example.com.yaml up -d
 $ docker-compose -f test_yml/docker-compose-peer0.org3.example.com.yaml up -d
 
 创建并加入channel
+$ docker-compose -f test_yml/docker-compose-cli.yaml up -d
+####如果试用sample
 $ docker-compose -f test_yml/docker-compose-cli.sample.yaml up -d
+
 $ cp -r fabric-samples/chaincode .
 $ docker exec -it cli /bin/bash
-# peer channel create -o orderer.example.com:7050 -c syschannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+#######################################
+# 或者这上面的操作通过脚本执行        #
+# $ bash test_yml/script/build_env.sh #
+#######################################
+
+# peer channel create -o orderer.example.com:7050 -c demochannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+# peer channel join -b demochannel.block
+
+切换其他节点，依次加入通道
+# source script/switch_peer0org2.sh
+# peer channel join -b demochannel.block
+
+# source script/switch_peer0org3.sh
+# peer channel join -b demochannel.block
+
+安装链码
+# peer chaincode install -n demo_cc -v v0 -p github.com/chaincode/chaincode_example02/go
+# peer chaincode list --installed
+切换其他节点，依次安装链码
+
+实例化链码
+# peer chaincode instantiate -o orderer.example.com:7050 \
+	--tls $CORE_PEER_TLS_ENABLED \
+	--cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem \
+	-C demochannel \
+	-n demo_cc \
+	-v v0 \
+	-c '{"Args":["init","a","100","b","200"]}' \
+	-P "AND ('Org1MSP.peer',OR ('Org2MSP.peer','Org3MSP.peer'))"
+	
+# peer chaincode list --installed
+
+执行&查询
+$ peer chaincode query -C demochannel -n demo_cc -c '{"Args":["query","a"]}'
+$ peer chaincode invoke -o orderer.example.com:7050 \
+	--tls $CORE_PEER_TLS_ENABLED \
+	--cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem \
+	-C demochannel \
+	-n demo_cc \
+	--peerAddresses peer0.org1.example.com:7051 \
+	--tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt \
+	--peerAddresses peer0.org2.example.com:9051 \
+	--tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt \
+	--peerAddresses peer0.org3.example.com:11051 \
+	--tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt \
+	-c '{"Args":["invoke","a","b","10"]}'
+$ peer chaincode query -C demochannel -n demo_cc -c '{"Args":["query","a"]}'
