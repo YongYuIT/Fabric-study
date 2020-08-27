@@ -10,5 +10,8 @@
         <module name="test_yml" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test_yml" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

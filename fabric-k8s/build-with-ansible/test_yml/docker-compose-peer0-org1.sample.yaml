@@ -1,11 +1,7 @@
 version: '2'
 
 volumes:
-  orderer.example.com:
   peer0.org1.example.com:
-  peer1.org1.example.com:
-  peer0.org2.example.com:
-  peer1.org2.example.com:
 
 networks:
   byfn:
@@ -49,3 +45,4 @@ services:
       - 7051:7051
     networks:
       - byfn
+    tty: true
