@@ -1,5 +1,5 @@
-docker stop $(docker ps -a | grep hyperledger | awk '{print $1}')
-docker rm -f $(docker ps -a | grep hyperledger | awk '{print $1}')
+docker stop $(docker ps -a | grep example.com | awk '{print $1}')
+docker rm -f $(docker ps -a | grep example.com | awk '{print $1}')
 docker network prune
 docker volume rm $(docker volume list | awk '{print $2}')
 
