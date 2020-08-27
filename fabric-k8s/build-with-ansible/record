@@ -106,3 +106,5 @@ $ peer chaincode invoke -o orderer.example.com:7050 \
 	--tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt \
 	-c '{"Args":["invoke","a","b","10"]}'
 $ peer chaincode query -C demochannel -n demo_cc -c '{"Args":["query","a"]}'
+
+####疑问：锚节点文件有啥用？

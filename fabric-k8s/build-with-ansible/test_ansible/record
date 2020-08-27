@@ -1,1 +1,44 @@
+安装环境
+$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install ansible
+$ ansible --version
+ansible 2.9.6
 
+配置主机组
+
+$ sudo gedit /etc/ansible/hosts
+
+[org1-peers]
+peer0.org1.example.com ansible_ssh_host=192.168.186.138 ansible_ssh_user=yong
+
+[org2-peers]
+peer0.org2.example.com ansible_ssh_host=192.168.186.138 ansible_ssh_user=yong
+peer1.org2.example.com ansible_ssh_host=192.168.186.138 ansible_ssh_user=yong
+
+[org3-peers]
+peer0.org3.example.com ansible_ssh_host=192.168.186.138 ansible_ssh_user=yong
+peer1.org3.example.com ansible_ssh_host=192.168.186.138 ansible_ssh_user=yong
+peer2.org3.example.com ansible_ssh_host=192.168.186.138 ansible_ssh_user=yong
+
+[peers:children]
+org1-peers
+org2-peers
+org3-peers
+
+[orderers]
+orderer.example.com ansible_ssh_host=192.168.186.138 ansible_ssh_user=yong
+
+
+1、批量检测环境
+
+$ ansible peers -m ping
+####查看受控机信息
+$ ansible peers -m setup
+
+2、批量（差异化）传文件：使用ansible条件判断语句
+
+$ ansible peers -m copy -a "src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com dest=/yong/tmp_del/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com"
+$ ansible-playbook test_ansible/cpy_files.yml
+
+3、批量（差异化）执行命令：使用ansible条件判断语句
