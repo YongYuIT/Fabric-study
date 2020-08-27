@@ -60,7 +60,7 @@ public class BuildTools {
         saveFile(yaml, "docker-compose-orderer.yaml");
     }
 
-    public static void buildPeer(String fabric_version, String mspid, String peerName, int port, String gospurl) throws Exception {
+    public static void buildPeer(String fabric_version, String mspid, String orgName, String peerName, int port, String gospurl) throws Exception {
         DockerConfig config = new DockerConfig();
         config.setVersion("'2'");
         config.setVolumes(new DockerConfig.volumeConfig());
@@ -68,15 +68,15 @@ public class BuildTools {
         config.setServices(new DockerConfig.ServiceConfig());
         config.getServices().setREPLACED(new BaseService());
         config.getServices().getREPLACED().setCommand("peer node start");
-        config.getServices().getREPLACED().setContainer_name(peerName);
+        config.getServices().getREPLACED().setContainer_name(peerName + "." + orgName);
         config.getServices().getREPLACED().setEnvironment(new ArrayList<String>());
-        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_ID=" + peerName);
-        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_ADDRESS=" + peerName + ":" + port);
+        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_ID=" + peerName + "." + orgName);
+        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_ADDRESS=" + peerName + "." + orgName + ":" + port);
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_LISTENADDRESS=0.0.0.0:" + port);
-        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_CHAINCODEADDRESS=" + peerName + ":" + (port + 1));
+        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_CHAINCODEADDRESS=" + peerName + "." + orgName + ":" + (port + 1));
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0" + ":" + (port + 1));
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_GOSSIP_BOOTSTRAP=" + gospurl);
-        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_GOSSIP_EXTERNALENDPOINT=" + peerName + ":" + port);
+        config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_GOSSIP_EXTERNALENDPOINT=" + peerName + "." + orgName + ":" + port);
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_LOCALMSPID=" + mspid);
         config.getServices().getREPLACED().getEnvironment().add("FABRIC_LOGGING_SPEC=INFO");
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_TLS_ENABLED=true");
@@ -86,14 +86,17 @@ public class BuildTools {
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt");
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key");
         config.getServices().getREPLACED().getEnvironment().add("CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt");
+        config.getServices().getREPLACED().getEnvironment().add("CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock");
+        config.getServices().getREPLACED().getEnvironment().add("CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test_yml_default");//此参数不能写死
         config.getServices().getREPLACED().setImage("hyperledger/fabric-peer:" + fabric_version);
         config.getServices().getREPLACED().setPorts(new ArrayList<String>());
         config.getServices().getREPLACED().getPorts().add(port + ":" + port);
         config.getServices().getREPLACED().setWorking_dir("/opt/gopath/src/github.com/hyperledger/fabric/peer");
         config.getServices().getREPLACED().setVolumes(new ArrayList<String>());
-        config.getServices().getREPLACED().getVolumes().add("../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp");
-        config.getServices().getREPLACED().getVolumes().add("../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/etc/hyperledger/fabric/tls");
-        config.getServices().getREPLACED().getVolumes().add(peerName + ":/var/hyperledger/production");
+        config.getServices().getREPLACED().getVolumes().add("../crypto-config/peerOrganizations/" + orgName + "/peers/" + peerName + "." + orgName + "/msp:/etc/hyperledger/fabric/msp");
+        config.getServices().getREPLACED().getVolumes().add("../crypto-config/peerOrganizations/" + orgName + "/peers/" + peerName + "." + orgName + "/tls:/etc/hyperledger/fabric/tls");
+        config.getServices().getREPLACED().getVolumes().add(peerName + "." + orgName + ":/var/hyperledger/production");
+        config.getServices().getREPLACED().getVolumes().add("/var/run/:/host/var/run/");
         config.getServices().getREPLACED().setExtra_hosts(new ArrayList<String>());
         config.getServices().getREPLACED().getExtra_hosts().add("orderer.example.com:192.168.186.138");
         config.getServices().getREPLACED().getExtra_hosts().add("peer0.org1.example.com:192.168.186.138");
@@ -105,12 +108,12 @@ public class BuildTools {
 
 
         String yaml = getYml(config);
-        yaml = yaml.replace("REPLACED", peerName);
+        yaml = yaml.replace("REPLACED", peerName + "." + orgName);
         yaml = yaml.replace("DELETE", "");
         yaml = yaml.replace("'''", "'");
         yaml = yaml.replace("!", "#");
         System.out.println(yaml);
-        saveFile(yaml, "docker-compose-" + peerName + ".yaml");
+        saveFile(yaml, "docker-compose-" + peerName + "." + orgName + ".yaml");
     }
 
     private static String getYml(Object object) {
