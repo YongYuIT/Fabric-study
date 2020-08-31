@@ -42,3 +42,5 @@ $ ansible peers -m copy -a "src=/yong/codes/yong_research/Fabric-study/fabric-k8
 $ ansible-playbook test_ansible/cpy_files.yml
 
 3、批量（差异化）执行命令：使用ansible条件判断语句
+
+$ ansible-playbook test_ansible/cpy_files.yml
