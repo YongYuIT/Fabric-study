@@ -157,6 +157,65 @@ public class MyTest {
         }
     }
 
+    @Test
+    public void sendTrans() throws Exception {
+
+        HFClient hfclient = HFClient.createNewInstance();
+        CryptoSuite cryptoSuite = CryptoSuite.Factory.getCryptoSuite();
+        hfclient.setCryptoSuite(cryptoSuite);
+        //========================================================
+        FabricUser org1Admin = getOrg1AdminUser();
+        hfclient.setUserContext(org1Admin);
+        //========================================================
+        Channel channel = configChannel(hfclient, CHANNEL_NAME);
+        //========================================================
+
+        ChaincodeID ccId = ChaincodeID.newBuilder().setName(ccName).build();
+        TransactionProposalRequest transactionProposalRequest = hfclient.newTransactionProposalRequest();
+        transactionProposalRequest.setChaincodeID(ccId);
+        transactionProposalRequest.setFcn("invoke");
+        transactionProposalRequest.setArgs(new String[]{"b", "a", "1"});
+        transactionProposalRequest.setProposalWaitTime(300000);
+        transactionProposalRequest.setUserContext(org1Admin);
+        //========================================================
+        Collection<ProposalResponse> invokePropResp = channel.sendTransactionProposal(transactionProposalRequest);
+        Collection<ProposalResponse> proposals = new LinkedList<>();
+        for (ProposalResponse pr : invokePropResp) {
+            if (pr.getStatus() == ChaincodeResponse.Status.SUCCESS) {
+                System.out.printf("successful transaction proposal response Txid : %s from peer: %s\n", pr.getTransactionID(), pr.getPeer().getName());
+                proposals.add(pr);
+            } else {
+                System.out.printf("failed transaction proposal response Txid : %s from peer: %s\n", pr.getTransactionID(), pr.getPeer().getName());
+            }
+        }
+
+        for (ProposalResponse pr : proposals) {
+            System.out.printf("proposal use for invoke Txid : %s from peer: %s\n", pr.getTransactionID(), pr.getPeer().getName());
+        }
+        //========================================================
+        String tid = null;
+        try {
+            tid = channel.sendTransaction(proposals, org1Admin).get(10, TimeUnit.SECONDS).getTransactionID();
+            System.out.println("transact success tid-->" + tid);
+        } catch (Exception e) {
+            System.out.println("transact failed-->" + e.getMessage());
+        }
+
+        //$ docker exec -it cli /bin/bash
+        //# peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
+
+        TransactionInfo transactionInfo = channel.queryTransactionByID(tid);
+        System.out.println("query tx-->" + transactionInfo.getTransactionID());
+        System.out.println("query tx-->" + transactionInfo.getValidationCode());
+        System.out.println("query tx-->" + transactionInfo.getEnvelope().getSignature());
+
+        BlockInfo blockInfo = channel.queryBlockByTransactionID(tid);
+        System.out.println("query block-->" + blockInfo.getBlockNumber());
+        System.out.println("query block-->" + blockInfo.getDataHash());
+        System.out.println("query block-->" + blockInfo.getPreviousHash());
+        System.out.println("query block-->" + blockInfo.getTransactionCount());
+    }
+
     private static void installOrg1(HFClient hfclient, ChaincodeID chaincodeID) throws Exception {
         //========================================================
         FabricUser org1Admin = getOrg1AdminUser();

@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f16d420-d730-47f3-a13b-9d64593fe163" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chaincodeendorsementpolicy.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,23 +21,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="195" column="70" selection-start-line="195" selection-start-column="70" selection-end-line="195" selection-end-column="70" />
+            <state relative-caret-position="363">
+              <caret line="87" column="79" selection-start-line="44" selection-start-column="8" selection-end-line="87" selection-end-column="79" />
               <folding>
-                <element signature="method#test#0;class#TransWithNewUser#0" />
+                <element signature="imports" expanded="true" />
                 <element signature="method#test1#0;class#TransWithNewUser#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chaincodeendorsementpolicy.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="830">
-              <caret line="254" column="25" lean-forward="true" selection-start-line="254" selection-start-column="25" selection-end-line="254" selection-end-column="25" />
+            <state relative-caret-position="410">
+              <caret line="325" column="2" selection-start-line="325" selection-start-column="2" selection-end-line="325" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#createChannel#0;class#MyTest#0" />
+                <element signature="method#installAndinstantiateCC#0;class#MyTest#0" />
                 <element signature="method#installOrg1#0;class#MyTest#0" />
                 <element signature="method#installOrg2#0;class#MyTest#0" />
                 <element signature="method#getOrg2AdminUser#0;class#MyTest#0" />
@@ -130,11 +135,6 @@
               <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -168,23 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TransWithNewUser.test1">
-    <configuration name="MyTest.installAndinstantiateCC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="byfn-test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="create_channel_chaincode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="create_channel_chaincode" />
-      <option name="MAIN_CLASS_NAME" value="create_channel_chaincode.MyTest" />
-      <option name="METHOD_NAME" value="installAndinstantiateCC" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.MyTest.sendTrans">
     <configuration name="MyTest.installCC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="byfn-test" />
       <extension name="coverage">
@@ -212,6 +196,22 @@
       <option name="PACKAGE_NAME" value="create_channel_chaincode" />
       <option name="MAIN_CLASS_NAME" value="create_channel_chaincode.MyTest" />
       <option name="METHOD_NAME" value="instantiateCC" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyTest.sendTrans" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="byfn-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="create_channel_chaincode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="create_channel_chaincode" />
+      <option name="MAIN_CLASS_NAME" value="create_channel_chaincode.MyTest" />
+      <option name="METHOD_NAME" value="sendTrans" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -251,11 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyTest.sendTrans" />
         <item itemvalue="JUnit.TransWithNewUser.test1" />
         <item itemvalue="JUnit.TransWithNewUser.test" />
         <item itemvalue="JUnit.MyTest.instantiateCC" />
         <item itemvalue="JUnit.MyTest.installCC" />
-        <item itemvalue="JUnit.MyTest.installAndinstantiateCC" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +273,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598843678868</updated>
       <workItem from="1598843680844" duration="730000" />
-      <workItem from="1598844489597" duration="13195000" />
+      <workItem from="1598844489597" duration="14152000" />
     </task>
     <task id="LOCAL-00001" summary="finish try create channel with sdk">
       <created>1598858081905</created>
@@ -289,13 +289,17 @@
       <option name="project" value="LOCAL" />
       <updated>1598866949258</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="finish try ins chaincode with sdk">
+      <created>1598867039323</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1598867039323</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTest_installAndinstantiateCC - 2020.08.31 at 01h 54m 56s.xml">
-      <configuration name="MyTest.installAndinstantiateCC" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyTest_installAndinstantiateCC - 2020.08.31 at 01h 56m 32s.xml">
       <configuration name="MyTest.installAndinstantiateCC" configurationId="JUnit" />
     </history-entry>
@@ -323,9 +327,12 @@
     <history-entry file="TransWithNewUser_test1 - 2020.08.31 at 02h 36m 50s.xml">
       <configuration name="TransWithNewUser.test1" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyTest_sendTrans - 2020.08.31 at 02h 48m 06s.xml">
+      <configuration name="MyTest.sendTrans" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13925000" />
+    <option name="totallyTimeSpent" value="14882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="27" width="1846" height="951" extended-state="6" />
@@ -374,24 +381,6 @@
     <MESSAGE value="finish try create channel with sdk" />
     <MESSAGE value="finish try ins chaincode with sdk" />
     <option name="LAST_COMMIT_MESSAGE" value="finish try ins chaincode with sdk" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java</url>
-          <line>100</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java</url>
-          <line>106</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/protect_private_key/readme">
@@ -494,10 +483,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="195" column="70" selection-start-line="195" selection-start-column="70" selection-end-line="195" selection-end-column="70" />
+        <state relative-caret-position="363">
+          <caret line="87" column="79" selection-start-line="44" selection-start-column="8" selection-end-line="87" selection-end-column="79" />
           <folding>
-            <element signature="method#test#0;class#TransWithNewUser#0" />
+            <element signature="imports" expanded="true" />
             <element signature="method#test1#0;class#TransWithNewUser#0" />
           </folding>
         </state>
@@ -505,10 +494,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="830">
-          <caret line="254" column="25" lean-forward="true" selection-start-line="254" selection-start-column="25" selection-end-line="254" selection-end-column="25" />
+        <state relative-caret-position="410">
+          <caret line="325" column="2" selection-start-line="325" selection-start-column="2" selection-end-line="325" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#createChannel#0;class#MyTest#0" />
+            <element signature="method#installAndinstantiateCC#0;class#MyTest#0" />
             <element signature="method#installOrg1#0;class#MyTest#0" />
             <element signature="method#installOrg2#0;class#MyTest#0" />
             <element signature="method#getOrg2AdminUser#0;class#MyTest#0" />
