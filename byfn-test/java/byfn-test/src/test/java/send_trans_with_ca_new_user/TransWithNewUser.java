@@ -40,7 +40,7 @@ public class TransWithNewUser {
         FabricUser org1Admin = getOrg1AdminUser();
         hfclient.setUserContext(org1Admin);
         //========================================================
-        Channel channel = configChannel(hfclient);
+        Channel channel = configChannel(hfclient, "mychannel");
         //========================================================
         ChaincodeID ccId = ChaincodeID.newBuilder().setName("mycc").build();
         TransactionProposalRequest transactionProposalRequest = hfclient.newTransactionProposalRequest();
@@ -147,7 +147,7 @@ public class TransWithNewUser {
         //========================================================
         hfclient.setUserContext(newUser);
         //========================================================
-        Channel channel = configChannel(hfclient);
+        Channel channel = configChannel(hfclient, "mychannel");
         //========================================================
         ChaincodeID ccId = ChaincodeID.newBuilder().setName("mycc").build();
         TransactionProposalRequest transactionProposalRequest = hfclient.newTransactionProposalRequest();
@@ -193,8 +193,8 @@ public class TransWithNewUser {
         return org1Admin;
     }
 
-    public static Channel configChannel(HFClient hfclient) throws Exception {
-        Channel channel = hfclient.newChannel("mychannel");
+    public static Channel configChannel(HFClient hfclient, String cname) throws Exception {
+        Channel channel = hfclient.newChannel(cname);
 
         Properties peer0_org1Properties = new Properties();
         peer0_org1Properties.setProperty("pemFile", ORG1_PEER0_TLS_PATH + "server.crt");
