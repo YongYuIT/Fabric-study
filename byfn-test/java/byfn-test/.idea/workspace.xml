@@ -24,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="361">
-              <caret line="195" column="70" lean-forward="true" selection-start-line="195" selection-start-column="70" selection-end-line="195" selection-end-column="70" />
+              <caret line="195" column="70" selection-start-line="195" selection-start-column="70" selection-end-line="195" selection-end-column="70" />
               <folding>
                 <element signature="method#test#0;class#TransWithNewUser#0" />
                 <element signature="method#test1#0;class#TransWithNewUser#0" />
@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="268" selection-start-line="268" selection-end-line="268" />
+            <state relative-caret-position="830">
+              <caret line="254" column="25" lean-forward="true" selection-start-line="254" selection-start-column="25" selection-end-line="254" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#installOrg1#0;class#MyTest#0" />
@@ -273,7 +273,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598843678868</updated>
       <workItem from="1598843680844" duration="730000" />
-      <workItem from="1598844489597" duration="12938000" />
+      <workItem from="1598844489597" duration="13195000" />
     </task>
     <task id="LOCAL-00001" summary="finish try create channel with sdk">
       <created>1598858081905</created>
@@ -282,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598858081905</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finish try ins chaincode with sdk">
+      <created>1598866949258</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598866949258</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -318,13 +325,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13668000" />
+    <option name="totallyTimeSpent" value="13925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="27" width="1846" height="951" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.73491776" visible="true" weight="0.25277779" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.73491776" visible="true" weight="0.25277779" />
       <window_info id="Structure" order="1" sideWeight="0.26508227" side_tool="true" weight="0.25277779" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -335,7 +341,7 @@
       <window_info anchor="bottom" id="Messages" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.20245399" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.30184048" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.30184048" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2601227" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -345,7 +351,7 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Alibaba Cloud View" order="12" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.32883435" />
+      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32883435" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -366,7 +372,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="finish try create channel with sdk" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish try create channel with sdk" />
+    <MESSAGE value="finish try ins chaincode with sdk" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish try ins chaincode with sdk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -488,7 +495,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
-          <caret line="195" column="70" lean-forward="true" selection-start-line="195" selection-start-column="70" selection-end-line="195" selection-end-column="70" />
+          <caret line="195" column="70" selection-start-line="195" selection-start-column="70" selection-end-line="195" selection-end-column="70" />
           <folding>
             <element signature="method#test#0;class#TransWithNewUser#0" />
             <element signature="method#test1#0;class#TransWithNewUser#0" />
@@ -498,8 +505,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="268" selection-start-line="268" selection-end-line="268" />
+        <state relative-caret-position="830">
+          <caret line="254" column="25" lean-forward="true" selection-start-line="254" selection-start-column="25" selection-end-line="254" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#installOrg1#0;class#MyTest#0" />

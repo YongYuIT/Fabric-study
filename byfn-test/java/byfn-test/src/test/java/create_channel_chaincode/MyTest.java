@@ -3,20 +3,15 @@ package create_channel_chaincode;
 import org.hyperledger.fabric.sdk.*;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 import org.junit.Test;
+import send_trans_with_ca_new_user.FabricUser;
+import send_trans_with_ca_new_user.FabricUserEnrollment;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.hyperledger.fabric.sdk.Channel.PeerOptions.createPeerOptions;
-
-
-import send_trans_with_ca_new_user.FabricUser;
-import send_trans_with_ca_new_user.FabricUserEnrollment;
-
 import static send_trans_with_ca_new_user.TransWithNewUser.*;
 
 /*
