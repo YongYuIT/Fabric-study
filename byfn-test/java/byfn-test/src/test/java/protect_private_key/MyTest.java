@@ -1,10 +1,10 @@
-package trans_channel;
+package protect_private_key;
 
 import org.hyperledger.fabric.sdk.*;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 import org.junit.Test;
-import send_trans_with_new_user.FabricUser;
-import send_trans_with_new_user.FabricUserEnrollment;
+import send_trans_with_ca_new_user.FabricUser;
+import send_trans_with_ca_new_user.FabricUserEnrollment;
 
 import java.io.File;
 import java.util.Properties;

@@ -1,4 +1,4 @@
-package send_trans_with_new_user;
+package send_trans_with_ca_new_user;
 
 import lombok.Data;
 import org.hyperledger.fabric.sdk.Enrollment;
