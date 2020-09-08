@@ -1,4 +1,4 @@
-package trans_channel;
+package protect_private_key;
 
 import java.io.*;
 

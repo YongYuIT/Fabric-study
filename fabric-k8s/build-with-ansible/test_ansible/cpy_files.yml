@@ -1,36 +1,46 @@
 - hosts: orderers
   tasks:
     - name: cpy_config_files_orderer
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/ordererOrganizations/ dest=/yong/tmp/test_yml/crypto-config/ordererOrganizations
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/ordererOrganizations/ dest=/yong/tmp/crypto-config/ordererOrganizations
+    - name: cpy_gen_block
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/genesis.block dest=/yong/tmp/channel-artifacts/
     - name: cpy_docker_file_orderer
       copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/test_yml/docker-compose-orderer.yaml dest=/yong/tmp/test_yml/
+    - name: run_server
+      shell: docker-compose -f /yong/tmp/test_yml/docker-compose-orderer.yaml up -d
 - hosts: peers
   tasks:
     - debug:
         msg: "{{ansible_all_ipv4_addresses}}"
     - name: cpy_config_files
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/channel.tx dest=/yong/tmp/test_yml/channel-artifacts/
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/channel.tx dest=/yong/tmp/channel-artifacts/
 - hosts: peer0.org1.example.com
   tasks:
     - name: cpy_config_files_1
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com dest=/yong/tmp/test_yml/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com dest=/yong/tmp/crypto-config/peerOrganizations/org1.example.com/peers/
     - name: cpy_anchor_file_1
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/Org1MSPanchors.tx dest=/yong/tmp/test_yml/channel-artifacts/
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/Org1MSPanchors.tx dest=/yong/tmp/channel-artifacts/
     - name: cpy_docker_file_1
       copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/test_yml/docker-compose-peer0.org1.example.com.yaml dest=/yong/tmp/test_yml/
+    - name: run_server
+      shell: docker-compose -f /yong/tmp/test_yml/docker-compose-peer0.org1.example.com.yaml up -d
 - hosts: peer0.org2.example.com
   tasks:
     - name: cpy_config_files_2
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com dest=/yong/tmp/test_yml/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com dest=/yong/tmp/crypto-config/peerOrganizations/org2.example.com/peers/
     - name: cpy_anchor_file_2
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/Org2MSPanchors.tx dest=/yong/tmp/test_yml/channel-artifacts/
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/Org2MSPanchors.tx dest=/yong/tmp/channel-artifacts/
     - name: cpy_docker_file_2
       copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/test_yml/docker-compose-peer0.org2.example.com.yaml dest=/yong/tmp/test_yml/
+    - name: run_server
+      shell: docker-compose -f /yong/tmp/test_yml/docker-compose-peer0.org2.example.com.yaml up -d
 - hosts: peer0.org3.example.com
   tasks:
     - name: cpy_config_files_3
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com dest=/yong/tmp/test_yml/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com dest=/yong/tmp/crypto-config/peerOrganizations/org3.example.com/peers/
     - name: cpy_anchor_file_3
-      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/Org3MSPanchors.tx dest=/yong/tmp/test_yml/channel-artifacts/
+      copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/channel-artifacts/Org3MSPanchors.tx dest=/yong/tmp/channel-artifacts/
     - name: cpy_docker_file_3
       copy: src=/yong/codes/yong_research/Fabric-study/fabric-k8s/build-with-ansible/test_yml/docker-compose-peer0.org3.example.com.yaml dest=/yong/tmp/test_yml/
+    - name: run_server
+      shell: docker-compose -f /yong/tmp/test_yml/docker-compose-peer0.org3.example.com.yaml up -d

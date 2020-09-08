@@ -1,4 +1,4 @@
-package send_trans_with_new_user;
+package send_trans_with_ca_new_user;
 
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
 import org.hyperledger.fabric.sdk.*;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TransWithNewUser {
 
-    private static final String FABRIC_CONFIG_PATH = "/yong/codes/fabric-samples/first-network/crypto-config/";
+    public static final String FABRIC_CONFIG_PATH = "/yong/codes/fabric-samples/first-network/crypto-config/";
 
     public static final String ORG1_CONFIG_PATH = FABRIC_CONFIG_PATH + "peerOrganizations/org1.example.com/";
     public static final String ORG1_PEER0_TLS_PATH = ORG1_CONFIG_PATH + "peers/peer0.org1.example.com/tls/";
@@ -40,7 +40,7 @@ public class TransWithNewUser {
         FabricUser org1Admin = getOrg1AdminUser();
         hfclient.setUserContext(org1Admin);
         //========================================================
-        Channel channel = configChannel(hfclient);
+        Channel channel = configChannel(hfclient, "mychannel");
         //========================================================
         ChaincodeID ccId = ChaincodeID.newBuilder().setName("mycc").build();
         TransactionProposalRequest transactionProposalRequest = hfclient.newTransactionProposalRequest();
@@ -147,7 +147,7 @@ public class TransWithNewUser {
         //========================================================
         hfclient.setUserContext(newUser);
         //========================================================
-        Channel channel = configChannel(hfclient);
+        Channel channel = configChannel(hfclient, "mychannel");
         //========================================================
         ChaincodeID ccId = ChaincodeID.newBuilder().setName("mycc").build();
         TransactionProposalRequest transactionProposalRequest = hfclient.newTransactionProposalRequest();
@@ -193,8 +193,8 @@ public class TransWithNewUser {
         return org1Admin;
     }
 
-    public static Channel configChannel(HFClient hfclient) throws Exception {
-        Channel channel = hfclient.newChannel("mychannel");
+    public static Channel configChannel(HFClient hfclient, String cname) throws Exception {
+        Channel channel = hfclient.newChannel(cname);
 
         Properties peer0_org1Properties = new Properties();
         peer0_org1Properties.setProperty("pemFile", ORG1_PEER0_TLS_PATH + "server.crt");
