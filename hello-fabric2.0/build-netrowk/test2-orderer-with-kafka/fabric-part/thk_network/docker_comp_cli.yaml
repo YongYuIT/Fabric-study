@@ -34,9 +34,8 @@ services:
         - /var/run/:/host/var/run/
         - ../chaincode/:/opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode
         - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
-        - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
         - ../channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
-        - /mnt/hgfs/go-env-1/go-path/pkg/mod/:/opt/gopath/pkg/mod/
+        - /home/yong/Desktop/go_env/go-path/pkg/mod/:/opt/gopath/pkg/mod/
     networks:
       - thk_blocks
       

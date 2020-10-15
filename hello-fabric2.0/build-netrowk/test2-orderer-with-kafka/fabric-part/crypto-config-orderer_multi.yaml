@@ -1,0 +1,6 @@
+OrdererOrgs:
+  - Name: THKOrderer
+    Domain: thinking.com
+    Specs:
+      - Hostname: thinking_orderer1
+      - Hostname: thinking_orderer2

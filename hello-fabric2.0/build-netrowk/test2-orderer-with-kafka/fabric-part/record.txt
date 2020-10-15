@@ -335,7 +335,7 @@ crypto-config
 	# source env_build.sh
 	# ./change_to_org1.sh
 	# source change_to_org1.sh
-	# export export pack_name=abstore_20200427001
+	# export pack_name=abstore_20200427001
 	# export pack_id=ddbc8e510ec3f487761226a8f159bb90a415e7fb3964b46a742946500de261e3
 	# export pack_endorsement="AND('THKOrg1MSP.member','THKOrg2MSP.member')"
 	# export channelid=thkchannel

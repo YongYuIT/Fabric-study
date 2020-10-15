@@ -1,0 +1,23 @@
+1\ git clone fabric-sdk-java proj
+
+2\ import into idea as a maven proj
+
+3\ select release as profiles
+
+4\ cancel test step
+
+5\ package and copy target/fabric-sdk-java-2.2.0-jar-with-dependencies.jar
+
+6\ start byfn env
+
+$ cd /fabric-samples
+$ git checkout -b release-1.4 origin/release-1.4
+$ cd first-network
+$ ./byfn.sh down
+$ ./byfn.sh up -i 1.4.6 -a
+
+7\ mkdir libs
+
+8\ cpy sdk jar to libs
+
+9\ right click --> add as lib

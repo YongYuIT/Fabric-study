@@ -1,0 +1,71 @@
+这个项目主要尝试多个order节点的情况
+
+1、参考crypto-config-orderer.yaml，创建crypto-config-orderer_multi.yaml
+
+2、生成MSP配置文件
+
+$ cryptogen generate --config crypto-config-orderer_multi.yaml
+$ cryptogen generate --config crypto-config-peer.yaml
+
+3、生成区块链初始化文件，包括：初始区块、通道配置、锚节点配置
+
+    $ export CURRENT_FABRIC_TOOLS=~/Desktop/fabric-env/hyperledger-fabric-linux-amd64-2.0.0/bin
+	$ ln -s configtx_firstblock_multi.yaml configtx.yaml
+	$ mkdir channel-artifacts
+	$ $CURRENT_FABRIC_TOOLS/configtxgen -profile OrdererWithKafka -channelID thk-sys-channel -outputBlock channel-artifacts/genesis.block
+
+	$ rm configtx.yaml
+	$ ln -s configtx_channel.yaml configtx.yaml
+	$ $CURRENT_FABRIC_TOOLS/configtxgen -profile THKChannel -outputCreateChannelTx channel-artifacts/channel.tx -channelID thkchannel
+
+    $ $CURRENT_FABRIC_TOOLS/configtxgen -profile THKChannel -outputAnchorPeersUpdate channel-artifacts/THKOrg1MSPanchors.tx -channelID thkchannel -asOrg THKOrg1
+	$ $CURRENT_FABRIC_TOOLS/configtxgen -profile THKChannel -outputAnchorPeersUpdate channel-artifacts/THKOrg2MSPanchors.tx -channelID thkchannel -asOrg THKOrg2
+
+4、启动orderer组织（基于docker compose虚拟网络）
+
+	$ cd thk_network
+	$ docker-compose -f docker_comp_orderer_multi.yaml up -d
+
+5、启动peer组织（基于docker compose虚拟网络）
+
+	$ docker-compose -f docker_comp_thk_org1.yaml up -d
+
+6、启动客户端节点，操作区块链
+
+	$ docker-compose -f docker_comp_cli.yaml up -d
+
+	6.3 创建通道，各个节点加入通道
+		6.3.1 查询当前节点连接通道的情况
+		$ docker exec -it cli /bin/bash
+		# peer channel list
+		6.3.2 创建并加入通道
+		# peer channel create -o thinking_orderer1.thinking.com:7050 -c thkchannel -f ./channel-artifacts/channel.tx --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/thinking.com/orderers/thinking_orderer1.thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem
+		# ls
+		# peer channel join -b thkchannel.block
+		# peer channel list
+		6.3.3 切换其他节点，加入通道（以peer1.thk_org1为例）
+		# export CORE_PEER_ADDRESS=peer1.thk_org1.thinking.com:8051
+		# export CORE_PEER_LOCALMSPID=THKOrg1MSP
+		# export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/tls/ca.crt
+		# export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/msp
+		# peer channel join -b thkchannel.block
+		# peer channel list
+
+	6.4 安装、执行链码（参照《new_endorsement_policies_try/test3_chaincode_install.txt》）
+	$ sudo cp -r ~/codes/fabric-samples20200826001/chaincode/abstore chaincode/
+	# cd /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/
+	# chmod -R 755 *.sh
+	# ./env_build.sh
+	# source env_build.sh
+	# ./change_to_org1.sh
+	# source change_to_org1.sh
+	# export pack_name=abstore_20200427001
+	# export pack_id=ddbc8e510ec3f487761226a8f159bb90a415e7fb3964b46a742946500de261e3
+	# export pack_endorsement="AND('THKOrg1MSP.member')"
+	# export channelid=thkchannel
+    # export GOPROXY=https://goproxy.cn,direct
+	# peer lifecycle chaincode package ${pack_name}.tar.gz --path abstore/go/ --lang golang --label ${pack_name}
+	# peer lifecycle chaincode install ${pack_name}.tar.gz
+	# peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA_FILE} --channelID ${channelid} --name ${pack_name} --version 1 --init-required --package-id ${pack_name}:${pack_id} --sequence 1 --waitForEvent --signature-policy ${pack_endorsement}
+	# peer lifecycle chaincode checkcommitreadiness --channelID ${channelid} --name ${pack_name} --version 1 --sequence 1 --output json --init-required --signature-policy ${pack_endorsement}
+	
