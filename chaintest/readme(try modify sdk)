@@ -8,6 +8,13 @@
 
 5\ package and copy target/fabric-sdk-java-2.2.0-jar-with-dependencies.jar
 
+如果打包时遇到代码风格检查失败 like this：
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:3.0.0:check (compile) on project fabric-sdk-java: Failed during checkstyle execution: There is 1 error reported by Checkstyle 6.18 with checkstyle-config.xml ruleset. -> [Help 1]
+
+在package上右键，create 'fabric-sdk-java ['...，Command line:
+末尾加上 -Dcheckstyle.skip=true
+在Run Configurations可以找到新的package命令，双击运行即可
+
 6\ start byfn env
 
 $ cd fabric-samples

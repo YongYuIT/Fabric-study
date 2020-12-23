@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="fabric-sdk-java-2.2.0-jar-with-dependencies (12)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/fabric-sdk-java-2.2.0-jar-with-dependencies.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/fabric-sdk-java-2.2.0-jar-with-dependencies.jar!/" />
+    </SOURCES>
+  </library>
+</component>

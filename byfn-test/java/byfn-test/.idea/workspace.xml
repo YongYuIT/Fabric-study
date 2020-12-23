@@ -1,9 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f16d420-d730-47f3-a13b-9d64593fe163" name="Default Changelist" comment="">
+    <list default="true" id="4f16d420-d730-47f3-a13b-9d64593fe163" name="Default Changelist" comment="test trans on new channel &amp; chaincode">
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__10_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__11_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__12_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__13_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__14_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__15_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__16_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__17_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__18_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__19_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__20_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__21_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__22_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__23_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__5_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__6_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__7_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__8_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/.idea/libraries/fabric_sdk_java_2_2_0_jar_with_dependencies__9_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/libs/fabric-sdk-java-2.2.0-jar-with-dependencies.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/src/main/java/sign_remote/MainRemoteSign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../chaintest/src/main/java/sign_remote/SerializeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/channel-artifacts/THKOrg1MSPanchors.tx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/channel-artifacts/THKOrg2MSPanchors.tx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/channel-artifacts/channel.tx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/channel-artifacts/genesis.block" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/configtx_channel.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/configtx_firstblock.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config-orderer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config-peer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/ca/ca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/ca/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/msp/admincerts/Admin@thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/msp/cacerts/ca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/msp/admincerts/Admin@thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/msp/cacerts/ca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/msp/signcerts/thinking_orderer.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/tls/server.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/orderers/thinking_orderer.thinking.com/tls/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/tlsca/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/tlsca/tlsca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/msp/admincerts/Admin@thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/msp/cacerts/ca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/msp/signcerts/Admin@thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/msp/tlscacerts/tlsca.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/tls/client.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/ordererOrganizations/thinking.com/users/Admin@thinking.com/tls/client.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/ca/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/ca/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/msp/signcerts/peer0.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/tls/server.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer0.thk_org1.thinking.com/tls/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/msp/signcerts/peer1.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/tls/server.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer1.thk_org1.thinking.com/tls/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/msp/signcerts/peer2.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/tls/server.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/peers/peer2.thk_org1.thinking.com/tls/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/tlsca/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/tlsca/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/msp/signcerts/Admin@thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/tls/client.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/Admin@thk_org1.thinking.com/tls/client.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/msp/signcerts/User1@thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/tls/client.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User1@thk_org1.thinking.com/tls/client.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/msp/signcerts/User2@thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/tls/client.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User2@thk_org1.thinking.com/tls/client.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/msp/cacerts/ca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/msp/signcerts/User3@thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/msp/tlscacerts/tlsca.thk_org1.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/tls/client.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org1.thinking.com/users/User3@thk_org1.thinking.com/tls/client.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/ca/ca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/ca/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/msp/cacerts/ca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/msp/tlscacerts/tlsca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/msp/cacerts/ca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/msp/signcerts/peer0.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/msp/tlscacerts/tlsca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/tls/server.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer0.thk_org2.thinking.com/tls/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/msp/cacerts/ca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/msp/signcerts/peer1.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/msp/tlscacerts/tlsca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/tls/server.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/peers/peer1.thk_org2.thinking.com/tls/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/tlsca/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/tlsca/tlsca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/msp/cacerts/ca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/msp/signcerts/Admin@thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/msp/tlscacerts/tlsca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/tls/client.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/Admin@thk_org2.thinking.com/tls/client.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/msp/cacerts/ca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/msp/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/msp/keystore/priv_sk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/msp/signcerts/User1@thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/msp/tlscacerts/tlsca.thk_org2.thinking.com-cert.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/tls/ca.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/tls/client.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/crypto-config/peerOrganizations/thk_org2.thinking.com/users/User1@thk_org2.thinking.com/tls/client.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/docker_comp_orderer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/docker_comp_thk_org1.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/peer0_org2/core.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/peer0_org2/core.yaml.comp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/peer0_org2/env_set_up.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/peer0_org2/msp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/peer0_org2/peer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../fabric_local/local_try/peer0_org2/tls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../chaintest/readme(try modify sdk)" beforeDir="false" afterPath="$PROJECT_DIR$/../../../chaintest/readme(try modify sdk)" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../chaintest/src/main/java/FabricUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../chaintest/src/main/java/basic/FabricUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../chaintest/src/main/java/FabricUserEnrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../chaintest/src/main/java/basic/FabricUserEnrollment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../chaintest/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../chaintest/src/main/java/basic/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,36 +186,90 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/docker-compose-kafka.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/base/docker-compose-base.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="87" column="79" selection-start-line="44" selection-start-column="8" selection-end-line="87" selection-end-column="79" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#test1#0;class#TransWithNewUser#0" />
-              </folding>
+            <state relative-caret-position="495">
+              <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chaincodeendorsementpolicy.yaml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/base/peer-base.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="68" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/configtx.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="371" column="32" selection-start-line="371" selection-start-column="32" selection-end-line="371" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/FabricUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/FabricUserEnrollment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="77" column="34" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/readme">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="325" column="2" selection-start-line="325" selection-start-column="2" selection-end-line="325" selection-end-column="2" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#createChannel#0;class#MyTest#0" />
-                <element signature="method#installAndinstantiateCC#0;class#MyTest#0" />
-                <element signature="method#installOrg1#0;class#MyTest#0" />
-                <element signature="method#installOrg2#0;class#MyTest#0" />
-                <element signature="method#getOrg2AdminUser#0;class#MyTest#0" />
-              </folding>
+            <state relative-caret-position="663">
+              <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/docker-compose-cli.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/crypto-config.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-248">
+              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -74,6 +295,18 @@
       <find>org1</find>
       <find>mychannel</find>
       <find>@Test</find>
+      <find>.tx</find>
+      <find>configChannel</find>
+      <find>queryTrans</find>
+      <find>kafak</find>
+      <find>order</find>
+      <find>SampleDevModeKafka</find>
+      <find>orderer.example.com</find>
+      <find>OrdererDefaults</find>
+      <find>peer1.org1</find>
+      <find>ChannelDefaults</find>
+      <find>peer1.org2</find>
+      <find>orderer2</find>
     </findStrings>
     <replaceStrings>
       <replace>// ex</replace>
@@ -88,6 +321,18 @@
         <option value="$PROJECT_DIR$/src/test/java/trans_channel/readme" />
         <option value="$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java" />
         <option value="$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/FabricUser.java" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/Main.java" />
+        <option value="$PROJECT_DIR$/src/test/java/create_channel_chaincode/network/fabric-part/crypto-config-orderer.yaml" />
+        <option value="$PROJECT_DIR$/src/test/java/create_channel_chaincode/network/fabric-part/crypto-config-orderer_multi.yaml" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/record_multi.txt" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/configtx_firstblock.yaml" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/network/crypto-config.yaml" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/network/configtx.yaml" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/network/base/docker-compose-base.yaml" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/network/docker-compose-cli.yaml" />
+        <option value="$PROJECT_DIR$/src/test/java/order_with_kafka/readme" />
+        <option value="$PROJECT_DIR$/src/test/java/protect_private_key/MyTest.java" />
       </list>
     </option>
   </component>
@@ -127,6 +372,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -135,24 +381,61 @@
               <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="order_with_kafka" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="byfn-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="byfn-test" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="order_with_kafka" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/order_with_kafka/network" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/order_with_kafka/network" />
+      <recent name="$PROJECT_DIR$/src/test/java/create_channel_chaincode/network" />
+      <recent name="$PROJECT_DIR$/src/test/java/order_with_kafka" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -273,7 +556,23 @@
       <option name="presentableId" value="Default" />
       <updated>1598843678868</updated>
       <workItem from="1598843680844" duration="730000" />
-      <workItem from="1598844489597" duration="14152000" />
+      <workItem from="1598844489597" duration="15290000" />
+      <workItem from="1599122777414" duration="5180000" />
+      <workItem from="1599185595913" duration="7678000" />
+      <workItem from="1599215262356" duration="2761000" />
+      <workItem from="1599445120438" duration="3636000" />
+      <workItem from="1599460061480" duration="4844000" />
+      <workItem from="1602570016132" duration="1854000" />
+      <workItem from="1602812256970" duration="1008000" />
+      <workItem from="1602815185941" duration="519000" />
+      <workItem from="1602816688657" duration="11798000" />
+      <workItem from="1603695066782" duration="1329000" />
+      <workItem from="1605148827345" duration="102000" />
+      <workItem from="1606373348677" duration="92000" />
+      <workItem from="1606447398046" duration="28000" />
+      <workItem from="1606447451398" duration="6000" />
+      <workItem from="1607916641977" duration="188000" />
+      <workItem from="1608263041840" duration="1515000" />
     </task>
     <task id="LOCAL-00001" summary="finish try create channel with sdk">
       <created>1598858081905</created>
@@ -296,7 +595,28 @@
       <option name="project" value="LOCAL" />
       <updated>1598867039323</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="test trans on new channel &amp; chaincode">
+      <created>1598870965299</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598870965299</updated>
+    </task>
+    <task id="LOCAL-00005" summary="finish kafka and multi orderers">
+      <created>1602835327251</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1602835327251</updated>
+    </task>
+    <task id="LOCAL-00006" summary="test trans on new channel &amp; chaincode">
+      <created>1602835368105</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1602835368105</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -332,12 +652,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14882000" />
+    <option name="totallyTimeSpent" value="58558000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="72" y="27" width="1846" height="951" extended-state="6" />
+    <frame x="72" y="27" width="1848" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.73491776" visible="true" weight="0.25277779" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.73491776" visible="true" weight="0.30466148" />
       <window_info id="Structure" order="1" sideWeight="0.26508227" side_tool="true" weight="0.25277779" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -347,8 +668,8 @@
       <window_info id="Alibaba Cloud Explorer" order="7" />
       <window_info anchor="bottom" id="Messages" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.20245399" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.30184048" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.28789532" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.30184048" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2601227" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -358,11 +679,11 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Alibaba Cloud View" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32883435" />
+      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32861805" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.078888886" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.07824639" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Grav" order="6" />
@@ -380,23 +701,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="finish try create channel with sdk" />
     <MESSAGE value="finish try ins chaincode with sdk" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish try ins chaincode with sdk" />
+    <MESSAGE value="finish kafka and multi orderers" />
+    <MESSAGE value="test trans on new channel &amp; chaincode" />
+    <option name="LAST_COMMIT_MESSAGE" value="test trans on new channel &amp; chaincode" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/protect_private_key/readme">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="42" selection-start-column="42" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/protect_private_key/SerializeUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Desktop/java_env/maven_cache/repository/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/ChannelConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -422,30 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/FabricUserEnrollment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/FabricUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/protect_private_key/MyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-632">
-          <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Desktop/java_env/maven_cache/repository/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/TransactionRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -464,27 +749,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/Desktop/java_env/maven_cache/repository/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/protos/peer/Chaincode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-549">
+          <caret line="759" column="21" selection-start-line="759" selection-start-column="21" selection-end-line="759" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/java_env/maven_cache/repository/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/ChaincodeID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$USER_HOME$/Desktop/java_env/maven_cache/repository/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/HFClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="414" column="16" selection-start-line="414" selection-start-column="16" selection-end-line="414" selection-end-column="16" />
+        <state relative-caret-position="4800">
+          <caret line="378" column="38" selection-start-line="378" selection-start-column="38" selection-end-line="378" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Desktop/java_env/maven_cache/repository/org/hyperledger/fabric-sdk-java/fabric-sdk-java/1.3.0/fabric-sdk-java-1.3.0-sources.jar!/org/hyperledger/fabric/sdk/ChaincodeEndorsementPolicy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1186">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        <state relative-caret-position="135">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="39" />
+          <folding>
+            <element signature="method#parsePolicy#0;class#ChaincodeEndorsementPolicy#0" />
+            <element signature="method#parseIdentities#0;class#ChaincodeEndorsementPolicy#0" />
+            <element signature="method#fromFile#0;class#ChaincodeEndorsementPolicy#0" />
+            <element signature="method#fromYamlFile#0;class#ChaincodeEndorsementPolicy#0" />
+            <element signature="e#10565#10566#0" expanded="true" />
+            <element signature="e#10613#10614#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chaincodeendorsementpolicy.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/FabricUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="19" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/FabricUserEnrollment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/TransWithNewUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="87" column="79" selection-start-line="44" selection-start-column="8" selection-end-line="87" selection-end-column="79" />
+        <state relative-caret-position="470">
+          <caret line="73" column="9" selection-start-line="44" selection-start-column="6" selection-end-line="73" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#test1#0;class#TransWithNewUser#0" />
@@ -492,18 +824,147 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/query_based_couch/test.text">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/create_channel_chaincode/MyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="325" column="2" selection-start-line="325" selection-start-column="2" selection-end-line="325" selection-end-column="2" />
+        <state relative-caret-position="90">
+          <caret line="18" selection-start-line="18" selection-end-line="19" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createChannel#0;class#MyTest#0" />
-            <element signature="method#installAndinstantiateCC#0;class#MyTest#0" />
-            <element signature="method#installOrg1#0;class#MyTest#0" />
             <element signature="method#installOrg2#0;class#MyTest#0" />
             <element signature="method#getOrg2AdminUser#0;class#MyTest#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/crypto-config-orderer.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/crypto-config-orderer_multi.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/crypto-config-peer.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/chaincode/env_build.sh" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/configtx_firstblock.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/fabric-part/record_multi.txt" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/crypto-config_modify.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/configtx_modify.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/send_trans_with_ca_new_user/readme">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/connect_to_channel/ByfnQueryHistoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="39" column="70" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/query_based_couch/QueryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/connect_to_channel/ByfnTransactionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/protect_private_key/readme">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="42" selection-start-column="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/protect_private_key/SerializeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/protect_private_key/MyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="34" column="63" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/base/docker-compose-base.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/base/peer-base.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="68" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/FabricUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/FabricUserEnrollment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="77" column="34" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/crypto-config.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-248">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/docker-compose-cli.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/docker-compose-kafka.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/network/configtx.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="371" column="32" selection-start-line="371" selection-start-column="32" selection-end-line="371" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/order_with_kafka/readme">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
         </state>
       </provider>
     </entry>
