@@ -1,0 +1,94 @@
+Organizations:
+    - &THKOrg1
+        Name: THKOrg1
+        ID: THKOrg1MSP
+        MSPDir: crypto-config/peerOrganizations/thk_org1.thinking.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('THKOrg1MSP.admin', 'THKOrg1MSP.peer', 'THKOrg1MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('THKOrg1MSP.admin', 'THKOrg1MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('THKOrg1MSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('THKOrg1MSP.peer')"
+        AnchorPeers:
+            - Host: peer0.thk_org1.thinking.com
+              Port: 7051
+    - &THKOrg2
+        Name: THKOrg2
+        ID: THKOrg2MSP
+        MSPDir: crypto-config/peerOrganizations/thk_org2.thinking.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('THKOrg2MSP.admin', 'THKOrg2MSP.peer', 'THKOrg2MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('THKOrg2MSP.admin', 'THKOrg2MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('THKOrg2MSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('THKOrg2MSP.peer')"
+        AnchorPeers:
+            - Host: peer0.thk_org2.thinking.com
+              Port: 10051
+
+Capabilities:
+    Channel: &ChannelCapabilities
+        V2_0: true
+    Application: &ApplicationCapabilities
+        V2_0: true
+
+Application: &ApplicationDefaults
+    Organizations:
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        LifecycleEndorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+        Endorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+    Capabilities:
+        <<: *ApplicationCapabilities
+
+Channel: &ChannelDefaults
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+    Capabilities:
+        <<: *ChannelCapabilities
+
+Profiles:
+    THKChannel:
+        Consortium: SampleConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *THKOrg1
+                - *THKOrg2
+            Capabilities:
+                <<: *ApplicationCapabilities
